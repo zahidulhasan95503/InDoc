@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title>Home Page</title>
+</head>
+<body>
+<section class="banner d-flex justify-content-center align-items-center">
+		<div class="text-center">
+		<h1 class="display-2 font-weight-bold" style="color:rgb(255, 255, 0);">InDoc</h1>
+		<p class="lead font-weight-bold" style="color:black;">One Solution To Solve All Your Legal Doc Problems
+		</p>
+		<div>
+		
+		<a th:href="@{/about}">  
+        <button class="btn btn-primary btn-lg" style="margin-right:90px;">Who are we</button>
+       </a>
+	  
+	  <a th:href="@{/signin}">  
+         <button class="btn btn-primary btn-lg">Get started</button> 
+       </a>
+	   
+	   
+	   </div>
+		</div>
+</section>
+
+</body>
+</html>

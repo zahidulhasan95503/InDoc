@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title>Home page</title>
+</head>
+<body>
+
+	<section>
+		<div class="box-form mt-3">
+			<div class="left">
+			
+				<div class="overlay">
+				
+				<div th:if="${session.message}" th:classappend="${session.message.type}" class="alert text-center " role="alert">
+                     <p th:text="${session.message.content}"></p>
+                     
+                     <th:block th:text="${@sessionHelper.removeMessageFromHelper()}"></th:block>
+                        </div>
+				
+					<h1>Hello User.</h1>
+					<p>Enter Correct UserId and Password to Login to your account</p>
+		
+					
+				</div>
+			</div>
+
+
+			<div class="right">
+			<form  action="" th:action="@{/dologin}" method="post">
+				<h5>Login</h5>
+				
+				<div th:if="${param.error}" class="alert alert-danger">
+				Invalid Username and Password
+				</div>
+				
+				<div th:if="${param.logout}" class="alert alert-success">
+				You have been logged out
+				</div>
+				
+					<p>
+					Don't have an account? <a href="#">Creat Your Account</a> it takes
+					less than a minute
+				</p>
+				
+				<div class="inputs" style="margin-bottom:30px;">
+					<input type="text" placeholder="user name" name="username" id="username"> <br> <input
+						type="password" placeholder="password" name="password" id="Password">
+				</div>
+
+				
+
+				<div class="remember-me--forget-password">
+					<!-- Angular -->
+					<label> <input type="checkbox" name="item" checked /> <span
+						class="text-checkbox">Remember me</span>
+					<!-- </label> <p>forget password?</p> -->
+				</div>
+				
+
+				<br>
+				 <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+				</form>
+			</div>
+			
+
+		</div>
+	</section>
+
+</body>

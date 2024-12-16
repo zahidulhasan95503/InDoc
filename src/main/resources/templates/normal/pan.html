@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      th:replace="normal/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title>Home page</title>
+</head>
+<body>
+
+<section>
+
+<div class="sidebar">
+  
+  <span onclick="toggleSidebar()" class="crossBtn">&times;</span>
+  
+  <a href="#" th:href="@{/user/pan}">How To Create new PAN Card</a>
+  <a href="#" th:href="@{/user/pan_issue}">Solve PAN Card Issues</a>
+  <a href="#" th:href ="@{/user/pan_centre}">Find PAN Centers</a>
+  <a href="#" th:href="@{/user/update_user}">Settings</a>
+  <a href="#" th:href="@{/logout}">Logout</a>
+ 
+  <div class="divider"></div>
+  
+  </div>
+  
+  <div class="content">
+
+<i onclick="toggleSidebar()" class="fas fa-bars m-3"></i>
+
+<h2 class="text-center" style="color:#FFD999;">How to apply for PAN CARD Online & Offline!</h2>
+
+<div class="container" style="font-size:1.5vmax;">
+<pre style="font-family: Argent CF;">
+
+PAN, which stands for Permanent Account Number, is a government document that contains details of all financial transactions carried out 
+by an entity, be it an individual, a trust or an organisation.
+PAN is also used to open a bank account, file your tax return, invest in financial instruments, take a loan or credit card or conduct any 
+finance-related activity.
+A PAN card contains the PAN and identity details of the cardholder. The Permanent Account Number search identifies the individual for 
+taxation purposes and it contains all the relevant financial data of the individual in its storage. Knowing your Permanent Account Number is,
+therefore, a priority for many aspects of your financial journey
+
+<h3>What is a PAN Card</h3>
+A PAN card is issued under the Income Tax Act, 1961 and it contains a unique 10-digit alphanumeric code. 
+This code is computer-generated and is unique to the holder of the card and is valid for the lifetime.
+
+<h3>Who can Apply for a PAN Card</h3>
+The eligibility for a PAN card is not limited to individuals but companies and partnership firms can also avail a PAN card and it becomes 
+mandatory for such entities to have a PAN when they are filing their income tax returns. Even individuals, minors, students and non-resident
+Indians can also apply for PAN card online.
+
+<h3>How To Apply For PAN Card?</h3>
+PAN cards can be applied both online and offline. Further, requests for changes or corrections in PAN data may also be made online. The 
+online process is the most hassle-free way of obtaining a PAN. The applicant is only required to fill and submit the online application 
+form along with online payment of the respective processing fee. Copies of required documents can then be sent by post to either NSDL or 
+UTIITSL for verification purposes.
+
+<h3>How To Apply For PAN Card Online?</h3>
+Online PAN card applications can be made on the Income Tax portal using Aadhaar, the NSDL website or the UTIITSL website. Both these 
+websites have been authorised by the Government of India to issue the PAN or to make changes/corrections in the PAN on behalf of the 
+Income Tax Department.
+
+<h3>Documents Required For PAN Card</h3>
+Below are the documents required to be submitted along with the PAN card application:
+<ul>
+<li>Identity proof</li>
+<li>Address proof</li>
+<li>Date of birth proof</li>
+<li>Registration certificate in case of companies, firms, HUF and association of persons</li></ul>
+ Click <a href="https://www.protean-tinpan.com/services/pan/documents49A.html" target="_blank">here</a> for the entire list of documents.
+ <h3>How To Apply PAN Card Online Via Income-Tax Portal (Instant E-PAN)?</h3>
+ ndividuals having valid Aadhaar number can now apply for e-PAN instantly without filling up any application form. Here are the steps to 
+ apply for instant PAN card:
+ 
+ Step 1: Go to the <a href="https://www.incometax.gov.in/iec/foportal/" target="_blank">Income Tax portal</a> and click on ‘Instant e-PAN’ option.
+ <img alt="" src="" style="width:600px;" th:src="@{/images/pan1.png}">
+ 
+ Step 2: On the next page, click on ‘Get New e-PAN’.
+ <img style="width:600px;" th:src="@{/images/pan2.png}">
+ 
+ Step 3: Enter your Aadhaar number and click ‘Continue’. 
+<img style="width:600px;" th:src="@{/images/pan3.png}">
+
+Step 4: The OTP validation page will be displayed. Tick the checkbox and accept the terms and conditions. Click on the ‘Continue’ button.
+<img style="width:600px;" th:src="@{/images/pan4.png}">
+
+Step 5: Enter the OTP received on your Aadhaar registered mobile number, tick the checkbox and click ‘Continue’. 
+<img style="width:600px;" th:src="@{/images/pan5.png}">
+
+Step 6: You will see your personal details, such as name, date of birth, etc., as per your Aadhaar card. Click on ‘Validate Email’ to 
+validate your email, tick the checkbox, and click ‘Continue’.
+<img style="width:600px;" th:src="@{/images/pan6.png}">
+
+You will receive acknowledgement number and a confirmation message on your mobile number. Once e-PAN is alloted you will be intimated 
+on the same. Usually, the e-PAN card will be generated within 10 minutes and you can download the same from the Income Tax portal. 
+
+If you want a hard copy of your PAN card, you might have to pay additional fees and request for delivery using <a href="https://www.onlineservices.nsdl.com/paam/ReprintEPan.html" target="_blank">reprint</a> option. 
+
+The instant e-PAN card facility is available only to individual citizens above 18 years of age having a valid Aadhaar number and 
+Aadhaar-linked mobile number. Any person other than Indian citizens, like NRIs, partnership firms, HUFs, companies, trusts, etc., cannot 
+apply for an instant e-PAN card.
+
+<h3>How To Apply For PAN Card Online Via NSDL Website?</h3>
+Step 1: Visit the <a href="https://www.onlineservices.nsdl.com/paam/endUserRegisterContact.html" target="_blank">NSDL website.</a>
+Step 2: Select the application type as 'New PAN - Indian Citizen (Form 49A)' or ‘New PAN - Foreign Citizen (Form 49AA)’. Select the 
+applicable category and title, enter the last name, first name, middle name, date of birth/ incorporation, email and mobile number. Tick 
+the checkbox, validate captcha and click ‘Submit’.
+<img style="width:600px;" th:src="@{/images/pan7.png}">
+
+Step 3: You will receive a Token Number on your email ID. Click on the ‘Continue with PAN Application Form’ button.
+<img style="width:600px;" th:src="@{/images/pan8.jpg}">
+
+Step 4: Read the detailed instructions before filling in the details on the PAN card application form. Click here to view the PAN card 
+application instructions. 
+<img style="width:600px;" th:src="@{/images/pan9.png}">
+
+Select the mode of submission of PAN card documents and if you require a physical PAN card. 
+
+Fill out the required details on the form, such as personal details, contact details, and AO code, and upload the documents. 
+
+Step 5: After submitting the PAN card application, the payment page will appear. Selct the mode of payment and pay the required fees. 
+Payment can be made through credit/debit card, demand draft or net-banking.
+
+Upon successful payment, an acknowledgment will be displayed through which you can check your application status. It will also be sent 
+to your email ID.   
+
+Please note: If you choose the ‘Forward application documents physically’ option on the PAN card application, you will have to take a 
+print out of the acknowledgement and send the acknowledgement along with the attachment of the required documents to the following 
+address by post:
+
+Income Tax PAN Services Unit, 
+
+Protean eGov Technologies Limited, 
+
+4th Floor, Sapphire Chambers, 
+
+Baner Road, Baner, Pune - 411045
+
+<h3>How To Apply For PAN Card Online Via UTIITSL Website?</h3>
+
+Step 1: Visit the <a href="https://www.pan.utiitsl.com/PAN/">UTIITSL website.</a>
+
+Step 2: Click the ‘Click to Appy’ under the ‘PAN Card for Indian Citizen/ NRI' tab or PAN Card for Foreign Citizen' tab.
+<img style="width:600px;" th:src=@{/images/pan10.png}>
+
+Step 3: Select the ‘Apply for New PAN Card (Form 49A)’ tab or ‘Apply for New PAN Card (Form 49AA)’ tab.
+<img style="width:600px;" th:src=@{/images/pan11.png}>
+
+Step 4: Select the mode of submission of documents, status of applicant, the PAN card mode and click the ‘Submit’ button.
+<img style="width:600px;" th:src=@{/images/pan12.png}>
+
+Step 5: You will receive a reference number. Click ‘OK’.
+
+Step 6: Enter the required details on the form, such as personal details, document details, contact and parent details, address details 
+and other details. Upload the required documents and submit the form. 
+<img style="width:600px;" th:src=@{/images/pan13.png}>
+
+Step 7: Make the payment of the application fee. On successful payment, an acknowledgment will be displayed and sent to your email ID. 
+
+<h3>How To Apply For PAN Card Offline?</h3>
+Step 1: Download the <a href="https://www.protean-tinpan.com/downloads/pan/download/Form_49A.PDF" target="_blank">‘Form 49A’</a> or ‘Form 49AA’ from the Protean e-Gov website. 
+You can also obtain the PAN card application form from the nearest PAN centre.
+
+Step 2: Fill in the details in the application. 
+
+Step 3: Attach your signature and photograph to the application. 
+
+Step 4: Submit the form and the required documents to the <a href="https://www.protean-tinpan.com/pan-center" target=_blank>nearest PAN centre.</a>
+
+Step 5: Pay the fees for PAN card application. 
+
+Step 6: You will get the acknowledgement number from which you can track the status of your PAN card application status.
+
+Once the documents are verified, a PAN card will be issued within 15 days.
+
+
+</pre>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      th:replace="normal/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title>Home page</title>
+</head>
+<body>
+
+
+
+<section>
+
+<div class="sidebar">
+  
+  <span onclick="toggleSidebar()" class="crossBtn">&times;</span>
+  
+  <a href="#" th:href="@{/user/birth}">How to Create new Birth Certificate</a>
+  <a href="#" th:href="@{/user/birth_issue}">Solve Birth Certificate Issues Issues</a>
+  <a href="#" th:href ="@{/user/birth_centre}">Find Birth Certificate Centers</a>
+  <a href="#" th:href="@{/user/update_user}">Settings</a>
+  <a href="#" th:href="@{/logout}">Logout</a>
+ 
+  <div class="divider"></div>
+  
+  </div>
+  
+  <div class="content">
+
+<i onclick="toggleSidebar()" class="fas fa-bars m-3"></i>
+
+
+
+
+<h2 class="text-center" style="color:#FFD999;">How to apply for Aadhar Online & Offline!</h2>
+<div class="container" style="font-size: 1.5vmax;">
+<pre style="font-family: Argent CF;">
+<h3>Step 1: Gather Required Documents</h3>
+        <p>Before applying for a birth certificate, ensure you have the following documents ready:</p>
+        <ul><li>Proof of birth (hospital discharge summary or notification).</li>
+            <li>Parent's identification documents (e.g., Aadhar card, passport, etc.).</li>
+            <li>Proof of address.</li>
+            <li>Marriage certificate of parents (if required).</li></ul>
+          <h3>Step 2: Choose Application Method</h3>
+        <p>You can apply for a birth certificate through:</p>
+        <ul><li>The local municipal office.</li>
+            <li>Online via the official government website.</li></ul>
+        <h3>Step 3: Complete the Application</h3>
+        <p>Fill in the application form with accurate details, including:</p>
+        <ul><li>Name of the child.</li>
+            <li>Date, time, and place of birth.</li>
+            <li>Parent's full names and other required information.</li></ul>
+        <h3>Step 4: Submit the Application</h3>
+        <p>Submit the application along with the required documents either:</p>
+        <ul><li>In person at the municipal office.</li>
+            <li>Online via the government portal.</li></ul>
+         <h3>Step 5: Track and Collect Your Birth Certificate</h3>
+        <p>After submission, you can track the status of your application. Once approved, collect your birth certificate:</p>
+        <ul><li>Physically from the municipal office.</li>
+            <li>Download it online (if available).</li></ul>
+</pre>
+</div>
+</div>
+</section>
+
+</body>
+
+ 
+
+</html>

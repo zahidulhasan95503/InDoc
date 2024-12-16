@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      th:replace="normal/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title>Home page</title>
+</head>
+<body>
+
+<section>
+
+<div class="sidebar">
+  
+  <span onclick="toggleSidebar()" class="crossBtn">&times;</span>
+  
+ 
+  <a href="#" th:href="@{/user/update_user}">Settings</a>
+  <a href="#" th:href="@{/logout}">Logout</a>
+ 
+  <div class="divider"></div>
+  
+  </div>
+  
+  <div class="content">
+
+<i onclick="toggleSidebar()" class="fas fa-bars m-3"></i>
+
+<h2 style="margin-left:20px; text-align: center; font-size: 2.5rem; color: #FFD700; margin-bottom: 20px;">
+        Update User
+    </h2>
+    
+    <div class="updateprofile">
+    
+    <form th:object="${users}" th:action="@{/user/update}" method="post">
+    
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Enter Your Name</label>
+    
+    <input type="text"
+    th:value="${users.Name}" 
+    name="Name"
+    class="form-control" 
+    id="Name" 
+    aria-describedby="emailHelp"> 
+  </div>
+  
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Enter Your Email</label>
+    
+    <input 
+    th:value="${users.Email}" 
+    name="Email"
+    type="email" 
+    class="form-control" 
+    id="Email" 
+    aria-describedby="emailHelp">
+    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+  </div>
+  
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Enter Your Phone no</label>
+    
+    <input
+    th:value="${users.Phone}" 
+    name="Phone" 
+    type="text" 
+    class="form-control" 
+    id="Phone">
+  </div>
+  
+
+  <button type="submit" class="btn btn-primary">Update</button>
+</form>
+    
+   </div>
+
+</div>
+</section>
+
+</body>
+</html>

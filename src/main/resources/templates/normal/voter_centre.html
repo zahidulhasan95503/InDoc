@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+<head>
+    <title>google maps</title>
+    
+</head>
+<body>
+
+<section>
+
+<div class="sidebar">
+  
+  <span onclick="toggleSidebar()" class="crossBtn">&times;</span>
+  
+  <a href="#" th:href="@{/user/voter}">How To Create new VoterId card</a>
+  <a href="#" th:href="@{/user/voter_issue}">Solve VoterId Card Issues</a>
+  <a href="#" th:href ="@{/user/voter_centre}">Find VoterId Centers</a>
+  <a href="#" th:href="@{/user/update_user}">Settings</a>
+  <a href="#" th:href="@{/logout}">Logout</a>
+ 
+  <div class="divider"></div>
+  
+  </div>
+  
+  <div class="content">
+
+<i onclick="toggleSidebar()" class="fas fa-bars m-3"></i>
+
+
+
+<h2 style="margin-left:20px; text-align: center; font-size: 2.5rem; color: #FFD700; margin-bottom: 20px;">
+        Know Your VoterId Centers
+    </h2>
+    
+    <div class="container">
+   <div id="map"></div>
+   </div>
+   <br>
+   
+   
+   <button class="btn btn-primary" id="mylocation">get Currentlocation</button>
+   <h4 hidden id="places" th:text=${places}></h4>
+  
+  
+   
+  <script>
+  (g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})({
+    key: "AIzaSyDOi2fA-HwrmqNT2H_srklsJlXzVkwP0Yw",
+    v: "weekly",
+    // Use the 'v' parameter to indicate the version to use (weekly, beta, alpha, etc.).
+    // Add other bootstrap parameters as needed, using camel case.
+  });
+</script>
+   
+   
+   
+   <script type="text/javascript" th:src=@{/js/mapsscript.js}>
+   
+   </script>
+   
+   
+    </div>	
+   </section>
+    
+</body>
+</html>

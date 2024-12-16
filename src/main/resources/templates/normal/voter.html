@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      th:replace="normal/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title>Home page</title>
+</head>
+<body>
+
+<section>
+
+<div class="sidebar">
+  
+  <span onclick="toggleSidebar()" class="crossBtn">&times;</span>
+  
+  <a href="#" th:href="@{/user/voter}">How To Create new VoterId card</a>
+  <a href="#" th:href="@{/user/voter_issue}">Solve VoterId Card Issues</a>
+  <a href="#" th:href ="@{/user/voter_centre}">Find VoterId Centers</a>
+  <a href="#" th:href="@{/user/update_user}">Settings</a>
+  <a href="#" th:href="@{/logout}">Logout</a>
+ 
+  <div class="divider"></div>
+  
+  </div>
+  
+  <div class="content">
+
+<i onclick="toggleSidebar()" class="fas fa-bars m-3"></i>
+
+<h2 class="text-center" style="color:#FFD999;">How to apply for VOTER Id CARD Online & Offline!</h2>
+
+<div class="container" style="font-size:1.5vmax;">
+<pre style="font-family: Argent CF;">
+
+The Election Commission ID is also known as the Voter's ID in India. It is an important document that Indian citizens need in order to be 
+able to vote.Applying for a voter ID online has become a convenient method for many. The Voter ID card, a crucial document for Indian citizens to 
+participate in elections, can be obtained both online and offline.
+
+<h3>Basic Requirements to Apply for Voter ID Card Online</h3>
+Age: You've got to be 18 or older. No exceptions.
+
+Citizenship: Indian citizen is the keyword here. Sorry, United States or any other country, this isn't for you.
+
+Mental Health: A court-declared mental incapacity disqualifies an individual.
+
+Special Cases
+
+Non-Resident Indians (NRIs): Form 6A is available for application.
+
+Residents of Uttar Pradesh: You guys have your own set of rules. Check your state election website for the nitty-gritty.
+
+Essential Documents to Apply for Voter ID Online and Offline
+After checking off the eligibility criteria, the next step is to submit your documents. A selfie will not suffice, as you will need to provide 
+proper paperwork to verify your identity.
+
+The Must-Haves
+Proof of Age: Birth certificate or 10th-grade mark sheet.
+
+Proof of Address: Utility bill or bank passbook indicating permanent address.
+
+Proof of Identity: Aadhaar, PAN card, or other official documents.
+
+Photograph: A passport-sized photograph is required.
+
+<h3>How To Apply for Voter ID </h3>
+<h4>Online:</h4>
+<ul><li>Navigate to the Election Commission Website </li>
+<li>Go to the Election Commission's website</li>
+<li>Choose your state from the list </li>
+<li>You will automatically go to the Chief Electoral Officer page of your state. </li>
+<li>Log In</li>
+<li>Now, you will have to log in to the website. </li>
+<li>If you've never been to this website, register as a new user.</li>
+<li>New users, fill out your name, email, phone number, and create your account</li>
+<li>Choose the Continue button</li>
+<li>Your login details will be sent to your email address </li>
+<li>Log in with the username and password, and then change your password</li>
+<li>After you log in, select "Form 6" or "Application for including name in assembly constituency voters list."</li>
+<li>Fill Out the Application</li>
+<li>Enter all your personal details in the application form. Upload a passport-size colour photograph, and then "Submit" the firm and 
+hotograph.</li>
+<li>Verify Identity </li>
+<li>After you submit the application, you will be asked to visit your closest voter ID centre. Go to the centre with your supporting 
+documents, including identity proof and address proof. The Election Commission will send your new voter's card within 1 week. </li>
+<li>Download EPIC Card</li>
+<li>Go to the Election Commission website and select E-EPIC Download. You will be redirected to a login page, where you need to submit 
+your EPIC card details. After submitting these details, you can download your card. </li></ul>
+
+<h3>How to Apply for Voter ID Card Offline</h3>
+Steps for Offline Registration:
+<ul>
+<li>Locate the Nearest Election Office: Visit your local electoral office for form collection.</li>
+<li>Fill Out the Form: Complete Form 6 and double-check all relevant details.</li>
+<li>Submit Original Documents: Provide all essential documents for verification.</li>
+<li>Track Application Status: Keep tabs on your status by contacting the electoral office.</li></ul>
+<h3>Verification Steps after You Apply for Voter ID Card Online or Offline</h3>
+After submitting your vote, the verification process begins. The Election Commission of India acts as a detective to confirm your identity.
+
+<h4>Online Verification</h4>
+If you have applied online, you will receive an email or SMS instructing you to confirm your details. By clicking the link and following 
+the simple steps, you will be verified. This process is carried out by the Election Commission to ensure the accuracy of your application
+form and relevant information.
+
+<h4>Offline Verification</h4>
+If you choose to vote offline, be prepared for a visit by a Booth Level Officer (BLO) who will verify your original documents and possibly 
+ask some questions. It is similar to a pop quiz, but for the purpose of ensuring a fair democratic process.
+
+Whether you've applied online or offline, you'll need to wait for your name to appear in the voter list. This is the final stamp of approval.
+You can check the status of your voter application by visiting the Voter Portal or using the Voter Helpline Mobile Application.
+
+<h3>Things to Remember Before a Voter ID Application</h3>
+Obtaining a Voter ID in India is essential for exercising democratic rights, requiring applicants to be 18 or older, mentally sound, and 
+without criminal or financial issues. Form 6 must be filled out accurately through the NVSP website or approved centres, with correct 
+personal details. Verification of provided information and documents is crucial upon receiving the ID. Ensuring accuracy and legality in 
+the process maintains the integrity of voter registration, fostering a fair democratic system in India.
+
+<h4>Voter ID Verification</h4>
+To confirm the authenticity of their Voter ID, applicants can utilise their Voter ID number. They should begin by verifying if their names
+are listed in the electoral roll and then cross-check the details provided. Any inconsistencies should be promptly reported to the Chief 
+Electoral Officer for resolution. 
+
+Here are the steps to verify a Voter ID:
+
+Go to the National Voters' Services Portal.
+
+Navigate to the 'Search in Electoral Roll' section.
+
+Choose one of the search options: 'Search by Details', 'Search by EPIC', or 'Search by Mobile'.
+
+Input the required information and initiate the search.
+
+Your details will be shown on the screen, and you can verify their accuracy by selecting 'View Details' under the 'Action' column.
+
+Following these steps enables individuals to ensure the legitimacy of their Voter ID, contributing to the integrity of the electoral process.
+
+<h3>Steps to Take In Case You Don't Get Voter ID</h3>
+If your Voter ID hasn't arrived yet, don't panic. Follow these steps:
+
+Log in to the NVSP portal.
+
+Access 'Track Application Status'.
+
+Enter your reference number from the form submission, choose your state, and click 'Submit'.
+
+Check the updated status of your application.
+</pre>
+</div>
+
+</div>
+</section>
+
+</body>
+</html>

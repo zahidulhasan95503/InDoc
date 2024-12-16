@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      th:replace="normal/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title>Home page</title>
+</head>
+<body>
+
+
+
+<section>
+
+<div class="sidebar">
+  
+  <span onclick="toggleSidebar()" class="crossBtn">&times;</span>
+  
+  <a href="#" th:href="@{/user/passport}">How to Create new new passport</a>
+  <a href="#" th:href="@{/user/passport_issue}">Solve Passport Issues</a>
+  <a href="#" th:href ="@{/user/passport_centre}">Find Passport Centers</a>
+  <a href="#" th:href="@{/user/update_user}">Settings</a>
+  <a href="#" th:href="@{/logout}">Logout</a>
+ 
+  <div class="divider"></div>
+  
+  </div>
+  
+  <div class="content">
+
+<i onclick="toggleSidebar()" class="fas fa-bars m-3"></i>
+
+
+
+
+<h2 class="text-center" style="color:#FFD999;">How to apply for Passport Online & Offline!</h2>
+<div class="container" style="font-size: 1.5vmax;">
+<pre style="font-family: Argent CF;">
+
+Individuals travelling abroad for the first time can feel overwhelmed and confused about procuring essential travel documents such as a 
+passport. However, the passport application process is not very complicated, especially when you know how to go about it. When you apply 
+for a new passport, there are essentially two things you want to ensure: carry the right documents and be aware of the process. Let’s 
+look at both offline and online passport application methods so that you can choose a convenient alternative for yourself
+
+<h3>Eligibility Criteria for Passport Application</h3>
+<ul><li>You have to be eligible to apply for the passport. Here are the basic eligibility criteria for passport application:</li>
+<li>The eligibility requirements that need to be met are as follows: </li>
+<li>Indian nationals who are at least eighteen years old may apply.</li>
+<li>For minors under 18, the passport is valid for five years or until the child turns eighteen, whichever comes first. </li>
+<li>Children between 15 and 18 are eligible for a passport with a 10-year validity period. </li>
+<li>The parents may also apply for good passports until the children turn eighteen.</li></ul>
+<h3>Documents Needed for the Passport Application Process</h3>
+When applying for a new passport, individuals will need the following documents:
+
+Proof of address (any one of the following:
+
+Any of the utility bills; for example, electricity bill, water bill, gas bill, etc.
+Assessment order of your income tax, photo ID of the election commission
+Agreement of the place you are renting at or your Aadhar Card
+In case a minor is applying for his/her passport, they might need a copy of the first and last page of their parent’s passport
+Proof of Birth (any one of the following):
+
+Birth certificate that has been issued by the Registrar of Birth and Death or Municipal Corporation or another prescribed authority
+Voter ID card
+Aadhar card
+PAN card
+Any document that acts as proof of any of the Non-ECR categories
+
+<h4>Here are the detailed steps for an online passport application:</h4>
+Step 1: Go to the official Passport Seva website and register yourself. You can also log in to your existing account.
+
+Step 2: Now, Click on “Apply for Fresh Passport/ Re-issue of Passport”. Note that you must not own an existing Indian passport to apply 
+for a passport online under the “Fresh Passport” category.
+
+<img style="width:600px;" th:src="@{/images/pass1.jpg}">
+
+Step 3: Fill in the passport online application form with accurate details carefully and click on “Submit”.
+
+Step 4: Now, go back to the home page and select “View Saved/Submitted Applications”.
+
+Step 5: Click on “Pay and Schedule Appointment” from “View Saved/ Submitted Applications”.
+
+Step 6: You can book an appointment at a Passport Seva Kendra of your choice. Then, select and proceed to make the payment online or offline.
+
+After completing this process, you can download a copy of the application receipt with your application reference number by clicking on ‘Print Application Receipt’.
+
+You will receive an SMS with appointment details. This will act as proof of your appointment on your visit to the Passport Seva Kendra on the scheduled date.
+
+Make sure to carry all original documents on your visit as proof of your eligibility.
+
+<h3>How to Apply for a Passport Offline?</h3>
+Specific criteria must be followed to ensure the passport form is accepted. These guidelines include guidance on what forms to apply for 
+a passport and how to fill it out correctly. Forms for passports can be: 
+
+Downloaded and printed from the passport (PSP) website (www.passportindia.gov.in) on A4 paper, back-to-back. 
+
+The form is available on the website's main page as a print application link. 
+
+Purchased from the locations above.
+
+Apply for a Passport at the District Passport Cell:
+
+You will need to contact the district's relevant passport unit. You may find a list of DPCs. The DPC counter requires you to:
+
+Step 1: Send in the passport application and the required photos. 
+
+Step 2: Provide self-attested supporting documentation 
+
+Step 3: Submit original paperwork for validation (if needed) 
+
+Step 4: Use DD to pay the passport fee. 
+
+Step 5: Get a letter of acknowledgement with the file number. 
+
+The passport application can be manually completed by downloading, printing, and submitting it from the Passport Seva website. The form 
+is also available at the DPC for ₹10. Only the new format should be used while filling out the passport form.
+
+<h3>How to Check Passport Status Online in India?</h3>
+You will need the following information to check the progress of your passport application: 
+
+Date of the applicant's birth.
+
+A distinct 15-digit identification number is provided after the passport application is submitted.
+
+You can trace the status of your passport application online or offline using the credentials in the various methods listed below.
+
+Check the Status of Your Passport Application on Passport Seva Portal
+
+The following procedures must be followed to check the status of your passport application using the Passport Seva platform:
+
+Step 1: Visit the Passport Seva platform.
+
+Step 2: The "Track Application Status" button is one of the options listed on the home screen's right side. Select it. 
+
+Step 3: After being routed, you must choose the passport type you applied for. 
+
+Step 4: Enter your application's "File Number," a 15-digit number. 
+
+Step 5: Click the "Track Status" button after entering your birthdate. 
+
+Step 6: The passport application status check should appear on your screen.
+<h3>How to Track Passport Application Status Offline?</h3>
+If you do not want to use the internet alternatives, here's how to check your passport application:
+
+Track Passport Application Status via SMS
+
+Use SMS to check the status of your passport application. To track your passport application via the SMS service, follow these instructions.
+
+Step 1: Make use of the mobile number you registered. 
+
+Step 2: Text "STATUS (File Number)" to 9704100100 via SMS. 
+
+Step 3: An SMS with the status of your passport application will be sent to you. 
+
+Important: Please be aware that this SMS feature requires payment. Therefore, ordinary SMS fees will be charged.
+
+Track Passport Application Status via Toll-Free Service Number
+
+To track the status of your passport application via the toll-free service, follow these steps:
+
+Step 1: Dial the toll-free number "1800-258-1800" to reach the National Call Centre. 
+
+Step 2: An executive or an automated interactive voice response will be your connection. 
+
+Step 3: Give your file number and enquire about the progress of your passport application. 
+
+Important: Please note that, as indicated below, the contact information for the same service differs in some areas.
+
+<h3>How to Check Passport Dispatch and Delivery Status?</h3>
+You can monitor the passport's application and dispatch and delivery status. The India Speed Post service delivers a passport to the correct recipient at the address provided on the application form. 
+
+The official India Post website allows you to check the status of your passport online for both shipping and delivery. The steps for the same are as follows: 
+
+Step 1: Get your 13-digit tracking ID by going to the Passport Seva portal. 
+
+Step 2: Visit "India Post's" official website. 
+
+Step 3: Select the "Track Consignment" section. 
+
+Step 4: Enter the code on your screen and fill in the tracking ID under "Consignment Number.”
+
+Step 5: To view the passport's dispatch and delivery status, click "Track Now." 
+
+PSK still needs to send your passport if no information is found during the search.
+</pre>
+</div>
+</div>
+</section>
+
+</body>
+
+ 
+
+</html>

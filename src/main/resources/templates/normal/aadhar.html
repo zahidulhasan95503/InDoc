@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      th:replace="normal/base::layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title>Home page</title>
+</head>
+<body>
+
+
+
+<section>
+
+<div class="sidebar">
+  
+  <span onclick="toggleSidebar()" class="crossBtn">&times;</span>
+  
+  <a href="#" th:href="@{/user/aadhar}">How To Create new Aadhar</a>
+  <a href="#" th:href="@{/user/aadhar_issue}">Solve Aadhar Issues</a>
+  <a href="#" th:href ="@{/user/aadhar_centre}">Find Aadhar Centers</a>
+  <a href="#" th:href="@{/user/update_user}">Settings</a>
+  <a href="#" th:href="@{/logout}">Logout</a>
+ 
+  <div class="divider"></div>
+  
+  </div>
+  
+  <div class="content">
+
+<i onclick="toggleSidebar()" class="fas fa-bars m-3"></i>
+
+
+
+
+<h2 class="text-center" style="color:#FFD999;">How to apply for Aadhar Online & Offline!</h2>
+<div class="container" style="font-size: 1.5vmax;">
+<pre style="font-family: Argent CF;">
+
+The Aadhaar card is one of the primary ID proofs for all the citizens of India. Over the past decade, this has become one of the most important
+documents for Indians and also most asked during most processes be it online or offline. The Aadhaar card was created by the government of 
+India to identify each individual of India and the Unique Identification Authority of India (UIDAI) was established to issue Aadhaar cards to all
+the people of India.
+
+The Aadhaar card contains a 12-digit unique identification number along with personal details like name, address, date of birth, and gender of
+the individual. While these details will be on the card, the biometric and demographic data of the person will be recorded and stored when you
+register for the first time.
+
+In case you do not have an Aadhaar card yet or you want to enrol your younger one, this guide will take you through all the steps involved to
+do the same. We will start with how one can apply for Aadhaar online ( by visiting Aadhaar Sewa Kendras) and then take a look at all the
+supporting documents required for the same. Also, we have mentioned how you can track and download your Aadhaar copy.
+
+Just before we proceed, it is worth mentioning that the whole process is not 100% online. You can book or download the form to apply for
+the Aadhaar Card using online methods. But, to enrol and complete the process, you will have to personally visit the Aadhaar enrolment centre
+for getting yourself Enrolled as your Biometrics will be captured (Photo + Fingerprints + Iris).
+
+<h3 style="color:#010100;">How to apply for Aadhar Online!</h3>
+You can book your slot and fill in some basic details online. After booking your slot, you will have to visit the Aadhaar Sewa Kendra for the
+date and time, to which you have taken the appointment.
+<ol>
+<li>Visit the <a href="https://uidai.gov.in/en/">Book Online Appointment at Aadhaar Seva Kendra webpage </a>on the Website.</li>
+<li>Select “New Aadhaar” option</li>
+<li>Enter your Mobile Number and captcha</li>
+<img alt="" src="" style="width:600px;" th:src="@{/images/aadhar img 1.webp}">
+<li>Click on “Generate OTP” and enter the OTP, click on Verify OTP</li>
+<img alt="" src="" style="width:600px;" th:src="@{/images/aadhar img 2.webp}">
+<li>Select “Resident”</li>
+<li>Select “Application Verification Type” as “Document”</li>
+<li>Select your State, City, and Aadhaar Seva Kendra</li>
+<img alt="" src="" style="width:600px;" th:src="@{/images/aadhar  img 3.webp}">
+<li>On the next screen, you will be asked to fill in details like name, gender, D.O.B, address details, and Address Proof. Enter the details and
+select the relevant options and click on “Next”</li>
+<img alt="" src="" style="width:600px;" th:src="@{/images/aadhar img 4.webp}">
+<li>Select the date and time for your Aadhaar Card enrollment (this wi	ll be for the location which you have selected in step 8) and click 
+on “Next</li>
+<img alt="" src="" style="width:600px;" th:src="@{/images/aadhar img 5.webp}">
+<li>Review your application, check for details and click on “Submit”</li>
+<li>Once you have submitted it, your appointment will be confirmed and you will get an SMS with a confirmation.</li></ol>
+On the appointment day, make sure you reach the Seva Kendra a few minutes before and carry the documents required along with you. The
+enrollment is free of cost and you won’t be charged anything. However, in case you need an e-Aadhaar copy, the centre will charge Rs 30
+for the same, but you can download and take a printout outside as well.
+
+Once the process is completed in the Aadhaar Seva Kendra, make sure you get the acknowledgement slip and EID, which will come in handy
+to track and download your Aadhaar. Once you have received the acknowledgement, you will get your Aadhaar card to your address within
+4 weeks.
+
+<h3 style="color:#010100;">Documents Required to Apply for Aadhaar Card</h3>
+Since Aadhaar is a very important ID proof in India, you must have a proper name, photo, address, and date of birth proof. To enrol for your
+Aadhaar card, the centres accept a wide variety of documents. Here is the list of documents acceptable supporting documents to enrol yourself
+on Aadhaar. 
+<h3 style="font-family: Tahoma, Verdana, sans-serif;font-size:25px;">Proof of Identity documents containing Name and Photo</h3>
+<ul>
+<li>Passport/ PAN Card/ Ration/ PDS Photo Card/ Voter ID/ Driving License</li>
+<li>Government Photo ID Cards/ Service photo identity card issued by PSU</li>
+<li>NREGS Job Card</li>
+<li>Photo ID issued by Recognized Educational Institution</li>
+<li>Arms License/ Photo Bank ATM Card/ Photo Credit Card/ Pensioner Photo Card</li>
+<li>Freedom Fighter Photo Card/ Kissan Photo Passbook/ CGHS/ ECHS Photo Card</li>
+<li>Address Card having Name and Photo issued by</li>
+<li>Department of Posts</li>
+<li>Certificate of Identify having photo issued by Gazetted Officer or Tehsildar on UIDAI standard certificate format for enrolment/ update</li>
+<li>Disability ID Card/ handicapped medical certificate issued by the respective State/ UT Governments/Administrations</li>
+<li>Bhamashah Card/Jan-Aadhaar card issued by Govt. of Rajasthan</li>
+<li>Certificate from Superintendent/ Warden/ Matron/ Head of Institution of recognized shelter homes or orphanages etc. on UIDAI standard certificate format for enrolment/update</li>
+<li>Certificate of Identity having photo issued by MP or MLA or MLC or Municipal Councilor on UIDAI standard certificate format for enrolment/ update</li>
+<li>Certificate of Identity having photo issued by Village Panchayat Head or Mukhiya or its equivalent authority(for rural areas) on UIDAI standard certificate format for enrolment/ update</li>
+<li>Gazette notification for name change/ Marriage certificate with photograph</li>
+<li>RSBY Card/ SSLC book having candidates photograph</li>
+<li>ST/ SC/ OBC certificate with photograph</li>
+<li>School Leaving Certificate (SLC)/ School Transfer Certificate (TC), containing name and photograph</li>
+<li>Extract of School Records issued by Head of School containing name and photograph</li>
+<li>Bank Pass Book having name and photograph</li>
+<li>Certificate of Identity containing name and photo issued by Recognized Educational Institution signed by Head of Institute on UIDAI standard certificate format for enrolment/ update.</li>
+<li>Certificate of identity containing Name, DOB and Photograph issued by Employees’ Provident Fund Organisation (EPFO) on UIDAI standard certificate format for enrolment/ update</li>
+</ul>
+</pre>
+</div>
+</div>
+</section>
+
+</body>
+
+ 
+
+</html>

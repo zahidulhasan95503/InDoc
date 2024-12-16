@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" 
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous">
+      
+     <!--  font awsome icons -->
+      
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" 
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" 
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+     
+     <link rel="stylesheet" th:href="@{/css/style.css}">
+     
+
+    <title th:text=${title}>Home Page</title>
+</head>
+<body>
+
+<!-- start of navbar -->
+  
+  <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top" style="background-color:#FFD700;">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent" aria-expand="false">
+  <a class="navbar-brand" th:href="@{/user/index}" href="#">InDoc</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse"
+   data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 
+   aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+   
+  </div>
+  <div>
+  
+  <ul class="navbar-nav mr-auto">
+    
+      
+      
+      <li class="nav-item">
+        <a class="nav-link" th:text="${users.Name}" th:href="@{/user/update_user}" href="#"><i class="fa-solid fa-user"></i>Login</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link"  th:href="@{/logout}" href="#">Logout</a>
+      </li>
+      
+      
+      
+    </ul>
+  
+  </div>
+</nav>
+  
+  <!-- end of navbar -->
+  
+
+<h1 class="text-center" style="color:white;margin-top:6px;">Select the <span style="color:darkblue;">Document</span></h1>
+
+     <div class="userlogin" style="padding-top:25px">
+     <div class="row mb-5" style="margin-right:8px;margin-left:8px;margin-top:10px;">
+     <div class="col-md-4">
+     <div class="card" style="height:30vh;">
+     <a class="card-link" href="#" th:href="@{/user/aadhar}">
+     <div class="card-body">
+     <h3 class="card-title" style="color:#107896">Aadhar Document</h3>
+     <ul style="color:black;">
+  <li>Create new Aadhar</li>
+  <li>Solve problems in Aadhar</li>
+  <li>Locate your Aadhar Center</li>
+  <li>Other Aadhar related Queries</li>
+</ul> 
+     </div>
+     </a>
+     </div>
+     </div>
+     
+      <div class="col-md-4">
+     <div class="card" style="height:30vh;">
+     <a class="card-link" href="#" th:href="@{/user/pan}">
+     <div class="card-body">
+      <h3 class="card-title" style="color:#107896">PAN Document</h3>
+     <ul style="color:black;">
+  <li>Create new PAN</li>
+  <li>Solve problems in PAN</li>
+  <li>Locate your PAN Center</li>
+  <li>Other PAN related Queries</li>
+</ul> 
+     </div>
+     </a>
+     </div>
+     </div>
+     
+      <div class="col-md-4">
+     <div class="card" style="height:30vh;">
+     <a class="card-link" href="#" th:href="@{/user/voter}">
+     <div class="card-body">
+      <h3 class="card-title" style="color:#107896">Voter Id</h3>
+     <ul style="color:black;">
+  <li>Create new Voter Id Card</li>
+  <li>Solve problems in Voter Id Card</li>
+  <li>Locate your Voter Center</li>
+  <li>Other Voter Id Card related Queries</li>
+</ul> 
+     </div>
+     </a>
+     </div>
+     </div>
+     </div>
+     
+     <div class="row" style="margin-right:8px; margin-left:8px;">
+     <div class="col-md-4">
+     <div class="card" style="height:30vh;">
+     <a class="card-link" th:href="@{/user/passport}">
+     <div class="card-body">
+      <h3 class="card-title" style="color:#107896">Passport Documents</h3>
+     <ul style="color:black;">
+  <li>Create new Passport Document</li>
+  <li>Solve problems in Passport Document</li>
+  <li>Locate your Passport Document Center</li>
+  <li>Other Passport related Queries</li>
+</ul> 
+     </div>
+     </a>
+     </div>
+     </div>
+     
+      <div class="col-md-4">
+     <div class="card" style="height:30vh;">
+     <div class="card-body">
+     <a class="card-link" th:href="@{/user/birth}">
+      <h3 class="card-title" style="color:#107896">Birth Certificate</h3>
+     <ul style="color:black;">
+  <li>Create new Birth Certificate</li>
+  <li>Solve problems in Birth Certificate</li>
+  <li>Locate your Document Center</li>
+  <li>Other Birth Certificate related Queries</li>
+</ul> 
+</a>
+     </div>
+     </div>
+     </div>
+     
+      <div class="col-md-4">
+     <div class="card" style="height:30vh;">
+     <div class="card-body">
+      <h3 class="card-title" style="color:#107896">Others</h3>
+     <ul style="color:black;">
+  <li>Create new Aadhar</li>
+  <li>Solve problems in Aadhar</li>
+  <li>Locate your Aadhar Center</li>
+  <li>Other Aadhar related Queries</li>
+</ul> 
+     </div>
+     </div>
+     </div>
+     </div>
+
+</div>
+
+ <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>

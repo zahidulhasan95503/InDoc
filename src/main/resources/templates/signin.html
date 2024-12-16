@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title>Home page</title>
+</head>
+<body>
+
+	<section>
+		<div class="container">
+
+			<div class="row mt-2 md-6">
+
+				<div class="col-md-7 offset-md-2 bg-white">
+
+					<div class="my-card mt-2 mb-3">
+					
+					<div th:if="${session.message}" th:classappend="${session.message.type}" class="alert text-center " role="alert">
+                     <p th:text="${session.message.content}"></p>
+                     
+                     <th:block th:text="${@sessionHelper.removeMessageFromHelper()}"></th:block>
+                        </div>
+					<div class="text-center">
+					<img alt="" style="width:80px;" src="" th:src="@{/images/register.png}">
+					</div>
+					
+						<h1 class="text-center">Register here</h1>
+						<form novalidate action="" th:action="@{/register}" th:object="${users}"
+							method="post">
+							<div class="mb-3">
+								<label for="name_field">Enter Your Name</label>
+								 <input
+									type="text" 
+									name="Name"
+									class="form-control"
+									th:classappend="${#fields.hasErrors('Name')?'is-invalid':''}"
+									 id="Name"
+									 th:value="${users.Name}"
+									  
+									aria-describedby="emailHelp">
+									
+
+								<div class="invalid-feedback" th:each="e:${#fields.errors('Name')}" th:text="${e}">
+								</div>
+
+							</div>
+
+
+							<div class="mb-3">
+								<label for="name_field">Phone no</label>
+								 <input type="text"
+									class="form-control" 
+									th:classappend="${#fields.hasErrors('Phone')?'is-invalid':''}"
+									id="Phone" 
+									name="Phone"
+									aria-describedby="emailHelp"
+									th:value="${users.Phone}">
+									
+									<div class="invalid-feedback" th:each="e:${#fields.errors('Phone')}" th:text="${e}">
+								</div>
+
+							</div>
+							<div class="mb-3">
+								<label for="name_field">Enter Your Email</label> 
+								<input
+									type="Email" 
+									class="form-control" 
+									id="Email"
+									th:classappend="${#fields.hasErrors('Email')?'is-invalid':''}"
+									 name="Email"
+									aria-describedby="emailHelp"
+									th:value="${users.Email}">
+									
+									<div class="invalid-feedback" th:each="e:${#fields.errors('Email')}" th:text="${e}">
+								</div>
+
+							</div>
+
+							<div class="form-check">
+								<input class="form-check-input" type="radio" name="ismale"
+									id="ismale" checked> <label class="form-check-label"
+									for="flexRadioDefault1"> Male </label>
+							</div>
+							<div class="form-check mb-3">
+								<input class="form-check-input" type="radio" name="ismale"
+									id="ismale" value="false"> <label
+									class="form-check-label" for="flexRadioDefault2">
+									Female </label>
+							</div>
+
+							<div class="mb-3">
+								<label for="exampleInputPassword1" class="form-label">Enter
+									Password</label> 
+									<input type="password" 
+									class="form-control"
+									th:classappend="${#fields.hasErrors('Password')?'is-invalid':''}"
+									id="Password"
+									 name="Password"
+									 th:value="${users.Password}"
+									 required>
+									 
+									 <div class="invalid-feedback" th:each="e:${#fields.errors('Password')}" th:text="${e}">
+								</div>
+									 
+							</div>
+							<div class="mb-3 form-check">
+								<input type="checkbox" 
+								class="form-check-input" 
+								id="agreement"
+								th:classappend="${#fields.hasErrors('agreement')?'is-invalid':''}"
+								name="agreement"> 
+									
+									<label class="form-check-label"
+									for="exampleCheck1">Agree Terms and Conditions</label>
+									
+									 <div class="invalid-feedback" th:each="e:${#fields.errors('agreement')}" th:text="${e}">
+								</div>
+									
+							</div>
+							
+							<button type="submit" class="btn btn-primary" style="margin-bottom:5px;">Submit</button>
+							<p>Click <a th:href=@{/login}>Here</a> if already registered</p>
+						</form>
+
+
+
+					</div>
+
+
+
+				</div>
+
+
+			</div>
+
+
+		</div>
+	</section>
+
+</body>
+</html>
