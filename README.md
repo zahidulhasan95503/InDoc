@@ -24,6 +24,17 @@ Welcome to the **Legal Documents Assistance Platform**! This website is designed
 ## Aadhar Centre Page
 ![download (1)](https://github.com/user-attachments/assets/055613e7-f207-4514-91aa-e7db958c1d3d)
 
+https://github.com/user-attachments/assets/de6af233-995d-4fd2-aab0-38e51021bc14
+
+## Home & User Registration
+https://github.com/user-attachments/assets/5e212fae-018c-4e51-af89-e7adf7a00cc5
+## User Dashboard
+https://github.com/user-attachments/assets/d9a923a0-613f-4b29-9620-1c5a395d8ef1
+## Aadhar 
+https://github.com/user-attachments/assets/7d2070c3-96d3-47da-9192-87e2d6603389
+## PAN
+https://github.com/user-attachments/assets/d6a31441-0e58-4383-8558-ea43361504e6
+
 ---
 
 ## Features
