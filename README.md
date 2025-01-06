@@ -69,13 +69,13 @@ https://github.com/user-attachments/assets/d6a31441-0e58-4383-8558-ea43361504e6
 ## Technical Stack
 
 ### Frontend
-- **HTML, CSS, Bootstrap, JavaScript** for an intuitive and responsive design.
+- **HTML, CSS, Bootstrap, JavaScript, Thymleaf** for an intuitive and responsive design.
 
 ### Backend
-- **Spring Boot, Spring Security, REST API** for handling server-side logic and data management.
+- **Spring Boot, Spring Security, REST API, Spring JPA, Ollama AI, Spring AI** for handling server-side logic and data management.
 - 
   ### Database
-- **MYSQL** for storing and managing the data.
+- **MYSQL, Jdbc** for storing and managing the data.
 
 ### API Integration
 - **Google Maps API** for locating nearby service centers.
