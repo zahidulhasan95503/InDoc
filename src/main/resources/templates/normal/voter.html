@@ -1,153 +1,616 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" 
-      th:replace="normal/base::layout(~{::section})">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+
 <head>
-<meta charset="UTF-8">
-<title>Home page</title>
+  <meta charset="UTF-8">
+  <title>Voter ID Services - InDoc</title>
 </head>
+
 <body>
 
-<section>
+  <section class="py-4">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col-12">
+          <h1 class="display-4 font-weight-bold mb-2" style="color: #0F172A;">Voter ID Services</h1>
+          <p class="lead text-muted">Complete guide to Voter ID application and services</p>
+        </div>
+      </div>
 
-<div class="sidebar">
-  
-  <span onclick="toggleSidebar()" class="crossBtn">&times;</span>
-  
-  <a href="#" th:href="@{/user/voter}">How To Create new VoterId card</a>
-  <a href="#" th:href="@{/user/voter_issue}">Solve VoterId Card Issues</a>
-  <a href="#" th:href ="@{/user/voter_centre}">Find VoterId Centers</a>
-  <a href="#" th:href="@{/user/update_user}">Settings</a>
-  <a href="#" th:href="@{/logout}">Logout</a>
- 
-  <div class="divider"></div>
-  
-  </div>
-  
-  <div class="content">
+      <div class="row mb-5">
+        <div class="col-md-4 mb-3">
+          <a th:href="@{/user/voter}" class="text-decoration-none">
+            <div class="p-4 bg-white rounded shadow-sm hover-lift border-left-primary">
+              <h5 class="font-weight-bold"><i class="fas fa-plus-circle mr-2" style="color: #C5A059;"></i>Create New
+                Voter ID</h5>
+              <p class="text-muted small mb-0">Apply for new Voter ID card</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4 mb-3">
+          <a th:href="@{/user/voter_issue}" class="text-decoration-none">
+            <div class="p-4 bg-white rounded shadow-sm hover-lift border-left-primary">
+              <h5 class="font-weight-bold"><i class="fas fa-tools mr-2" style="color: #C5A059;"></i>Solve Issues</h5>
+              <p class="text-muted small mb-0">Get help with Voter ID problems</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4 mb-3">
+          <a th:href="@{/user/voter_centre}" class="text-decoration-none">
+            <div class="p-4 bg-white rounded shadow-sm hover-lift border-left-primary">
+              <h5 class="font-weight-bold"><i class="fas fa-map-marker-alt mr-2" style="color: #C5A059;"></i>Find
+                Centers</h5>
+              <p class="text-muted small mb-0">Locate Voter registration centers</p>
+            </div>
+          </a>
+        </div>
+      </div>
 
-<i onclick="toggleSidebar()" class="fas fa-bars m-3"></i>
+      <!-- Main Content -->
+      <div class="row">
+        <div class="col-12">
+          <div class="bg-white p-5 rounded shadow-sm">
+            <h2 class="mb-4 font-weight-bold" style="color: #C5A059;">How to Apply for Voter ID Card Online &amp;
+              Offline</h2>
 
-<h2 class="text-center" style="color:#FFD999;">How to apply for VOTER Id CARD Online & Offline!</h2>
+            <div class="content-text">
+              <!-- Introduction -->
+              <div class="mb-5">
+                <p class="lead">The Voter ID Card, officially known as the <strong>Electors Photo Identity Card
+                    (EPIC)</strong>, is an identity document issued by the <strong>Election Commission of India
+                    (ECI)</strong> to all eligible Indian citizens who have registered as voters. It serves as the
+                  primary proof of identity at polling stations during elections.</p>
 
-<div class="container" style="font-size:1.5vmax;">
-<pre style="font-family: Argent CF;">
+                <p>Every Indian citizen who has attained the age of <strong>18 years</strong> on or before the
+                  qualifying date (1st January of the year of revision of the electoral roll) is eligible to register as
+                  a voter. The Voter ID card contains a unique <strong>EPIC Number</strong> (10-character alphanumeric
+                  code), the voter's photograph, name, father's/husband's name, date of birth, gender, and address. It
+                  is also widely accepted as a valid identity proof for various government and private purposes.</p>
+              </div>
 
-The Election Commission ID is also known as the Voter's ID in India. It is an important document that Indian citizens need in order to be 
-able to vote.Applying for a voter ID online has become a convenient method for many. The Voter ID card, a crucial document for Indian citizens to 
-participate in elections, can be obtained both online and offline.
+              <!-- Quick Facts -->
+              <div class="alert alert-warning mb-5">
+                <h5 class="font-weight-bold"><i class="fas fa-exclamation-triangle mr-2"></i>Important to Know</h5>
+                <ul class="mb-0">
+                  <li>Voter registration is <strong>completely FREE of cost</strong> — no fee is charged at any stage
+                  </li>
+                  <li>You must be <strong>18 years or older</strong> (as on 1st January of the current year) to register
+                  </li>
+                  <li>You can apply through the <strong>Voter Helpline Portal</strong>, <strong>Voter Helpline
+                      App</strong>, or by visiting the <strong>ERO (Electoral Registration Officer)</strong> office
+                  </li>
+                  <li>The election form for new voter registration is <strong>Form 6</strong></li>
+                  <li>You can download your <strong>e-EPIC</strong> (digital Voter ID) from the Voter Helpline portal
+                  </li>
+                  <li>After registration, a <strong>Booth Level Officer (BLO)</strong> may visit your residence for
+                    physical verification</li>
+                  <li>Processing typically takes <strong>15-30 days</strong> after submission</li>
+                </ul>
+              </div>
 
-<h3>Basic Requirements to Apply for Voter ID Card Online</h3>
-Age: You've got to be 18 or older. No exceptions.
+              <!-- DOCUMENTS REQUIRED -->
+              <h3 class="mt-5 mb-4 font-weight-bold" style="color: #C5A059;">
+                <i class="fas fa-file-alt mr-2"></i>Documents Required for Voter ID Registration
+              </h3>
 
-Citizenship: Indian citizen is the keyword here. Sorry, United States or any other country, this isn't for you.
+              <div class="alert alert-primary">
+                <strong>Note:</strong> You need to provide <strong>Proof of Age</strong> and <strong>Proof of Address
+                  (Ordinary Residence)</strong>. The address proof must match the address you enter in Form 6.
+                Aadhaar number linking is now <strong>mandatory</strong> as per ECI guidelines.
+              </div>
 
-Mental Health: A court-declared mental incapacity disqualifies an individual.
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="p-3 border rounded h-100">
+                    <h5 class="font-weight-bold mb-3">Proof of Age (any one)</h5>
+                    <ul class="small">
+                      <li>Birth Certificate issued by Municipal Authority / Hospital</li>
+                      <li>Class 10th / 8th Marksheet or Certificate</li>
+                      <li>Indian Passport</li>
+                      <li>PAN Card</li>
+                      <li>Aadhaar Card / Aadhaar Letter</li>
+                      <li>Driving License</li>
+                      <li>Birth Certificate from Church (for Christians)</li>
+                      <li>Affidavit from a First Class Magistrate (if no other document available)</li>
+                    </ul>
+                  </div>
+                </div>
 
-Special Cases
+                <div class="col-md-6 mb-4">
+                  <div class="p-3 border rounded h-100">
+                    <h5 class="font-weight-bold mb-3">Proof of Address / Ordinary Residence (any one)</h5>
+                    <ul class="small">
+                      <li>Aadhaar Card</li>
+                      <li>Indian Passport</li>
+                      <li>Driving License</li>
+                      <li>Bank / Kisan / Post Office Passbook</li>
+                      <li>Ration Card</li>
+                      <li>Latest Electricity / Water / Gas / Telephone Bill</li>
+                      <li>Income Tax Assessment Order</li>
+                      <li>Latest Rent Agreement (registered)</li>
+                      <li>Property Tax Receipt or Municipal Tax Receipt</li>
+                      <li>Government-issued ID Card with Address</li>
+                    </ul>
+                  </div>
+                </div>
 
-Non-Resident Indians (NRIs): Form 6A is available for application.
+                <div class="col-md-6 mb-4">
+                  <div class="p-3 border rounded h-100">
+                    <h5 class="font-weight-bold mb-3">Proof of Identity (optional, for verification)</h5>
+                    <ul class="small">
+                      <li>Aadhaar Card</li>
+                      <li>PAN Card</li>
+                      <li>Indian Passport</li>
+                      <li>Driving License</li>
+                      <li>Government Photo ID Card</li>
+                      <li>Bank Passbook with Photo</li>
+                    </ul>
+                    <p class="small text-muted mb-0"><strong>Note:</strong> Identity proof is used for BLO verification.
+                      The primary documents required are Age and Address proof.</p>
+                  </div>
+                </div>
 
-Residents of Uttar Pradesh: You guys have your own set of rules. Check your state election website for the nitty-gritty.
+                <div class="col-md-6 mb-4">
+                  <div class="p-3 border rounded h-100">
+                    <h5 class="font-weight-bold mb-3">Special Cases</h5>
+                    <ul class="small">
+                      <li><strong>Overseas Voters (NRIs):</strong> Use <strong>Form 6A</strong> with a valid Indian
+                        Passport</li>
+                      <li><strong>Shifting Constituency:</strong> Use <strong>Form 6</strong> with proof of new address;
+                        your entry in the old constituency will be deleted</li>
+                      <li><strong>First-time voters (age 17+):</strong> Can pre-register; entry will be activated on
+                        turning 18</li>
+                      <li><strong>Homeless persons:</strong> Can register at the address of the nearest homeless shelter
+                        or the area where they ordinarily reside</li>
+                    </ul>
+                    <p class="small text-muted mb-0"><strong>Note:</strong> For NRI registration, submit Form 6A with
+                      your Indian Passport at the ERO of your original constituency.</p>
+                  </div>
+                </div>
+              </div>
 
-Essential Documents to Apply for Voter ID Online and Offline
-After checking off the eligibility criteria, the next step is to submit your documents. A selfie will not suffice, as you will need to provide 
-proper paperwork to verify your identity.
+              <!-- =============================== -->
+              <!-- ONLINE APPLICATION METHOD 1: Voter Helpline Portal -->
+              <!-- =============================== -->
+              <div class="mb-5 p-4" style="border-left: 4px solid #C5A059; background-color: #f8f9fa;">
+                <h3 class="font-weight-bold mb-4" style="color: #0F172A;">
+                  <i class="fas fa-laptop mr-2" style="color: #C5A059;"></i>Method 1: Apply for Voter ID Online via
+                  Voter Helpline Portal
+                </h3>
 
-The Must-Haves
-Proof of Age: Birth certificate or 10th-grade mark sheet.
+                <p class="mb-4">The <strong>Voter Helpline Portal</strong> (formerly NVSP — National Voters' Service
+                  Portal) is the official online platform by the Election Commission of India. You can complete the
+                  entire registration process from home.</p>
 
-Proof of Address: Utility bill or bank passbook indicating permanent address.
+                <h5 class="font-weight-bold mt-4 mb-3">Step-by-Step Process:</h5>
+                <ol class="pl-4" style="line-height: 2;">
+                  <li class="mb-3">
+                    <strong>Visit the Voter Helpline Portal</strong><br>
+                    Go to <a href="https://voters.eci.gov.in/homepage" target="_blank"
+                      rel="noopener">voterportal.eci.gov.in</a> — the official Election Commission voter registration
+                    portal.
+                    <img th:src="@{/images/voter1.png}" alt="Voter Helpline Portal Homepage"
+                      class="img-fluid rounded shadow-sm mt-3 mb-2"
+                      style="max-width: 700px; border: 1px solid #dee2e6;">
+                  </li>
 
-Proof of Identity: Aadhaar, PAN card, or other official documents.
+                  <li class="mb-3">
+                    <strong>Register / Login to Your Account</strong><br>
+                    If you are a new user:
+                    <ul class="mt-2">
+                      <li>Click on <strong>"Register"</strong> or <strong>"Sign Up"</strong></li>
+                      <li>Enter your <strong>Mobile Number</strong></li>
+                      <li>Verify using <strong>OTP</strong> sent to your phone</li>
+                      <li>Create a <strong>Password</strong> for your account</li>
+                    </ul>
+                    If already registered, simply <strong>Login</strong> with your mobile number and password.
+                  </li>
 
-Photograph: A passport-sized photograph is required.
+                  <li class="mb-3">
+                    <strong>Click on "Register as New Voter"</strong><br>
+                    After logging in, navigate to <strong>"New Voter Registration"</strong> or click on <strong>"Form 6
+                      — Application for New Voter Registration"</strong>.
+                  </li>
 
-<h3>How To Apply for Voter ID </h3>
-<h4>Online:</h4>
-<ul><li>Navigate to the Election Commission Website </li>
-<li>Go to the Election Commission's website</li>
-<li>Choose your state from the list </li>
-<li>You will automatically go to the Chief Electoral Officer page of your state. </li>
-<li>Log In</li>
-<li>Now, you will have to log in to the website. </li>
-<li>If you've never been to this website, register as a new user.</li>
-<li>New users, fill out your name, email, phone number, and create your account</li>
-<li>Choose the Continue button</li>
-<li>Your login details will be sent to your email address </li>
-<li>Log in with the username and password, and then change your password</li>
-<li>After you log in, select "Form 6" or "Application for including name in assembly constituency voters list."</li>
-<li>Fill Out the Application</li>
-<li>Enter all your personal details in the application form. Upload a passport-size colour photograph, and then "Submit" the firm and 
-hotograph.</li>
-<li>Verify Identity </li>
-<li>After you submit the application, you will be asked to visit your closest voter ID centre. Go to the centre with your supporting 
-documents, including identity proof and address proof. The Election Commission will send your new voter's card within 1 week. </li>
-<li>Download EPIC Card</li>
-<li>Go to the Election Commission website and select E-EPIC Download. You will be redirected to a login page, where you need to submit 
-your EPIC card details. After submitting these details, you can download your card. </li></ul>
+                  <li class="mb-3">
+                    <strong>Fill in Personal Details (Form 6)</strong><br>
+                    Complete the online Form 6 with the following information:
+                    <ul class="mt-2">
+                      <li><strong>Full Name</strong> (in English and your regional language)</li>
+                      <li><strong>Father's / Mother's / Husband's Name</strong></li>
+                      <li><strong>Date of Birth</strong></li>
+                      <li><strong>Gender</strong></li>
+                      <li><strong>Mobile Number &amp; Email ID</strong></li>
+                      <li><strong>Aadhaar Number</strong> (mandatory as per recent ECI guidelines)</li>
+                    </ul>
+                    <img th:src="@{/images/voter2.png}" alt="Voter Registration Form 6"
+                      class="img-fluid rounded shadow-sm mt-3 mb-2"
+                      style="max-width: 700px; border: 1px solid #dee2e6;">
+                  </li>
 
-<h3>How to Apply for Voter ID Card Offline</h3>
-Steps for Offline Registration:
-<ul>
-<li>Locate the Nearest Election Office: Visit your local electoral office for form collection.</li>
-<li>Fill Out the Form: Complete Form 6 and double-check all relevant details.</li>
-<li>Submit Original Documents: Provide all essential documents for verification.</li>
-<li>Track Application Status: Keep tabs on your status by contacting the electoral office.</li></ul>
-<h3>Verification Steps after You Apply for Voter ID Card Online or Offline</h3>
-After submitting your vote, the verification process begins. The Election Commission of India acts as a detective to confirm your identity.
+                  <li class="mb-3">
+                    <strong>Enter Address Details</strong><br>
+                    Fill in your current residential address accurately:
+                    <ul class="mt-2">
+                      <li><strong>State</strong> and <strong>District</strong> (from dropdown)</li>
+                      <li><strong>Assembly Constituency</strong> (auto-populated based on address)</li>
+                      <li><strong>House No., Street, Area, Locality</strong></li>
+                      <li><strong>Town/Village, Post Office</strong></li>
+                      <li><strong>PIN Code</strong></li>
+                    </ul>
+                    <strong>Note:</strong> Your constituency will determine which polling station you are assigned to.
+                  </li>
 
-<h4>Online Verification</h4>
-If you have applied online, you will receive an email or SMS instructing you to confirm your details. By clicking the link and following 
-the simple steps, you will be verified. This process is carried out by the Election Commission to ensure the accuracy of your application
-form and relevant information.
+                  <li class="mb-3">
+                    <strong>Upload Required Documents</strong><br>
+                    Upload scanned copies / photos of the following:
+                    <ul class="mt-2">
+                      <li><strong>Recent Passport-sized Photograph</strong> (JPEG/PNG, max 200KB)</li>
+                      <li><strong>Proof of Age</strong> — Birth certificate, 10th marksheet, passport, etc. (PDF/JPEG,
+                        max 2MB)</li>
+                      <li><strong>Proof of Address</strong> — Aadhaar, Passport, Utility bill, Bank Passbook, etc.
+                        (PDF/JPEG, max 2MB)</li>
+                    </ul>
+                    <img th:src="@{/images/voter3.png}" alt="Document Upload Page"
+                      class="img-fluid rounded shadow-sm mt-3 mb-2"
+                      style="max-width: 700px; border: 1px solid #dee2e6;">
+                  </li>
 
-<h4>Offline Verification</h4>
-If you choose to vote offline, be prepared for a visit by a Booth Level Officer (BLO) who will verify your original documents and possibly 
-ask some questions. It is similar to a pop quiz, but for the purpose of ensuring a fair democratic process.
+                  <li class="mb-3">
+                    <strong>Declaration &amp; Preview</strong><br>
+                    Read the declaration statement carefully and tick the checkbox to confirm:<br>
+                    <em>"I hereby declare that all the information given above is true to the best of my knowledge and
+                      belief."</em><br>
+                    Preview all the details entered before final submission.
+                  </li>
 
-Whether you've applied online or offline, you'll need to wait for your name to appear in the voter list. This is the final stamp of approval.
-You can check the status of your voter application by visiting the Voter Portal or using the Voter Helpline Mobile Application.
+                  <li class="mb-3">
+                    <strong>Submit the Application</strong><br>
+                    Click <strong>"Submit"</strong> to submit your Form 6 application.<br>
+                    You will receive a <strong>Reference ID / Application ID</strong> on the screen and via SMS.
+                    <img th:src="@{/images/voter4.png}" alt="Application Confirmation"
+                      class="img-fluid rounded shadow-sm mt-3 mb-2"
+                      style="max-width: 700px; border: 1px solid #dee2e6;">
+                  </li>
 
-<h3>Things to Remember Before a Voter ID Application</h3>
-Obtaining a Voter ID in India is essential for exercising democratic rights, requiring applicants to be 18 or older, mentally sound, and 
-without criminal or financial issues. Form 6 must be filled out accurately through the NVSP website or approved centres, with correct 
-personal details. Verification of provided information and documents is crucial upon receiving the ID. Ensuring accuracy and legality in 
-the process maintains the integrity of voter registration, fostering a fair democratic system in India.
+                  <li class="mb-3">
+                    <strong>BLO Verification</strong><br>
+                    After submission, a <strong>Booth Level Officer (BLO)</strong> may visit your residence to verify:
+                    <ul class="mt-2">
+                      <li>Your identity and address</li>
+                      <li>That you actually reside at the given address</li>
+                      <li>Your original documents (for verification)</li>
+                    </ul>
+                    <strong>Tip:</strong> Keep your original documents ready when the BLO visits.
+                  </li>
 
-<h4>Voter ID Verification</h4>
-To confirm the authenticity of their Voter ID, applicants can utilise their Voter ID number. They should begin by verifying if their names
-are listed in the electoral roll and then cross-check the details provided. Any inconsistencies should be promptly reported to the Chief 
-Electoral Officer for resolution. 
+                  <li class="mb-3">
+                    <strong>Receive Voter ID Card</strong><br>
+                    Once your application is approved by the <strong>Electoral Registration Officer (ERO)</strong>, your
+                    name will be added to the electoral roll.<br>
+                    You can:
+                    <ul class="mt-2">
+                      <li>Download your <strong>e-EPIC</strong> (digital Voter ID) from the portal</li>
+                      <li>The <strong>physical EPIC card</strong> will be dispatched/distributed through the ERO office
+                        or BLO</li>
+                    </ul>
+                  </li>
+                </ol>
 
-Here are the steps to verify a Voter ID:
+                <div class="alert alert-success mt-4">
+                  <i class="fas fa-check-circle mr-2"></i>
+                  <strong>Note:</strong> Save your <strong>Reference ID</strong> safely. You can use it to track your
+                  application status on the Voter Helpline portal.
+                </div>
+              </div>
 
-Go to the National Voters' Services Portal.
+              <!-- =============================== -->
+              <!-- ONLINE METHOD 2: Voter Helpline App -->
+              <!-- =============================== -->
+              <div class="mb-5 p-4" style="border-left: 4px solid #28a745; background-color: #f0fff4;">
+                <h3 class="font-weight-bold mb-4" style="color: #0F172A;">
+                  <i class="fas fa-mobile-alt mr-2" style="color: #28a745;"></i>Method 2: Apply via Voter Helpline
+                  Mobile App
+                </h3>
 
-Navigate to the 'Search in Electoral Roll' section.
+                <p class="mb-4">The <strong>Voter Helpline App</strong> is the official mobile application by the
+                  Election Commission of India, available on both <strong>Android</strong> and <strong>iOS</strong>. The
+                  process is identical to the web portal but optimised for mobile use.</p>
 
-Choose one of the search options: 'Search by Details', 'Search by EPIC', or 'Search by Mobile'.
+                <h5 class="font-weight-bold mt-4 mb-3">Step-by-Step Process:</h5>
+                <ol class="pl-4" style="line-height: 2;">
+                  <li class="mb-3">
+                    <strong>Download the Voter Helpline App</strong><br>
+                    <a href="https://play.google.com/store/apps/details?id=com.eci.citizen" target="_blank"
+                      rel="noopener"><i class="fab fa-google-play mr-1"></i> Google Play Store (Android)</a><br>
+                    <a href="https://apps.apple.com/in/app/voter-helpline/id1456535004" target="_blank"
+                      rel="noopener"><i class="fab fa-apple mr-1"></i> Apple App Store (iOS)</a>
+                  </li>
 
-Input the required information and initiate the search.
+                  <li class="mb-3">
+                    <strong>Register &amp; Login</strong><br>
+                    Open the app → Register with your <strong>Mobile Number</strong> → Verify via <strong>OTP</strong> →
+                    Set a password → Login.
+                  </li>
 
-Your details will be shown on the screen, and you can verify their accuracy by selecting 'View Details' under the 'Action' column.
+                  <li class="mb-3">
+                    <strong>Select "New Voter Registration" (Form 6)</strong><br>
+                    From the dashboard, tap on <strong>"Apply for New Voter Registration"</strong> or <strong>"Form
+                      6"</strong>.
+                  </li>
 
-Following these steps enables individuals to ensure the legitimacy of their Voter ID, contributing to the integrity of the electoral process.
+                  <li class="mb-3">
+                    <strong>Fill Personal &amp; Address Details</strong><br>
+                    Enter your name, father's/mother's/husband's name, date of birth, gender, Aadhaar number, and
+                    complete residential address (same fields as the web portal).
+                  </li>
 
-<h3>Steps to Take In Case You Don't Get Voter ID</h3>
-If your Voter ID hasn't arrived yet, don't panic. Follow these steps:
+                  <li class="mb-3">
+                    <strong>Capture / Upload Documents</strong><br>
+                    You can directly <strong>take photos</strong> of your documents using the phone camera or upload
+                    existing files:
+                    <ul class="mt-2">
+                      <li>Passport-sized photograph (can use selfie camera)</li>
+                      <li>Proof of Age document</li>
+                      <li>Proof of Address document</li>
+                    </ul>
+                  </li>
 
-Log in to the NVSP portal.
+                  <li class="mb-3">
+                    <strong>Review, Declare &amp; Submit</strong><br>
+                    Review all details, accept the declaration, and tap <strong>"Submit"</strong>.<br>
+                    You'll receive a <strong>Reference ID</strong> via SMS and in-app notification.
+                  </li>
 
-Access 'Track Application Status'.
+                  <li class="mb-3">
+                    <strong>Track Application</strong><br>
+                    Track your application status directly in the app under <strong>"Track Application Status"</strong>.
+                  </li>
+                </ol>
 
-Enter your reference number from the form submission, choose your state, and click 'Submit'.
+                <div class="alert alert-info mt-4">
+                  <i class="fas fa-info-circle mr-2"></i>
+                  <strong>Tip:</strong> The Voter Helpline app also lets you find your polling station, check the
+                  electoral roll, file complaints, and get election-related notifications.
+                </div>
+              </div>
 
-Check the updated status of your application.
-</pre>
-</div>
+              <!-- =============================== -->
+              <!-- OFFLINE APPLICATION -->
+              <!-- =============================== -->
+              <div class="mb-5 p-4" style="border-left: 4px solid #C5A059; background-color: #f8f9fa;">
+                <h3 class="font-weight-bold mb-4" style="color: #0F172A;">
+                  <i class="fas fa-building mr-2" style="color: #C5A059;"></i>Method 3: Apply for Voter ID Offline
+                  (Visit ERO / BLO Office)
+                </h3>
 
-</div>
-</section>
+                <p class="mb-4">You can apply for a Voter ID offline by visiting your local <strong>Electoral
+                    Registration Officer (ERO)</strong> office, <strong>Tehsildar/Taluk office</strong>, or the
+                  <strong>District Collector/Magistrate office</strong>. You can also submit your form to the
+                  <strong>Booth Level Officer (BLO)</strong> assigned to your area.
+                </p>
+
+                <h5 class="font-weight-bold mt-4 mb-3">Step-by-Step Process:</h5>
+                <ol class="pl-4" style="line-height: 2;">
+                  <li class="mb-3">
+                    <strong>Obtain Form 6</strong><br>
+                    Collect <strong>Form 6</strong> from your nearest ERO office, Tehsildar office, or any voter
+                    registration camp.<br>
+                    You can also download and print it from:<br>
+                    • <a href="https://www.ceodelhi.gov.in/WriteReadData/userfiles/file/Forms/FORM6.pdf" target="_blank"
+                      rel="noopener">Election Commission of
+                      India — Forms</a><br>
+                    • <a href="https://www.ceodelhi.gov.in/WriteReadData/userfiles/file/Forms/FORM6.pdf" target="_blank"
+                      rel="noopener">Voter Helpline Portal —
+                      Download Forms</a>
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Fill the Form Carefully</strong><br>
+                    Use <strong>BLOCK / CAPITAL LETTERS</strong>. Fill in all sections of Form 6:
+                    <ul class="mt-2">
+                      <li>Full Name (in English and regional language)</li>
+                      <li>Father's / Mother's / Husband's Name</li>
+                      <li>Date of Birth &amp; Age</li>
+                      <li>Gender</li>
+                      <li>Complete Residential Address</li>
+                      <li>Aadhaar Number</li>
+                      <li>Mobile Number &amp; Email</li>
+                      <li>Part/Serial Number of existing entry (if shifting from another constituency)</li>
+                    </ul>
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Affix Passport-Sized Photograph</strong><br>
+                    Paste <strong>2 recent passport-sized colour photographs</strong> on the form at the designated
+                    places.<br>
+                    Ensure the photograph is clear, with a white/light background.
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Attach Supporting Documents</strong><br>
+                    Attach <strong>self-attested photocopies</strong> of:
+                    <ul class="mt-2">
+                      <li>Proof of Age (1 document)</li>
+                      <li>Proof of Address (1 document — must match the address on Form 6)</li>
+                    </ul>
+                    Carry <strong>original documents</strong> for verification.
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Submit Form at the ERO Office</strong><br>
+                    Visit the office of the <strong>Electoral Registration Officer (ERO)</strong> in your
+                    constituency.<br>
+                    Submit the filled Form 6 along with all documents at the counter.<br>
+                    The official will verify your documents and accept the form.
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Collect Acknowledgment Receipt</strong><br>
+                    You will receive an <strong>Acknowledgment Receipt</strong> with a <strong>Reference
+                      Number</strong>.<br>
+                    <span class="text-danger font-weight-bold">KEEP THIS RECEIPT SAFE!</span> Use this reference number
+                    to track your application status.
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>BLO Verification Visit</strong><br>
+                    A <strong>Booth Level Officer (BLO)</strong> will visit your residence to verify:
+                    <ul class="mt-2">
+                      <li>That you reside at the address given in the form</li>
+                      <li>Your identity by checking original documents</li>
+                      <li>That you meet the eligibility criteria</li>
+                    </ul>
+                    Cooperate fully with the BLO and keep documents ready.
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Receive Your Voter ID Card</strong><br>
+                    After the ERO approves your application:
+                    <ul class="mt-2">
+                      <li>Your name is added to the <strong>Electoral Roll</strong></li>
+                      <li>The <strong>EPIC (Voter ID card)</strong> is printed and distributed through the BLO or ERO
+                        office</li>
+                      <li>You can also download the <strong>e-EPIC</strong> from the Voter Helpline portal</li>
+                    </ul>
+                  </li>
+                </ol>
+
+                <div class="alert alert-info mt-4">
+                  <i class="fas fa-clock mr-2"></i>
+                  <strong>Processing Time:</strong> The entire process (from submission to card delivery) usually takes
+                  <strong>15-30 days</strong>, depending on BLO verification schedules and the electoral revision cycle.
+                </div>
+              </div>
+
+              <!-- AFTER APPLICATION -->
+              <div class="mb-5 p-4" style="background-color: #fff3cd; border-left: 4px solid #ffc107;">
+                <h4 class="font-weight-bold mb-3">
+                  <i class="fas fa-tasks mr-2"></i>After Application — What Next?
+                </h4>
+
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <h6 class="font-weight-bold">Track Application Status</h6>
+                    <p>Visit <a href="https://voters.eci.gov.in/" target="_blank" rel="noopener">Voter Helpline
+                        Portal</a><br>
+                      Login → Go to "Track Application Status" → Enter your Reference ID to check the current status of
+                      your application.
+                    </p>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <h6 class="font-weight-bold">Download e-EPIC (Digital Voter ID)</h6>
+                    <p>Visit <a href="https://voters.eci.gov.in/login" target="_blank" rel="noopener">Voter Helpline
+                        Portal</a><br>
+                      Login → Click on "Download e-EPIC" → Verify via OTP → Download your digital Voter ID card in PDF
+                      format.
+                    </p>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <h6 class="font-weight-bold">Search Your Name in Electoral Roll</h6>
+                    <p>Visit <a href="https://electoralsearch.eci.gov.in/" target="_blank" rel="noopener">Electoral
+                        Search</a><br>
+                      Search by name or EPIC number to verify your registration on the electoral roll.
+                    </p>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <h6 class="font-weight-bold">Find Your Polling Station</h6>
+                    <p>Visit <a href="https://electoralsearch.eci.gov.in/" target="_blank" rel="noopener">Electoral
+                        Search</a><br>
+                      After your registration is approved, you can find your assigned polling booth details by searching
+                      with your EPIC number.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+
+              <!-- OTHER IMPORTANT FORMS -->
+              <div class="mb-5 p-4" style="background-color: #f0f4ff; border-left: 4px solid #4a6cf7;">
+                <h4 class="font-weight-bold mb-3">
+                  <i class="fas fa-clipboard-list mr-2" style="color: #4a6cf7;"></i>Other Important Voter Forms
+                </h4>
+                <div class="row">
+                  <div class="col-md-6 mb-2">
+                    <strong>Form 6</strong> — New Voter Registration / Shifting from another constituency
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <strong>Form 6A</strong> — Overseas (NRI) Voter Registration
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <strong>Form 6B</strong> — Aadhaar Number Collection for existing voters
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <strong>Form 7</strong> — Objection to inclusion of a name in the electoral roll
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <strong>Form 8 (Part A)</strong> — Correction of entries in the electoral roll
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <strong>Form 8 (Part B)</strong> — Transposition of entry within the same constituency
+                  </div>
+                </div>
+              </div>
+
+              <!-- HELPFUL LINKS -->
+              <div class="mt-5 p-4" style="background-color: #e3f2fd; border-radius: 8px;">
+                <h5 class="font-weight-bold mb-3"><i class="fas fa-link mr-2"></i>Helpful Links &amp; Resources</h5>
+                <div class="row">
+                  <div class="col-md-6 mb-2">
+                    <a href="https://voters.eci.gov.in/homepage" target="_blank" rel="noopener" class="d-block">
+                      <i class="fas fa-external-link-alt mr-2"></i>Voter Helpline Portal (Register / Track / Download)
+                    </a>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <a href="https://electoralsearch.eci.gov.in/" target="_blank" rel="noopener" class="d-block">
+                      <i class="fas fa-search mr-2"></i>Search Electoral Roll / Find Name
+                    </a>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <a href="https://www.eci.gov.in/" target="_blank" rel="noopener" class="d-block">
+                      <i class="fas fa-landmark mr-2"></i>Election Commission of India — Official Website
+                    </a>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <a href="https://www.ceodelhi.gov.in/WriteReadData/userfiles/file/Forms/FORM6.pdf" target="_blank"
+                      rel="noopener" class="d-block">
+                      <i class="fas fa-file-download mr-2"></i>Download Voter Forms (Form 6, 6A, 7, 8)
+                    </a>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <a href="https://play.google.com/store/apps/details?id=com.eci.citizen" target="_blank"
+                      rel="noopener" class="d-block">
+                      <i class="fab fa-google-play mr-2"></i>Voter Helpline App (Android)
+                    </a>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <a href="https://apps.apple.com/in/app/voter-helpline/id1456535004" target="_blank" rel="noopener"
+                      class="d-block">
+                      <i class="fab fa-apple mr-2"></i>Voter Helpline App (iOS)
+                    </a>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <a href="tel:1950" class="d-block">
+                      <i class="fas fa-phone mr-2"></i>Voter Helpline Number: 1950 (Toll Free)
+                    </a>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <a href="mailto:complaints@eci.gov.in" class="d-block">
+                      <i class="fas fa-envelope mr-2"></i>ECI Grievance Email: complaints@eci.gov.in
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 </body>
+
 </html>

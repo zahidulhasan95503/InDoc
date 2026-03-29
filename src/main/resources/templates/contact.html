@@ -1,16 +1,121 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" 
-      th:replace="base::layout(~{::section})">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+
 <head>
-<meta charset="UTF-8">
-<title>Home page</title>
+    <meta charset="UTF-8">
+    <title>Contact Us</title>
 </head>
+
 <body>
+    <section>
+        <!-- Contact Hero Section -->
+        <div class="contact-hero py-5 text-white" style="background-color: #002147;">
+            <div class="container text-center py-5">
+                <h1 class="display-4 font-weight-bold mb-3">Get In Touch</h1>
+                <p class="lead">We’re here to help you with all your legal documentation needs.</p>
+            </div>
+        </div>
 
-<section>
-<h1>Contact Information</h1>
-<h2>something@gmail.com</h2>
-</section>
+        <!-- Contact Info Section -->
+        <div class="py-5 bg-white">
+            <div class="container">
+                <div class="row justify-content-center  ">
+                    <div class="col-lg-10">
+                        <div class="row">
+                            <!-- Email Card -->
+                            <div class="col-md-6 mb-4">
+                                <div class="contact-card p-5 bg-light rounded shadow-sm h-100 text-center hover-lift">
+                                    <div class="icon-box mb-4">
+                                        <i class="fas fa-envelope fa-3x text-primary"></i>
+                                    </div>
+                                    <h4 class="font-weight-bold mb-3">Email Us</h4>
+                                    <p class="text-muted mb-3">Send us an email and we’ll respond within 24 hours.</p>
+                                    <a href="mailto:zahidulhasan95503@gmail.com"
+                                        class="text-primary font-weight-bold">zahidulhasan95503@gmail.com</a>
+                                </div>
+                            </div>
 
+                            <!-- Phone Card -->
+                            <div class="col-md-6 mb-4">
+                                <div class="contact-card p-5 bg-light rounded shadow-sm h-100 text-center hover-lift">
+                                    <div class="icon-box mb-4">
+                                        <i class="fas fa-phone-alt fa-3x text-primary"></i>
+                                    </div>
+                                    <h4 class="font-weight-bold mb-3">Call Us</h4>
+                                    <p class="text-muted mb-3">Available Monday to Friday, 9 AM -- 6 PM.</p>
+                                    <a href="tel:+1234567890" class="text-primary font-weight-bold">+1
+                                        (234) 567‑8900</a>
+                                </div>
+                            </div>
+
+                            <!-- Office Card -->
+                            <div class="col-md-6 mb-4">
+                                <div class="contact-card p-5 bg-light rounded shadow-sm h-100 text-center hover-lift">
+                                    <div class="icon-box mb-4">
+                                        <i class="fas fa-map-marker-alt fa-3x text-primary"></i>
+                                    </div>
+                                    <h4 class="font-weight-bold mb-3">Visit Us</h4>
+                                    <p class="text-muted mb-3">Stop by our office for in‑person consultations.</p>
+                                    <p class="text-primary font-weight-bold">
+                                        123 Legal Street<br>
+                                        Suite 100, City, State 12345
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Live Support Card -->
+                            <div class="col-md-6 mb-4">
+                                <div class="contact-card p-5 bg-light rounded shadow-sm h-100 text-center hover-lift">
+                                    <div class="icon-box mb-4">
+                                        <i class="fas fa-headset fa-3x text-primary"></i>
+                                    </div>
+                                    <h4 class="font-weight-bold mb-3">Live Support</h4>
+                                    <p class="text-muted mb-3">Chat with our support team in real‑time.</p>
+                                    <a href="#" class="btn btn-primary rounded-pill px-4 py-2">Start Chat</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Business Hours Section -->
+        <div class="py-5 bg-light">
+            <div class="container text-center">
+                <h2 class="font-weight-bold mb-5">Business Hours</h2>
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="bg-white p-4 rounded shadow-sm">
+                            <div class="d-flex justify-content-between py-2 border-bottom">
+                                <span class="font-weight-bold">Monday – Friday</span>
+                                <span class="text-muted">9:00 AM – 6:00 PM</span>
+                            </div>
+                            <div class="d-flex justify-content-between py-2 border-bottom">
+                                <span class="font-weight-bold">Saturday</span>
+                                <span class="text-muted">10:00 AM – 4:00 PM</span>
+                            </div>
+                            <div class="d-flex justify-content-between py-2">
+                                <span class="font-weight-bold">Sunday</span>
+                                <span class="text-muted">Closed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="py-5 text-white text-center" style="background-color: #002147;">
+            <div class="container py-4">
+                <h2 class="font-weight-bold mb-3">Ready to Get Started?</h2>
+                <p class="lead mb-4">Join thousands of satisfied clients who trust InDoc for their legal needs.</p>
+                <a th:href="@{/signin}"
+                    class="btn btn-light btn-lg rounded-pill px-5 py-3 shadow hover-scale text-primary font-weight-bold">Create
+                    Account</a>
+            </div>
+        </div>
+    </section>
 </body>
+
 </html>

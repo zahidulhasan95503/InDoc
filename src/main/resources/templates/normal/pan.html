@@ -1,184 +1,651 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" 
-      th:replace="normal/base::layout(~{::section})">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+
 <head>
-<meta charset="UTF-8">
-<title>Home page</title>
+  <meta charset="UTF-8">
+  <title>PAN Services - InDoc</title>
 </head>
+
 <body>
 
-<section>
+  <section class="py-4">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col-12">
+          <h1 class="display-4 font-weight-bold mb-2" style="color: #0F172A;">PAN Card Services</h1>
+          <p class="lead text-muted">Complete guide to PAN card application and services</p>
+        </div>
+      </div>
 
-<div class="sidebar">
-  
-  <span onclick="toggleSidebar()" class="crossBtn">&times;</span>
-  
-  <a href="#" th:href="@{/user/pan}">How To Create new PAN Card</a>
-  <a href="#" th:href="@{/user/pan_issue}">Solve PAN Card Issues</a>
-  <a href="#" th:href ="@{/user/pan_centre}">Find PAN Centers</a>
-  <a href="#" th:href="@{/user/update_user}">Settings</a>
-  <a href="#" th:href="@{/logout}">Logout</a>
- 
-  <div class="divider"></div>
-  
-  </div>
-  
-  <div class="content">
+      <div class="row mb-5">
+        <div class="col-md-4 mb-3">
+          <a th:href="@{/user/pan}" class="text-decoration-none">
+            <div class="p-4 bg-white rounded shadow-sm hover-lift border-left-primary">
+              <h5 class="font-weight-bold"><i class="fas fa-plus-circle mr-2" style="color: #C5A059;"></i>Create New PAN
+              </h5>
+              <p class="text-muted small mb-0">Apply for new PAN card</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4 mb-3">
+          <a th:href="@{/user/pan_issue}" class="text-decoration-none">
+            <div class="p-4 bg-white rounded shadow-sm hover-lift border-left-primary">
+              <h5 class="font-weight-bold"><i class="fas fa-tools mr-2" style="color: #C5A059;"></i>Solve Issues</h5>
+              <p class="text-muted small mb-0">Get help with PAN problems</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4 mb-3">
+          <a th:href="@{/user/pan_centre}" class="text-decoration-none">
+            <div class="p-4 bg-white rounded shadow-sm hover-lift border-left-primary">
+              <h5 class="font-weight-bold"><i class="fas fa-map-marker-alt mr-2" style="color: #C5A059;"></i>Find
+                Centers</h5>
+              <p class="text-muted small mb-0">Locate PAN service centers</p>
+            </div>
+          </a>
+        </div>
+      </div>
 
-<i onclick="toggleSidebar()" class="fas fa-bars m-3"></i>
+      <!-- Main Content -->
+      <div class="row">
+        <div class="col-12">
+          <div class="bg-white p-5 rounded shadow-sm">
+            <h2 class="mb-4 font-weight-bold" style="color: #C5A059;">How to Apply for PAN Card Online &amp; Offline
+            </h2>
 
-<h2 class="text-center" style="color:#FFD999;">How to apply for PAN CARD Online & Offline!</h2>
+            <div class="content-text">
+              <!-- Introduction -->
+              <div class="mb-5">
+                <p class="lead">A Permanent Account Number (PAN) is a <strong>ten-character alphanumeric
+                    identifier</strong> issued by the Income Tax Department of India under the supervision of the
+                  Central Board of Direct Taxes (CBDT). It serves as a universal identification key for tracking all
+                  financial transactions of an individual or entity.</p>
 
-<div class="container" style="font-size:1.5vmax;">
-<pre style="font-family: Argent CF;">
+                <p>PAN is mandatory for filing income tax returns, opening bank accounts, making high-value transactions
+                  (above ₹50,000), buying/selling property, purchasing vehicles, and many other financial activities.
+                  Every Indian citizen, NRI, or entity engaged in financial activities in India should possess a PAN
+                  card.</p>
+              </div>
 
-PAN, which stands for Permanent Account Number, is a government document that contains details of all financial transactions carried out 
-by an entity, be it an individual, a trust or an organisation.
-PAN is also used to open a bank account, file your tax return, invest in financial instruments, take a loan or credit card or conduct any 
-finance-related activity.
-A PAN card contains the PAN and identity details of the cardholder. The Permanent Account Number search identifies the individual for 
-taxation purposes and it contains all the relevant financial data of the individual in its storage. Knowing your Permanent Account Number is,
-therefore, a priority for many aspects of your financial journey
+              <!-- Quick Facts -->
+              <div class="alert alert-warning mb-5">
+                <h5 class="font-weight-bold"><i class="fas fa-exclamation-triangle mr-2"></i>Important to Know</h5>
+                <ul class="mb-0">
+                  <li>PAN application fee is <strong>₹107 (+ GST)</strong> for Indian communication address and
+                    <strong>₹1,017 (+ GST)</strong> for foreign address
+                  </li>
+                  <li>You can apply through <strong>NSDL (Protean)</strong> or <strong>UTIITSL</strong> portals</li>
+                  <li>PAN card is typically delivered within <strong>15-20 working days</strong> after successful
+                    application</li>
+                  <li>You can track your PAN application status using the <strong>Acknowledgment Number</strong></li>
+                  <li>An <strong>e-PAN</strong> (digital PAN) is sent to your registered email within <strong>48
+                      hours</strong> of allotment</li>
+                  <li>Aadhaar-based <strong>Instant e-PAN</strong> is available <strong>FREE of cost</strong> on the
+                    Income Tax portal</li>
+                </ul>
+              </div>
 
-<h3>What is a PAN Card</h3>
-A PAN card is issued under the Income Tax Act, 1961 and it contains a unique 10-digit alphanumeric code. 
-This code is computer-generated and is unique to the holder of the card and is valid for the lifetime.
+              <!-- DOCUMENTS REQUIRED -->
+              <h3 class="mt-5 mb-4 font-weight-bold" style="color: #C5A059;">
+                <i class="fas fa-file-alt mr-2"></i>Documents Required for PAN Application
+              </h3>
 
-<h3>Who can Apply for a PAN Card</h3>
-The eligibility for a PAN card is not limited to individuals but companies and partnership firms can also avail a PAN card and it becomes 
-mandatory for such entities to have a PAN when they are filing their income tax returns. Even individuals, minors, students and non-resident
-Indians can also apply for PAN card online.
+              <div class="alert alert-primary">
+                <strong>Note:</strong> You need to provide documents for <strong>Proof of Identity (POI)</strong>,
+                <strong>Proof of Address (POA)</strong>, and <strong>Proof of Date of Birth (POB)</strong>. One
+                document from each category is sufficient. Some documents serve multiple purposes.
+              </div>
 
-<h3>How To Apply For PAN Card?</h3>
-PAN cards can be applied both online and offline. Further, requests for changes or corrections in PAN data may also be made online. The 
-online process is the most hassle-free way of obtaining a PAN. The applicant is only required to fill and submit the online application 
-form along with online payment of the respective processing fee. Copies of required documents can then be sent by post to either NSDL or 
-UTIITSL for verification purposes.
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="p-3 border rounded h-100">
+                    <h5 class="font-weight-bold mb-3">Proof of Identity</h5>
+                    <ul class="small">
+                      <li>Aadhaar Card (issued by UIDAI)</li>
+                      <li>Voter ID / Election Commission Photo ID Card</li>
+                      <li>Passport</li>
+                      <li>Driving License</li>
+                      <li>Ration Card with Photograph</li>
+                      <li>Arm's License</li>
+                      <li>Photo ID issued by Central/State Government</li>
+                      <li>Pensioner Card with Photograph</li>
+                      <li>Central Government Health Scheme (CGHS) Card</li>
+                      <li>Bank Certificate with attested photograph</li>
+                    </ul>
+                  </div>
+                </div>
 
-<h3>How To Apply For PAN Card Online?</h3>
-Online PAN card applications can be made on the Income Tax portal using Aadhaar, the NSDL website or the UTIITSL website. Both these 
-websites have been authorised by the Government of India to issue the PAN or to make changes/corrections in the PAN on behalf of the 
-Income Tax Department.
+                <div class="col-md-6 mb-4">
+                  <div class="p-3 border rounded h-100">
+                    <h5 class="font-weight-bold mb-3">Proof of Address</h5>
+                    <ul class="small">
+                      <li>Aadhaar Card</li>
+                      <li>Voter ID</li>
+                      <li>Passport</li>
+                      <li>Driving License</li>
+                      <li>Post Office Passbook with address</li>
+                      <li>Latest Bank Account Statement/Passbook</li>
+                      <li>Electricity Bill (not older than 3 months)</li>
+                      <li>Landline/Broadband Bill (not older than 3 months)</li>
+                      <li>Water Bill (not older than 3 months)</li>
+                      <li>Property Tax Assessment Order</li>
+                      <li>Domicile Certificate from Government</li>
+                      <li>Rent Agreement with Notary</li>
+                    </ul>
+                  </div>
+                </div>
 
-<h3>Documents Required For PAN Card</h3>
-Below are the documents required to be submitted along with the PAN card application:
-<ul>
-<li>Identity proof</li>
-<li>Address proof</li>
-<li>Date of birth proof</li>
-<li>Registration certificate in case of companies, firms, HUF and association of persons</li></ul>
- Click <a href="https://www.protean-tinpan.com/services/pan/documents49A.html" target="_blank">here</a> for the entire list of documents.
- <h3>How To Apply PAN Card Online Via Income-Tax Portal (Instant E-PAN)?</h3>
- ndividuals having valid Aadhaar number can now apply for e-PAN instantly without filling up any application form. Here are the steps to 
- apply for instant PAN card:
- 
- Step 1: Go to the <a href="https://www.incometax.gov.in/iec/foportal/" target="_blank">Income Tax portal</a> and click on ‘Instant e-PAN’ option.
- <img alt="" src="" style="width:600px;" th:src="@{/images/pan1.png}">
- 
- Step 2: On the next page, click on ‘Get New e-PAN’.
- <img style="width:600px;" th:src="@{/images/pan2.png}">
- 
- Step 3: Enter your Aadhaar number and click ‘Continue’. 
-<img style="width:600px;" th:src="@{/images/pan3.png}">
+                <div class="col-md-6 mb-4">
+                  <div class="p-3 border rounded h-100">
+                    <h5 class="font-weight-bold mb-3">Proof of Date of Birth</h5>
+                    <ul class="small">
+                      <li>Aadhaar Card</li>
+                      <li>Birth Certificate issued by Municipal Authority</li>
+                      <li>Passport</li>
+                      <li>Driving License</li>
+                      <li>Matriculation Certificate (Class 10th)</li>
+                      <li>Mark Sheet from recognized board</li>
+                      <li>Pension Payment Order</li>
+                      <li>Marriage Certificate issued by Registrar</li>
+                      <li>Domicile Certificate</li>
+                      <li>Affidavit sworn before a Magistrate</li>
+                    </ul>
+                  </div>
+                </div>
 
-Step 4: The OTP validation page will be displayed. Tick the checkbox and accept the terms and conditions. Click on the ‘Continue’ button.
-<img style="width:600px;" th:src="@{/images/pan4.png}">
+                <div class="col-md-6 mb-4">
+                  <div class="p-3 border rounded h-100">
+                    <h5 class="font-weight-bold mb-3">For Minor (below 18 years)</h5>
+                    <ul class="small">
+                      <li>Birth Certificate of the minor</li>
+                      <li>School Certificate</li>
+                      <li>PAN of Parent/Guardian (any one parent)</li>
+                      <li>Identity proof of Parent/Guardian</li>
+                      <li>Documents showing relationship with the minor</li>
+                    </ul>
+                    <p class="small text-muted mb-0"><strong>Note:</strong> Photograph and signature of
+                      parent/guardian is required on the form. No photograph of minor below 5 years is needed.</p>
+                  </div>
+                </div>
+              </div>
 
-Step 5: Enter the OTP received on your Aadhaar registered mobile number, tick the checkbox and click ‘Continue’. 
-<img style="width:600px;" th:src="@{/images/pan5.png}">
+              <!-- =============================== -->
+              <!-- ONLINE APPLICATION METHOD 1: NSDL -->
+              <!-- =============================== -->
+              <div class="mb-5 p-4" style="border-left: 4px solid #C5A059; background-color: #f8f9fa;">
+                <h3 class="font-weight-bold mb-4" style="color: #0F172A;">
+                  <i class="fas fa-laptop mr-2" style="color: #C5A059;"></i>Method 1: Apply for PAN Online via NSDL
+                  (Protean) Portal
+                </h3>
 
-Step 6: You will see your personal details, such as name, date of birth, etc., as per your Aadhaar card. Click on ‘Validate Email’ to 
-validate your email, tick the checkbox, and click ‘Continue’.
-<img style="width:600px;" th:src="@{/images/pan6.png}">
+                <p class="mb-4">The NSDL (now rebranded as <strong>Protean eGov Technologies</strong>) portal is the
+                  most popular way to apply for a new PAN card online. You can complete the entire process from home.
+                </p>
 
-You will receive acknowledgement number and a confirmation message on your mobile number. Once e-PAN is alloted you will be intimated 
-on the same. Usually, the e-PAN card will be generated within 10 minutes and you can download the same from the Income Tax portal. 
+                <h5 class="font-weight-bold mt-4 mb-3">Step-by-Step Process:</h5>
+                <ol class="pl-4" style="line-height: 2;">
+                  <li class="mb-3">
+                    <strong>Visit the NSDL PAN Portal</strong><br>
+                    Go to <a href="https://onlineservices.proteantech.in/paam/endUserRegisterContact.html"
+                      target="_blank" rel="noopener">onlineservices.nsdl.com</a> — the official NSDL PAN application
+                    page.<br>
+                    <img th:src="@{/images/pan1.png}" alt="NSDL PAN Portal Homepage"
+                      class="img-fluid rounded shadow-sm mt-3 mb-2"
+                      style="max-width: 700px; border: 1px solid #dee2e6;">
+                  </li>
 
-If you want a hard copy of your PAN card, you might have to pay additional fees and request for delivery using <a href="https://www.onlineservices.nsdl.com/paam/ReprintEPan.html" target="_blank">reprint</a> option. 
+                  <li class="mb-3">
+                    <strong>Select Application Type</strong><br>
+                    Choose <strong>"New PAN - Indian Citizen (Form 49A)"</strong> from the dropdown.<br>
+                    For foreign citizens, select <strong>"Form 49AA"</strong>.<br>
+                    Select the Category: <strong>Individual, HUF, Company, Firm, Trust, etc.</strong>
+                    <img th:src="@{/images/pan2.png}" alt="Select Application Type"
+                      class="img-fluid rounded shadow-sm mt-3 mb-2"
+                      style="max-width: 700px; border: 1px solid #dee2e6;">
+                  </li>
 
-The instant e-PAN card facility is available only to individual citizens above 18 years of age having a valid Aadhaar number and 
-Aadhaar-linked mobile number. Any person other than Indian citizens, like NRIs, partnership firms, HUFs, companies, trusts, etc., cannot 
-apply for an instant e-PAN card.
+                  <li class="mb-3">
+                    <strong>Fill Personal Information</strong><br>
+                    Enter the following details accurately:
+                    <ul class="mt-2">
+                      <li>Full Name (First, Middle, Last — as per documents)</li>
+                      <li>Date of Birth</li>
+                      <li>Email Address (e-PAN will be sent here)</li>
+                      <li>Mobile Number</li>
+                      <li>Enter the Captcha code displayed</li>
+                    </ul>
+                    Click <strong>"Submit"</strong> to proceed.
+                    <img th:src="@{/images/pan3.png}" alt="Fill Personal Details"
+                      class="img-fluid rounded shadow-sm mt-3 mb-2"
+                      style="max-width: 700px; border: 1px solid #dee2e6;">
+                  </li>
 
-<h3>How To Apply For PAN Card Online Via NSDL Website?</h3>
-Step 1: Visit the <a href="https://www.onlineservices.nsdl.com/paam/endUserRegisterContact.html" target="_blank">NSDL website.</a>
-Step 2: Select the application type as 'New PAN - Indian Citizen (Form 49A)' or ‘New PAN - Foreign Citizen (Form 49AA)’. Select the 
-applicable category and title, enter the last name, first name, middle name, date of birth/ incorporation, email and mobile number. Tick 
-the checkbox, validate captcha and click ‘Submit’.
-<img style="width:600px;" th:src="@{/images/pan7.png}">
+                  <li class="mb-3">
+                    <strong>Receive Token Number</strong><br>
+                    After submitting, you will receive a <strong>Token Number</strong> on your registered email.<br>
+                    Click on the link in the email or use the token number to continue your application.
+                    <img th:src="@{/images/pan4.png}" alt="Token Number Email"
+                      class="img-fluid rounded shadow-sm mt-3 mb-2"
+                      style="max-width: 700px; border: 1px solid #dee2e6;">
+                  </li>
 
-Step 3: You will receive a Token Number on your email ID. Click on the ‘Continue with PAN Application Form’ button.
-<img style="width:600px;" th:src="@{/images/pan8.jpg}">
+                  <li class="mb-3">
+                    <strong>Complete the PAN Application Form</strong><br>
+                    Fill in all the remaining sections of the form:
+                    <ul class="mt-2">
+                      <li><strong>Personal Details:</strong> Father's/Mother's Name, Gender, Aadhaar Number</li>
+                      <li><strong>Source of Income:</strong> Salary, Business, Capital Gains, etc.</li>
+                      <li><strong>Communication Address:</strong> Full address with PIN code</li>
+                      <li><strong>Document Details:</strong> Select proof documents for Identity, Address, and Date of
+                        Birth</li>
+                    </ul>
+                    <img th:src="@{/images/pan5.png}" alt="Complete Application Form"
+                      class="img-fluid rounded shadow-sm mt-3 mb-2"
+                      style="max-width: 700px; border: 1px solid #dee2e6;">
+                  </li>
 
-Step 4: Read the detailed instructions before filling in the details on the PAN card application form. Click here to view the PAN card 
-application instructions. 
-<img style="width:600px;" th:src="@{/images/pan9.png}">
+                  <li class="mb-3">
+                    <strong>Choose Document Submission Mode</strong><br>
+                    Select one of the following options:
+                    <ul class="mt-2">
+                      <li><strong>Submit digitally through e-KYC &amp; e-Sign (Aadhaar-based):</strong> No physical
+                        documents needed — fastest method</li>
+                      <li><strong>Submit scanned images through e-Sign:</strong> Upload scanned copies of documents
+                        online</li>
+                      <li><strong>Forward application documents physically:</strong> Post the documents to the NSDL
+                        office</li>
+                    </ul>
+                    <img th:src="@{/images/pan6.png}" alt="Document Submission Mode"
+                      class="img-fluid rounded shadow-sm mt-3 mb-2"
+                      style="max-width: 700px; border: 1px solid #dee2e6;">
+                  </li>
 
-Select the mode of submission of PAN card documents and if you require a physical PAN card. 
+                  <li class="mb-3">
+                    <strong>Upload Documents (if applicable)</strong><br>
+                    Upload scanned copies of your proof documents:<br>
+                    <ul class="mt-2">
+                      <li>Photo (JPEG, max 50KB)</li>
+                      <li>Signature (JPEG, max 50KB)</li>
+                      <li>Proof of Identity document</li>
+                      <li>Proof of Address document</li>
+                      <li>Proof of Date of Birth document</li>
+                    </ul>
+                    <img th:src="@{/images/pan7.png}" alt="Upload Documents"
+                      class="img-fluid rounded shadow-sm mt-3 mb-2"
+                      style="max-width: 700px; border: 1px solid #dee2e6;">
+                  </li>
 
-Fill out the required details on the form, such as personal details, contact details, and AO code, and upload the documents. 
+                  <li class="mb-3">
+                    <strong>Make Payment</strong><br>
+                    Pay the application fee of <strong>₹107 (+ GST)</strong> using:
+                    <ul class="mt-2">
+                      <li>Credit/Debit Card</li>
+                      <li>Net Banking</li>
+                      <li>UPI</li>
+                      <li>Demand Draft</li>
+                    </ul>
+                    <img th:src="@{/images/pan8.jpg}" alt="Payment Page" class="img-fluid rounded shadow-sm mt-3 mb-2"
+                      style="max-width: 700px; border: 1px solid #dee2e6;">
+                  </li>
 
-Step 5: After submitting the PAN card application, the payment page will appear. Selct the mode of payment and pay the required fees. 
-Payment can be made through credit/debit card, demand draft or net-banking.
+                  <li class="mb-3">
+                    <strong>e-Sign / Aadhaar Authentication</strong><br>
+                    If you chose digital submission, authenticate using Aadhaar OTP.<br>
+                    An OTP will be sent to your Aadhaar-registered mobile number. Enter the OTP to digitally sign your
+                    application.
+                    <img th:src="@{/images/pan9.png}" alt="Aadhaar Authentication"
+                      class="img-fluid rounded shadow-sm mt-3 mb-2"
+                      style="max-width: 700px; border: 1px solid #dee2e6;">
+                  </li>
 
-Upon successful payment, an acknowledgment will be displayed through which you can check your application status. It will also be sent 
-to your email ID.   
+                  <li class="mb-3">
+                    <strong>Download Acknowledgment</strong><br>
+                    After successful submission, download and save your <strong>Acknowledgment Receipt</strong>.<br>
+                    Note down the <strong>15-digit Acknowledgment Number</strong> — you will need this to track your
+                    application.
+                    <img th:src="@{/images/pan10.png}" alt="Acknowledgment Receipt"
+                      class="img-fluid rounded shadow-sm mt-3 mb-2"
+                      style="max-width: 700px; border: 1px solid #dee2e6;">
+                  </li>
+                </ol>
 
-Please note: If you choose the ‘Forward application documents physically’ option on the PAN card application, you will have to take a 
-print out of the acknowledgement and send the acknowledgement along with the attachment of the required documents to the following 
-address by post:
+                <div class="alert alert-success mt-4">
+                  <i class="fas fa-check-circle mr-2"></i>
+                  <strong>If physical submission was chosen:</strong> Print the Acknowledgment, affix 2 passport-sized
+                  photographs, sign it, and send it along with supporting documents to: <strong>Income Tax PAN Services
+                    Unit, Protean eGov Technologies Limited, 5th Floor, Mantri Sterling, Plot No. 341, Survey No. 997/8,
+                    Model Colony, Near Deep Bunglow Chowk, Pune – 411016</strong> within 15 days.
+                </div>
+              </div>
 
-Income Tax PAN Services Unit, 
+              <!-- =============================== -->
+              <!-- ONLINE APPLICATION METHOD 2: Instant e-PAN -->
+              <!-- =============================== -->
+              <div class="mb-5 p-4" style="border-left: 4px solid #28a745; background-color: #f0fff4;">
+                <h3 class="font-weight-bold mb-4" style="color: #0F172A;">
+                  <i class="fas fa-bolt mr-2" style="color: #28a745;"></i>Method 2: Get Instant e-PAN (FREE — Aadhaar
+                  Based)
+                </h3>
 
-Protean eGov Technologies Limited, 
+                <p class="mb-4">The Income Tax Department offers a <strong>completely FREE Instant e-PAN</strong>
+                  service for individuals who have a valid Aadhaar with a mobile number linked to it. This is the
+                  <strong>fastest way</strong> to get a PAN — issued within <strong>10 minutes</strong>!
+                </p>
 
-4th Floor, Sapphire Chambers, 
+                <h5 class="font-weight-bold mt-4 mb-3">Step-by-Step Process:</h5>
+                <ol class="pl-4" style="line-height: 2;">
+                  <li class="mb-3">
+                    <strong>Visit Income Tax e-Filing Portal</strong><br>
+                    Go to <a href="https://eportal.incometax.gov.in/iec/foservices/#/pre-login/instant-e-pan"
+                      target="_blank" rel="noopener">incometax.gov.in — Instant e-PAN</a>
+                    <img th:src="@{/images/pan11.png}" alt="Income Tax Portal - Instant e-PAN"
+                      class="img-fluid rounded shadow-sm mt-3 mb-2"
+                      style="max-width: 700px; border: 1px solid #dee2e6;">
+                  </li>
 
-Baner Road, Baner, Pune - 411045
+                  <li class="mb-3">
+                    <strong>Click on "Get New e-PAN"</strong><br>
+                    On the Instant e-PAN page, click the <strong>"Get New e-PAN"</strong> button to start the process.
+                  </li>
 
-<h3>How To Apply For PAN Card Online Via UTIITSL Website?</h3>
+                  <li class="mb-3">
+                    <strong>Enter Aadhaar Number</strong><br>
+                    Type your 12-digit Aadhaar number in the field provided.<br>
+                    Read and accept the terms &amp; conditions, then click <strong>"Continue"</strong>.
+                  </li>
 
-Step 1: Visit the <a href="https://www.pan.utiitsl.com/PAN/">UTIITSL website.</a>
+                  <li class="mb-3">
+                    <strong>OTP Verification</strong><br>
+                    An OTP will be sent to the <strong>mobile number linked to your Aadhaar</strong>.<br>
+                    Enter the 6-digit OTP and click <strong>"Continue"</strong>.
+                  </li>
 
-Step 2: Click the ‘Click to Appy’ under the ‘PAN Card for Indian Citizen/ NRI' tab or PAN Card for Foreign Citizen' tab.
-<img style="width:600px;" th:src=@{/images/pan10.png}>
+                  <li class="mb-3">
+                    <strong>Validate Aadhaar Details</strong><br>
+                    Your details (Name, Date of Birth, Gender) will be auto-fetched from Aadhaar.<br>
+                    Verify the details and click <strong>"Confirm"</strong>.
+                  </li>
 
-Step 3: Select the ‘Apply for New PAN Card (Form 49A)’ tab or ‘Apply for New PAN Card (Form 49AA)’ tab.
-<img style="width:600px;" th:src=@{/images/pan11.png}>
+                  <li class="mb-3">
+                    <strong>e-PAN Allotted!</strong><br>
+                    Your PAN is generated <strong>instantly</strong>.<br>
+                    You can download your <strong>e-PAN (PDF)</strong> immediately from the same page.<br>
+                    The e-PAN is also sent to your Aadhaar-linked email address.
+                  </li>
+                </ol>
 
-Step 4: Select the mode of submission of documents, status of applicant, the PAN card mode and click the ‘Submit’ button.
-<img style="width:600px;" th:src=@{/images/pan12.png}>
+                <div class="alert alert-info mt-4">
+                  <i class="fas fa-info-circle mr-2"></i>
+                  <strong>Eligibility:</strong> This method is available only for <strong>individual applicants</strong>
+                  who have a valid Aadhaar with a mobile number registered with UIDAI. You must NOT already have a PAN
+                  allotted to your Aadhaar.
+                </div>
+              </div>
 
-Step 5: You will receive a reference number. Click ‘OK’.
+              <!-- =============================== -->
+              <!-- ONLINE METHOD 3: UTIITSL -->
+              <!-- =============================== -->
+              <div class="mb-5 p-4" style="border-left: 4px solid #C5A059; background-color: #f8f9fa;">
+                <h3 class="font-weight-bold mb-4" style="color: #0F172A;">
+                  <i class="fas fa-globe mr-2" style="color: #C5A059;"></i>Method 3: Apply for PAN Online via UTIITSL
+                  Portal
+                </h3>
 
-Step 6: Enter the required details on the form, such as personal details, document details, contact and parent details, address details 
-and other details. Upload the required documents and submit the form. 
-<img style="width:600px;" th:src=@{/images/pan13.png}>
+                <p class="mb-4">UTIITSL (UTI Infrastructure Technology and Services Limited) is the second authorized
+                  agency for PAN card processing in India.</p>
 
-Step 7: Make the payment of the application fee. On successful payment, an acknowledgment will be displayed and sent to your email ID. 
+                <h5 class="font-weight-bold mt-4 mb-3">Step-by-Step Process:</h5>
+                <ol class="pl-4" style="line-height: 2;">
+                  <li class="mb-3">
+                    <strong>Visit the UTIITSL Portal</strong><br>
+                    Go to <a href="https://www.pan.utiitsl.com/PAN/" target="_blank" rel="noopener">pan.utiitsl.com</a>
+                    <img th:src="@{/images/pan12.png}" alt="UTIITSL Portal Homepage"
+                      class="img-fluid rounded shadow-sm mt-3 mb-2"
+                      style="max-width: 700px; border: 1px solid #dee2e6;">
+                  </li>
 
-<h3>How To Apply For PAN Card Offline?</h3>
-Step 1: Download the <a href="https://www.protean-tinpan.com/downloads/pan/download/Form_49A.PDF" target="_blank">‘Form 49A’</a> or ‘Form 49AA’ from the Protean e-Gov website. 
-You can also obtain the PAN card application form from the nearest PAN centre.
+                  <li class="mb-3">
+                    <strong>Click on "Apply for New PAN Card (Form 49A)"</strong><br>
+                    Select the appropriate application type for Indian citizens.
+                  </li>
 
-Step 2: Fill in the details in the application. 
+                  <li class="mb-3">
+                    <strong>Fill in the Application Form</strong><br>
+                    Complete all required fields including:
+                    <ul class="mt-2">
+                      <li>Full Name, Date of Birth, Gender</li>
+                      <li>Father's Name / Mother's Name</li>
+                      <li>Aadhaar Number</li>
+                      <li>Communication Address with PIN code</li>
+                      <li>Contact Number and Email</li>
+                      <li>Source of Income</li>
+                    </ul>
+                  </li>
 
-Step 3: Attach your signature and photograph to the application. 
+                  <li class="mb-3">
+                    <strong>Upload Documents</strong><br>
+                    Upload scanned copies of required documents (Photo, Signature, Identity Proof, Address Proof, DOB
+                    Proof).
+                  </li>
 
-Step 4: Submit the form and the required documents to the <a href="https://www.protean-tinpan.com/pan-center" target=_blank>nearest PAN centre.</a>
+                  <li class="mb-3">
+                    <strong>Make Payment</strong><br>
+                    Pay the fee of <strong>₹107 (+ GST)</strong> through Credit/Debit Card, Net Banking, or UPI.
+                  </li>
 
-Step 5: Pay the fees for PAN card application. 
+                  <li class="mb-3">
+                    <strong>Submit and Track</strong><br>
+                    After payment, note down your <strong>Coupon Number</strong> for tracking the application.
+                  </li>
+                </ol>
+              </div>
 
-Step 6: You will get the acknowledgement number from which you can track the status of your PAN card application status.
+              <!-- =============================== -->
+              <!-- OFFLINE APPLICATION -->
+              <!-- =============================== -->
+              <div class="mb-5 p-4" style="border-left: 4px solid #C5A059; background-color: #f8f9fa;">
+                <h3 class="font-weight-bold mb-4" style="color: #0F172A;">
+                  <i class="fas fa-building mr-2" style="color: #C5A059;"></i>Method 4: Apply for PAN Offline (Visit PAN
+                  Center)
+                </h3>
 
-Once the documents are verified, a PAN card will be issued within 15 days.
+                <p class="mb-4">You can apply for PAN offline by visiting a <strong>TIN Facilitation Centre
+                    (TIN-FC)</strong> or <strong>PAN Centre</strong> managed by NSDL or UTIITSL. This is ideal for those
+                  who prefer in-person assistance or are not comfortable with online processes.</p>
+
+                <h5 class="font-weight-bold mt-4 mb-3">Step-by-Step Process:</h5>
+                <ol class="pl-4" style="line-height: 2;">
+                  <li class="mb-3">
+                    <strong>Locate the Nearest PAN Centre / TIN-FC</strong><br>
+                    Find a nearby centre using:<br>
+                    • <a href="https://www.protean-tinpan.com/tin-facilitation-centre.html" target="_blank"
+                      rel="noopener">NSDL TIN-FC Locator</a><br>
+                    • <a href="https://www.psaonline.utiitsl.com/PanPSACenters/forms/applicationCenters" target="_blank"
+                      rel="noopener">UTIITSL
+                      PAN Centre Locator</a><br>
+                    • You can also find centres at select post offices and bank branches.
+                    <img th:src="@{/images/pan13.png}" alt="TIN Facilitation Centre"
+                      class="img-fluid rounded shadow-sm mt-3 mb-2"
+                      style="max-width: 700px; border: 1px solid #dee2e6;">
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Obtain Form 49A</strong><br>
+                    Collect <strong>Form 49A</strong> (for Indian citizens) from the centre.<br>
+                    You can also download and print it from the <a
+                      href="https://www.incometaxindia.gov.in/forms/income-tax%20rules/103120000000007944.pdf"
+                      target="_blank" rel="noopener">Income Tax Department website</a>.
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Fill the Form Carefully</strong><br>
+                    Use <strong>BLOCK/CAPITAL LETTERS</strong> only. Fill in:
+                    <ul class="mt-2">
+                      <li>Full Name (as per supporting documents)</li>
+                      <li>Father's Name</li>
+                      <li>Date of Birth</li>
+                      <li>Gender</li>
+                      <li>Complete Address with PIN code</li>
+                      <li>Contact Number and Email</li>
+                      <li>Aadhaar Number</li>
+                      <li>Source of Income</li>
+                      <li>Representative Assessee details (if applicable)</li>
+                    </ul>
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Affix Photographs &amp; Sign</strong><br>
+                    Paste <strong>2 recent passport-sized photographs</strong> (one on the form, one on the
+                    acknowledgment).<br>
+                    Sign or put thumb impression across the photograph on the form.
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Attach Supporting Documents</strong><br>
+                    Attach <strong>self-attested photocopies</strong> of:
+                    <ul class="mt-2">
+                      <li>Proof of Identity (1 document)</li>
+                      <li>Proof of Address (1 document)</li>
+                      <li>Proof of Date of Birth (1 document)</li>
+                    </ul>
+                    Keep <strong>original documents</strong> with you for verification.
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Submit Form at the Centre</strong><br>
+                    Submit the filled form along with documents at the PAN centre counter.<br>
+                    The executive will verify your originals and accept the application.
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Pay the Fee</strong><br>
+                    Pay <strong>₹107 (+ GST)</strong> in cash, by cheque, or demand draft at the centre.
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Collect Acknowledgment Receipt</strong><br>
+                    You'll receive an <strong>Acknowledgment Receipt</strong> with a <strong>15-digit acknowledgment
+                      number</strong>.<br>
+                    <span class="text-danger font-weight-bold">KEEP THIS RECEIPT SAFE!</span> You'll need the
+                    acknowledgment number to track your PAN status.
+                  </li>
+                </ol>
+
+                <div class="alert alert-info mt-4">
+                  <i class="fas fa-clock mr-2"></i>
+                  <strong>Processing Time:</strong> Your PAN card will be dispatched to your communication address
+                  within <strong>15-20 working days</strong> from the date of receipt of the application.
+                </div>
+              </div>
+
+              <!-- AFTER APPLICATION -->
+              <div class="mb-5 p-4" style="background-color: #fff3cd; border-left: 4px solid #ffc107;">
+                <h4 class="font-weight-bold mb-3">
+                  <i class="fas fa-tasks mr-2"></i>After Application - What Next?
+                </h4>
+
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <h6 class="font-weight-bold">Track PAN Status (NSDL)</h6>
+                    <p>Visit <a href="https://eportal.incometax.gov.in/iec/foservices/#/pre-login/verifyYourPAN"
+                        target="_blank" rel="noopener">Track PAN Status</a><br>
+                      Enter your 15-digit Acknowledgment Number to check your PAN card dispatch status.</p>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <h6 class="font-weight-bold">Track PAN Status (UTIITSL)</h6>
+                    <p>Visit <a href="https://www.trackpan.utiitsl.com/PANONLINE/forms/TrackPan/trackApp"
+                        target="_blank" rel="noopener">UTIITSL PAN Tracking</a><br>
+                      Enter your Coupon Number to track application progress.</p>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <h6 class="font-weight-bold">Download e-PAN</h6>
+                    <p>Visit <a href="https://onlineservices.proteantech.in/paam/requestAndDownloadEPAN.html"
+                        target="_blank" rel="noopener">Download e-PAN (NSDL)</a><br>
+                      e-PAN is available once PAN is allotted. Use your Acknowledgment Number or PAN to download.</p>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <h6 class="font-weight-bold">Know Your PAN</h6>
+                    <p>Visit <a href="https://eportal.incometax.gov.in/iec/foservices/#/pre-login/verifyYourPAN"
+                        target="_blank" rel="noopener">Know Your PAN</a><br>
+                      If you've forgotten your PAN number, use your name, DOB, and mobile to retrieve it.</p>
+                  </div>
+                </div>
+              </div>
 
 
-</pre>
-</div>
 
-</div>
-</section>
+              <!-- HELPFUL LINKS -->
+              <div class="mt-5 p-4" style="background-color: #e3f2fd; border-radius: 8px;">
+                <h5 class="font-weight-bold mb-3"><i class="fas fa-link mr-2"></i>Helpful Links &amp; Resources</h5>
+                <div class="row">
+                  <div class="col-md-6 mb-2">
+                    <a href="https://onlineservices.proteantech.in/paam/endUserRegisterContact.html" target="_blank"
+                      rel="noopener" class="d-block">
+                      <i class="fas fa-external-link-alt mr-2"></i>Apply for New PAN (NSDL)
+                    </a>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <a href="https://www.pan.utiitsl.com/PAN/" target="_blank" rel="noopener" class="d-block">
+                      <i class="fas fa-external-link-alt mr-2"></i>Apply for New PAN (UTIITSL)
+                    </a>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <a href="https://eportal.incometax.gov.in/iec/foservices/#/pre-login/instant-e-pan" target="_blank"
+                      rel="noopener" class="d-block">
+                      <i class="fas fa-bolt mr-2"></i>Instant e-PAN (FREE)
+                    </a>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <a href="https://onlineservices.proteantech.in/paam/requestAndDownloadEPAN.html" target="_blank"
+                      rel="noopener" class="d-block">
+                      <i class="fas fa-download mr-2"></i>Download e-PAN
+                    </a>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <a href="https://eportal.incometax.gov.in/iec/foservices/#/pre-login/verifyYourPAN" target="_blank"
+                      rel="noopener" class="d-block">
+                      <i class="fas fa-search mr-2"></i>Track PAN Application Status
+                    </a>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <a href="https://eportal.incometax.gov.in/iec/foservices/#/pre-login/verifyYourPAN" target="_blank"
+                      rel="noopener" class="d-block">
+                      <i class="fas fa-id-card mr-2"></i>Know Your PAN Number
+                    </a>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <a href="https://tinpan.proteantech.in/Facilitation-center" target="_blank" rel="noopener"
+                      class="d-block">
+                      <i class="fas fa-map-marker-alt mr-2"></i>Find TIN Facilitation Centres
+                    </a>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <a href="https://www.incometax.gov.in/iec/foportal/" target="_blank" rel="noopener" class="d-block">
+                      <i class="fas fa-landmark mr-2"></i>Income Tax e-Filing Portal
+                    </a>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <a href="tel:18001801961" class="d-block">
+                      <i class="fas fa-phone mr-2"></i>NSDL Helpline: 1800-180-1961 (Toll Free)
+                    </a>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <a href="tel:18001030025" class="d-block">
+                      <i class="fas fa-phone mr-2"></i>UTIITSL Helpline: 1800-103-0025 (Toll Free)
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 </body>
+
 </html>

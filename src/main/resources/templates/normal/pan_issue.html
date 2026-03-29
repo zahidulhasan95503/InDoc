@@ -1,88 +1,473 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" 
-      th:replace="normal/base::layout(~{::section})">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>PAN Issue Resolution - InDoc</title>
 </head>
+
 <body>
-<section>
-
-<div class="sidebar">
-  
-  <span onclick="toggleSidebar()" class="crossBtn">&times;</span>
-  
-  <a href="#" th:href="@{/user/pan}"> How To Create new PAN Card</a>
-  <a href="#" th:href="@{/user/pan_issue}">Solve PAN Card Issues</a>
-  <a href="#" th:href ="@{/user/pan_centre}">Find PAN Centers</a>
-  <a href="#" th:href="@{/user/update_user}">Settings</a>
-  <a href="#" th:href="@{/logout}">Logout</a>
- 
-  <div class="divider"></div>
-  
-  </div>
-  
-  <div class="content">
-
-<i onclick="toggleSidebar()" class="fas fa-bars m-3"></i>
-
-<!-- Header -->
-    <h2 style="margin-left:20px; text-align: center; font-size: 2.5rem; color: #FFD700; margin-bottom: 20px;">
-        Solve your PAN Problems Effortlessly
-    </h2>
-    
-    <p style="text-align: center; margin-bottom: 30px; font-size: 1.2rem; color: #555;">
-        Get your PAN-related queries resolved quickly. Enter your problem below and explore relevant videos for solutions!
-    </p>
-
-    <!-- Search Form -->
-    <form action="" th:action="@{/user/getpanans}" method="get" th:object="${message}" style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
-        <input type="text" name="content" id="content" 
-               style="width: 100%; padding: 12px 20px; margin-bottom: 20px; border-radius: 8px; border: 1px solid #ddd; font-size: 1.1rem;" 
-               placeholder="Enter the problem">
-        <button type="submit" 
-                style="background-color: #FFD700; color: white; border: none; padding: 12px 30px; font-size: 1.1rem; border-radius: 8px; cursor: pointer; transition: background-color 0.3s ease;">
-            Search
-        </button>
-    </form>
-
-    <!-- Textarea for Description -->
-    <div class="form-group" style="width:1100px; margin: 30px auto;">
-        <textarea th:if="${info != null && info.trim().length() > 0}" th:text="${info}" id="mytextarea" rows="20" 
-                  style="width: 100%; padding: 15px; border-radius: 8px; border: 1px solid #ddd; font-size: 1.1rem;" 
-                  placeholder="Enter Contact Description"></textarea>
-    </div>
-
-    <!-- Video Section -->
-    
-    <div th:if="${info != null && !#lists.isEmpty(videos)}">
-    <h2 style="text-align: center; font-size: 2rem; color: #FFD700; margin-top: 40px; margin-bottom: 30px;">Related Videos</h2>
-
-    <!-- Video List -->
-    <ul th:unless="${#lists.isEmpty(videos)}" style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 20px; max-width: 1200px; margin: 0 auto; padding: 0; list-style: none;">
-        <li th:each="video : ${videos}" style="background-color: white; border: 1px solid #ddd; margin-top: 25px; border-radius: 15px; overflow: hidden; width: calc(33.33% - 20px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); position: relative; transition: transform 0.3s ease, box-shadow 0.3s ease;">
-            
-            <!-- Thumbnail with hover effect -->
-            <a th:href="'https://www.youtube.com/watch?v=' + ${video.videoId}" target="_blank" style="display: block;">
-                <img th:src="${video.thumbnailUrl}" alt="Video Thumbnail" style="width: 100%; height: 200px; object-fit: cover; transition: opacity 0.3s ease;">
-            </a>
-
-            <!-- Title overlay -->
-            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.7); padding: 10px; text-align: center;">
-                <h2 style="font-size: 1rem; color: white; margin: 0;" th:text="${video.title}"></h2>
+    <section class="py-5">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <a th:href="@{/user/pan}" class="text-decoration-none"><i class="fas fa-arrow-left mr-2"></i>Back to
+                        PAN Services</a>
+                </div>
             </div>
+            <div class="row flex-column">
+                <div class="col-lg-8 mx-auto">
+                    <div class="bg-white p-5 rounded shadow-sm">
+                        <div class="text-center mb-5"><i class="fas fa-question-circle fa-4x mb-3"
+                                style="color: #C5A059;"></i>
+                            <h1 class="font-weight-bold mb-3">Solve PAN Issues</h1>
+                            <p class="lead text-muted">Get help with your PAN-related problems</p>
+                        </div>
+                        <h3 class="font-weight-bold mb-4">Common Issues</h3>
+                        <div class="accordion" id="panIssueAccordion">
 
-        </li>
-    </ul>
-    
-    </div>
+                            <!-- 1. Rejection due to Data Mismatch -->
+                            <div class="card mb-2">
+                                <div class="card-header" id="panHeading1">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link text-left" data-toggle="collapse"
+                                            data-target="#panCollapse1">
+                                            <i class="fas fa-chevron-right mr-2"></i>Rejection due to Data Mismatch
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="panCollapse1" class="collapse">
+                                    <div class="card-body">
+                                        <p>Mismatches between the application and Aadhaar/supporting documents — such
+                                            as variations in name spelling (e.g., "Rahul K. Singh" vs. "Rahul Kumar
+                                            Singh"), Date of Birth, or address — are the primary cause of PAN
+                                            application rejection.</p>
+                                        <p><strong>How to fix:</strong></p>
+                                        <ul>
+                                            <li><strong>Cross-verify Details:</strong> Before applying, ensure your
+                                                name, DOB, and address exactly match your Aadhaar card and other
+                                                supporting documents.</li>
+                                            <li><strong>Apply / Correct Online:</strong> Submit a new application or
+                                                correction request via the <a
+                                                    href="https://onlineservices.proteantech.in/paam/endUserRegisterContact.html"
+                                                    target="_blank">NSDL PAN Portal</a> or <a
+                                                    href="https://www.utiitsl.com/" target="_blank">UTIITSL Portal</a>.
+                                            </li>
+                                        </ul>
+                                        <p><em>Tip:</em> Use the exact name format as printed on your Aadhaar —
+                                            avoid abbreviations or initials unless they appear on the original
+                                            document.</p>
+                                    </div>
+                                </div>
+                            </div>
 
-    <!-- Message for No Videos -->
-    <p th:if="${#lists.isEmpty(videos)}" style="text-align: center; margin-top: 40px; font-size: 1.2rem; color: #555;">
-        No related videos found.
-    </p>
+                            <!-- 2. Document and Photograph Issues -->
+                            <div class="card mb-2">
+                                <div class="card-header" id="panHeading2">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link text-left collapsed" data-toggle="collapse"
+                                            data-target="#panCollapse2">
+                                            <i class="fas fa-chevron-right mr-2"></i>Document and Photograph Issues
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="panCollapse2" class="collapse">
+                                    <div class="card-body">
+                                        <p>Submission of blurred, illegible, or non-compliant photo/scanned documents
+                                            leads to immediate rejection. For physical applications, use original
+                                            photographs — not scanned copies. Ensure documents are clear, recent,
+                                            and in the prescribed format.</p>
+                                        <p><strong>How to fix:</strong></p>
+                                        <ul>
+                                            <li><strong>Photo Specifications:</strong> Use a recent colour photograph
+                                                (3.5 cm × 2.5 cm) with a white background. The face should cover
+                                                about 80% of the frame.</li>
+                                            <li><strong>Document Quality:</strong> Ensure all uploaded documents are
+                                                clearly readable, not cropped, and within the file-size limit
+                                                specified on the portal.</li>
+                                            <li><strong>Review Guidelines:</strong> Check the official <a
+                                                    href="https://tin.tin.proteantech.in/pan/form49ACombine.html"
+                                                    target="_blank">PAN Application Guidelines – Income Tax Portal</a>
+                                                for the full list of acceptable documents.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
 
-</div>
-</section>
+                            <!-- 3. Signature Discrepancies -->
+                            <div class="card mb-2">
+                                <div class="card-header" id="panHeading3">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link text-left collapsed" data-toggle="collapse"
+                                            data-target="#panCollapse3">
+                                            <i class="fas fa-chevron-right mr-2"></i>Signature Discrepancies
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="panCollapse3" class="collapse">
+                                    <div class="card-body">
+                                        <p>Signatures that do not match other ID proofs cause application rejection.
+                                            Using blue ink instead of black ink is another common reason for
+                                            problems with physical PAN applications.</p>
+                                        <p><strong>How to fix:</strong></p>
+                                        <ul>
+                                            <li><strong>Use Black Ink:</strong> Always sign physical PAN application
+                                                forms with <strong>black ink</strong> only.</li>
+                                            <li><strong>Maintain Consistency:</strong> Ensure your signature matches
+                                                the one on your existing identity documents (Aadhaar, Passport,
+                                                Voter ID, etc.).</li>
+                                            <li><strong>For Minors / Illiterate Applicants:</strong> A thumb
+                                                impression or representative's signature is acceptable — refer to
+                                                the Form 49A instructions for details.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 4. Incorrect Address / Missing PIN Codes -->
+                            <div class="card mb-2">
+                                <div class="card-header" id="panHeading4">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link text-left collapsed" data-toggle="collapse"
+                                            data-target="#panCollapse4">
+                                            <i class="fas fa-chevron-right mr-2"></i>Incorrect Address / Missing
+                                            PIN Codes
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="panCollapse4" class="collapse">
+                                    <div class="card-body">
+                                        <p>Missing or incorrect PIN codes in the application form prevent successful
+                                            processing, as the physical PAN card is delivered by India Post to the
+                                            address mentioned in the application.</p>
+                                        <p><strong>How to fix:</strong></p>
+                                        <ul>
+                                            <li><strong>Verify PIN Code:</strong> Double-check your 6-digit PIN code
+                                                before submitting. Use the <a
+                                                    href="https://www.indiapost.gov.in/VAS/Pages/FindPinCode.aspx"
+                                                    target="_blank">India Post PIN Code Finder</a> to confirm the
+                                                correct code for your area.</li>
+                                            <li><strong>Correct Address Online:</strong> If your PAN already has an
+                                                incorrect address, submit a correction request via the <a
+                                                    href="https://onlineservices.proteantech.in/paam/endUserRegisterContact.html"
+                                                    target="_blank">NSDL PAN Correction Portal</a>.</li>
+                                        </ul>
+                                        <p><em>Note:</em> The address on PAN need not match Aadhaar, but it must be
+                                            a valid, deliverable postal address with the correct PIN code.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 5. Duplicate PAN Cards -->
+                            <div class="card mb-2">
+                                <div class="card-header" id="panHeading5">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link text-left collapsed" data-toggle="collapse"
+                                            data-target="#panCollapse5">
+                                            <i class="fas fa-chevron-right mr-2"></i>Duplicate PAN Cards
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="panCollapse5" class="collapse">
+                                    <div class="card-body">
+                                        <p>Unintentionally applying for a new PAN when one already exists is illegal
+                                            and causes issues with the Income Tax department. Holding more than one PAN
+                                            can attract a <strong>penalty of ₹10,000</strong> under Section 272B of the
+                                            Income Tax Act.</p>
+                                        <p><strong>How to fix:</strong></p>
+                                        <ul>
+                                            <li><strong>Check Existing PAN:</strong> Verify if you already have a PAN
+                                                at the <a
+                                                    href="https://eportal.incometax.gov.in/iec/foservices/#/pre-login/verifyYourPAN"
+                                                    target="_blank">Know Your PAN – Income Tax Portal</a>.</li>
+                                            <li><strong>Surrender Duplicate:</strong> Submit a request to surrender the
+                                                duplicate PAN via the <a
+                                                    href="https://tinpan.proteantech.in/faqs/pan/faq-pan-cancellation.html"
+                                                    target="_blank">NSDL PAN Portal</a>. Mention the PAN to be
+                                                retained and the one to be cancelled in the correction form.</li>
+                                        </ul>
+                                        <p><em>Important:</em> Every individual / entity is legally allowed to hold
+                                            only one PAN. Surrender the extra PAN immediately to avoid penalties.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 6. Delay in Processing ("Under Process") -->
+                            <div class="card mb-2">
+                                <div class="card-header" id="panHeading6">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link text-left collapsed" data-toggle="collapse"
+                                            data-target="#panCollapse6">
+                                            <i class="fas fa-chevron-right mr-2"></i>Delay in Processing
+                                            ("Under Process")
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="panCollapse6" class="collapse">
+                                    <div class="card-body">
+                                        <p>If documentation or data is incomplete, applications often get stuck in an
+                                            "Under Process" status for weeks, forcing applicants to submit correction
+                                            forms to resolve the issue.</p>
+                                        <p><strong>How to fix:</strong></p>
+                                        <ul>
+                                            <li><strong>Track Status:</strong> Check your application status using
+                                                your 15-digit acknowledgment number at the <a
+                                                    href="https://tin.tin.proteantech.in/pantan/StatusTrack.html"
+                                                    target="_blank">NSDL PAN Status Tracking Portal</a>.</li>
+                                            <li><strong>Submit Correction Form:</strong> If the application is stuck,
+                                                submit <strong>Form 49A</strong> (Indian citizens) or
+                                                <strong>Form 49AA</strong> (foreign citizens) with the correct
+                                                information via the <a
+                                                    href="https://tinpan.proteantech.in/downloads/pan/download/Form_49AA.PDF"
+                                                    target="_blank">NSDL Correction Portal</a>.
+                                            </li>
+                                            <li><strong>Contact Support:</strong> If the status does not change for
+                                                more than 30 days, contact the NSDL TIN Call Centre at
+                                                <strong>020-27218080</strong> or email
+                                                <strong>tininfo@nsdl.co.in</strong>.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 7. Incomplete or Incorrect Information -->
+                            <div class="card mb-2">
+                                <div class="card-header" id="panHeading7">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link text-left collapsed" data-toggle="collapse"
+                                            data-target="#panCollapse7">
+                                            <i class="fas fa-chevron-right mr-2"></i>Incomplete or Incorrect
+                                            Information
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="panCollapse7" class="collapse">
+                                    <div class="card-body">
+                                        <p>Omitting crucial information — such as initials in the name (you must use
+                                            your <strong>full name</strong> as per documents), or not providing proper
+                                            Father's Name or complete address details — leads to rejection.</p>
+                                        <p><strong>How to fix:</strong></p>
+                                        <ul>
+                                            <li><strong>Use Full Name:</strong> Enter your complete name without
+                                                abbreviations. For example, write "Rajesh Kumar Sharma" instead of
+                                                "R. K. Sharma".</li>
+                                            <li><strong>Father's Name:</strong> Provide the father's full name as
+                                                it appears on official records. This is mandatory for all individual
+                                                applicants.</li>
+                                            <li><strong>Correct via NSDL:</strong> If your PAN already has incorrect
+                                                details, submit a correction at the <a
+                                                    href="https://onlineservices.proteantech.in/paam/endUserRegisterContact.html"
+                                                    target="_blank">NSDL PAN Correction / Change Request Portal</a>.
+                                            </li>
+                                        </ul>
+                                        <p><em>Tip:</em> Fill every mandatory field carefully and review the form
+                                            before submission.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 8. Failure to Use Mandatory Aadhaar-PAN Linking -->
+                            <div class="card mb-2">
+                                <div class="card-header" id="panHeading8">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link text-left collapsed" data-toggle="collapse"
+                                            data-target="#panCollapse8">
+                                            <i class="fas fa-chevron-right mr-2"></i>Failure to Use Mandatory
+                                            Aadhaar-PAN Linking
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="panCollapse8" class="collapse">
+                                    <div class="card-body">
+                                        <p>Any mismatch between Aadhaar and PAN data prevents seamless linking, which
+                                            is mandatory under the Income Tax Act. An unlinked PAN becomes
+                                            <strong>inoperative</strong>, blocking ITR filing, refunds, and financial
+                                            transactions.
+                                        </p>
+                                        <p><strong>How to fix:</strong></p>
+                                        <ul>
+                                            <li><strong>Link Aadhaar-PAN:</strong> Link your Aadhaar with PAN at the
+                                                <a href="https://eportal.incometax.gov.in/iec/foservices/#/pre-login/bl-link-aadhaar"
+                                                    target="_blank">Income Tax Aadhaar-PAN Linking Portal</a>.
+                                            </li>
+                                            <li><strong>Check Linking Status:</strong> Verify if your Aadhaar and PAN
+                                                are already linked at the <a
+                                                    href="https://eportal.incometax.gov.in/iec/foservices/#/pre-login/link-aadhaar-status"
+                                                    target="_blank">Aadhaar-PAN Link Status Page</a>.</li>
+                                            <li><strong>Fix Data Mismatches First:</strong> If names or DOB differ
+                                                between Aadhaar and PAN, correct them in either document before
+                                                attempting to link. Use the <a
+                                                    href="https://onlineservices.proteantech.in/paam/endUserRegisterContact.html"
+                                                    target="_blank">NSDL PAN Correction Portal</a> or the <a
+                                                    href="https://uidai.gov.in/en/my-aadhaar/update-aadhaar.html"
+                                                    target="_blank">UIDAI Aadhaar Update Portal</a>.</li>
+                                        </ul>
+                                        <p><em>Important:</em> The deadline for linking has been extended multiple
+                                            times — check the Income Tax portal for the latest deadline. A fee of
+                                            ₹1,000 may apply for late linking.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- search pan related probelem -->
+
+                <!-- Search Form -->
+
+                <!-- ── Solve Issue Section ─────────────────────────────── -->
+                <div id="solveissue" style="margin-top: 2.5rem;">
+
+                    <!-- Search Card -->
+                    <div style="background: linear-gradient(135deg, #0a1628 0%, #1a2e4a 100%);
+                                        border-radius: 16px;
+                                        padding: 2.5rem 2rem;
+                                        box-shadow: 0 8px 32px rgba(10,22,40,0.18);
+                                        max-width: 720px;
+                                        margin: 0 auto 2rem;">
+                        <p style="text-align:center; color:#C5A059; font-size:0.85rem; letter-spacing:2px;
+                                           text-transform:uppercase; margin-bottom:0.5rem; font-weight:600;">
+                            AI-Powered Help
+                        </p>
+                        <h4 style="text-align:center; color:#ffffff; font-weight:700;
+                                           font-size:1.3rem; margin-bottom:1.5rem;">
+                            Describe Your PAN Problem
+                        </h4>
+
+                        <form action="" th:action="@{/user/getpanans}" method="get" th:object="${message}">
+                            <div style="position:relative; margin-bottom:1rem;">
+                                <i class="fas fa-search" style="position:absolute; top:50%; left:1rem;
+                                                  transform:translateY(-50%);
+                                                  color:#C5A059; font-size:1rem;"></i>
+                                <input type="text" name="content" id="content"
+                                    placeholder="e.g. My PAN address is incorrect…" style="width:100%; padding:0.85rem 1rem 0.85rem 2.8rem;
+                                                      border:2px solid rgba(197,160,89,0.35);
+                                                      border-radius:10px;
+                                                      background:rgba(255,255,255,0.07);
+                                                      color:#ffffff; font-size:1rem;
+                                                      outline:none; box-sizing:border-box;
+                                                      transition:border-color 0.3s;"
+                                    onfocus="this.style.borderColor='#C5A059'"
+                                    onblur="this.style.borderColor='rgba(197,160,89,0.35)'">
+                            </div>
+                            <button type="submit" style="width:100%; padding:0.85rem;
+                                                   background: linear-gradient(135deg,#C5A059,#e8c97a);
+                                                   color:#0a1628; font-weight:700; font-size:1rem;
+                                                   border:none; border-radius:10px; cursor:pointer;
+                                                   letter-spacing:0.5px;
+                                                   transition:opacity 0.3s, transform 0.2s;"
+                                onmouseover="this.style.opacity='0.88';this.style.transform='translateY(-1px)'"
+                                onmouseout="this.style.opacity='1';this.style.transform='translateY(0)'">
+                                <i class="fas fa-search" style="margin-right:0.5rem;"></i>Find Solution
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Result / Description Card -->
+                    <div th:if="${info != null && info.trim().length() > 0}" style="background:#ffffff; border:1px solid #e8e0d0;
+                                        border-left:5px solid #C5A059;
+                                        border-radius:12px; padding:2rem;
+                                        box-shadow:0 4px 20px rgba(0,0,0,0.08);
+                                        margin-bottom:2.5rem;">
+                        <div style="display:flex; align-items:center; margin-bottom:1rem; gap:0.6rem;">
+                            <i class="fas fa-lightbulb" style="color:#C5A059; font-size:1.3rem;"></i>
+                            <h5 style="margin:0; color:#0a1628; font-weight:700; font-size:1.1rem;">
+                                Solution / Information
+                            </h5>
+                        </div>
+                        <textarea th:text="${info}" id="mytextarea" rows="12" readonly style="width:100%; padding:1rem;
+                                                 border:1px solid #dde0e4; border-radius:8px;
+                                                 background:#fafafa; color:#333333;
+                                                 font-size:0.97rem; line-height:1.7;
+                                                 resize:vertical; outline:none;
+                                                 box-sizing:border-box; font-family:inherit;">
+                                </textarea>
+                    </div>
+
+                    <!-- Related Videos Section -->
+                    <div th:if="${info != null && !#lists.isEmpty(videos)}">
+
+                        <!-- Section Header -->
+                        <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1.8rem;">
+                            <div style="flex:1; height:2px;
+                                                background:linear-gradient(to right,#C5A059,transparent);"></div>
+                            <h2 style="margin:0; font-size:1.5rem; font-weight:700;
+                                               color:#0a1628; white-space:nowrap;">
+                                <i class="fab fa-youtube" style="color:#FF0000; margin-right:0.4rem;"></i>
+                                Related Videos
+                            </h2>
+                            <div style="flex:1; height:2px;
+                                                background:linear-gradient(to left,#C5A059,transparent);"></div>
+                        </div>
+
+                        <!-- Video Grid -->
+                        <ul th:unless="${#lists.isEmpty(videos)}" style="display:flex; flex-wrap:wrap; gap:1.5rem;
+                                           list-style:none; padding:0; margin:0;">
+                            <li th:each="video : ${videos}" style="flex: 1 1 calc(33.33% - 1rem); min-width:260px;
+                                               background:#ffffff;
+                                               border-radius:14px; overflow:hidden;
+                                               box-shadow:0 4px 18px rgba(0,0,0,0.10);
+                                               position:relative;
+                                               transition:transform 0.3s ease, box-shadow 0.3s ease;"
+                                onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 32px rgba(0,0,0,0.16)'"
+                                onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 18px rgba(0,0,0,0.10)'">
+
+                                <!-- Thumbnail -->
+                                <a th:href="'https://www.youtube.com/watch?v=' + ${video.videoId}" target="_blank"
+                                    style="display:block; position:relative;">
+                                    <img th:src="${video.thumbnailUrl}" alt="Video Thumbnail" style="width:100%; height:185px; object-fit:cover;
+                                                        display:block; transition:opacity 0.3s;">
+                                    <!-- Play overlay -->
+                                    <div style="position:absolute; inset:0;
+                                                         display:flex; align-items:center; justify-content:center;
+                                                         background:rgba(10,22,40,0.28);
+                                                         opacity:0; transition:opacity 0.3s;"
+                                        onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0'">
+                                        <i class="fas fa-play-circle" style="font-size:3.5rem; color:rgba(255,255,255,0.92);
+                                                          filter:drop-shadow(0 2px 8px rgba(0,0,0,0.5));"></i>
+                                    </div>
+                                </a>
+
+                                <!-- Video Title Bar -->
+                                <div style="padding:0.75rem 1rem;
+                                                     background:linear-gradient(135deg,#0a1628,#1a2e4a);
+                                                     min-height:56px; display:flex; align-items:center;">
+                                    <p th:text="${video.title}" style="margin:0; font-size:0.88rem; color:#ffffff;
+                                                      font-weight:500; line-height:1.4;
+                                                      display:-webkit-box; -webkit-line-clamp:2;
+                                                      -webkit-box-orient:vertical; overflow:hidden;">
+                                    </p>
+                                </div>
+
+                                <!-- Gold accent bottom line -->
+                                <div style="height:3px; background:linear-gradient(to right,#C5A059,#e8c97a);">
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- No Videos Message -->
+                    <div th:if="${info != null && #lists.isEmpty(videos)}" style="text-align:center; padding:2.5rem 1rem;
+                                        background:#f9f7f4; border-radius:12px;
+                                        border:1px dashed #C5A059;">
+                        <i class="fas fa-video-slash"
+                            style="font-size:2.5rem; color:#C5A059; margin-bottom:0.8rem; display:block;"></i>
+                        <p style="margin:0; font-size:1.05rem; color:#555; font-weight:500;">
+                            No related videos found for this query.
+                        </p>
+                        <p style="margin:0.4rem 0 0; font-size:0.9rem; color:#888;">
+                            Try rephrasing your problem for better results.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
 </body>
+
 </html>

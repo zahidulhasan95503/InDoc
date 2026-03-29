@@ -1,9 +1,9 @@
 package com.legal.entites;
 
 public class message {
-	
+
 	private String role;
-	
+
 	private String content;
 
 	public String getRole() {

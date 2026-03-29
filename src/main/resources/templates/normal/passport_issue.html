@@ -1,90 +1,376 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" 
-      th:replace="normal/base::layout(~{::section})">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>Passport Issue Resolution - InDoc</title>
 </head>
+
 <body>
-<section>
-
-<div class="sidebar">
-  
-  <span onclick="toggleSidebar()" class="crossBtn">&times;</span>
-  
-  <a href="#" th:href="@{/user/passport}">How to Create new new passport</a>
-  <a href="#" th:href="@{/user/passport_issue}">Solve Passport Issues</a>
-  <a href="#" th:href ="@{/user/passport_centre}">Find Passport Centers</a>
-  <a href="#" th:href="@{/user/update_user}">Settings</a>
-  <a href="#" th:href="@{/logout}">Logout</a>
- 
-  <div class="divider"></div>
-  
-  </div>
-  
-  <div class="content">
-
-<i onclick="toggleSidebar()" class="fas fa-bars m-3"></i>
+    <section class="py-5">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <a th:href="@{/user/passport}" class="text-decoration-none"><i
+                            class="fas fa-arrow-left mr-2"></i>Back to Passport Services</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="bg-white p-5 rounded shadow-sm">
+                        <div class="text-center mb-5"><i class="fas fa-question-circle fa-4x mb-3"
+                                style="color: #C5A059;"></i>
+                            <h1 class="font-weight-bold mb-3">Solve Passport Issues</h1>
+                            <p class="lead text-muted">Get help with your Passport problems</p>
+                        </div>
 
 
-<i onclick="toggleSidebar()" class="fas fa-bars m-3"></i>
-<!-- Header -->
-    <h2 style="margin-left:20px; text-align: center; font-size: 2.5rem; color: #FFD700; margin-bottom: 20px;">
-        Solve your Passport Problems Effortlessly
-    </h2>
-    
-    <p style="text-align: center; margin-bottom: 30px; font-size: 1.2rem; color: #555;">
-        Get your Passport-related queries resolved quickly. Enter your problem below and explore relevant videos for solutions!
-    </p>
 
-    <!-- Search Form -->
-    <form action="" th:action="@{/user/getpassportans}" method="get" th:object="${message}" style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
-        <input type="text" name="content" id="content" 
-               style="width: 100%; padding: 12px 20px; margin-bottom: 20px; border-radius: 8px; border: 1px solid #ddd; font-size: 1.1rem;" 
-               placeholder="Enter the problem">
-        <button type="submit" 
-                style="background-color: #FFD700; color: white; border: none; padding: 12px 30px; font-size: 1.1rem; border-radius: 8px; cursor: pointer; transition: background-color 0.3s ease;">
-            Search
-        </button>
-    </form>
+                        <h3 class="font-weight-bold mb-4">Common Issues</h3>
+                        <div class="accordion" id="issueAccordion">
 
-    <!-- Textarea for Description -->
-    <div class="form-group" style="width:1100px; margin: 30px auto;">
-        <textarea th:if="${info != null && info.trim().length() > 0}" th:text="${info}" id="mytextarea" rows="20" 
-                  style="width: 100%; padding: 15px; border-radius: 8px; border: 1px solid #ddd; font-size: 1.1rem;" 
-                  placeholder="Enter Contact Description"></textarea>
-    </div>
+                            <!-- 1. Police Verification Issues -->
+                            <div class="card mb-2">
+                                <div class="card-header" id="heading1">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link text-left" data-toggle="collapse"
+                                            data-target="#collapse1">
+                                            <i class="fas fa-chevron-right mr-2"></i>Police Verification Issues
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapse1" class="collapse">
+                                    <div class="card-body">
+                                        <p>The most common hurdle is police not visiting, or finding that the address
+                                            provided does not match records, or the applicant is not present at the
+                                            given address.</p>
+                                        <p><strong>How to fix:</strong></p>
+                                        <ul>
+                                            <li><strong>Be Present:</strong> Ensure you or a reliable family member is
+                                                present at the given address during the verification period.</li>
+                                            <li><strong>Prepare Documents:</strong> Keep your original ID, address
+                                                proof, and 2 references from your locality ready for the visiting
+                                                officer.</li>
+                                            <li><strong>Track Verification:</strong> Check the exact status of your
+                                                police verification online at the <a
+                                                    href="https://www.passportindia.gov.in/psp/trackApplicationService"
+                                                    target="_blank">Track Application Status</a> portal.</li>
+                                            <li><strong>Visit Police Station / RPO:</strong> If the verification is
+                                                excessively delayed or failed, visit your local police station or book
+                                                an enquiry appointment at your Regional Passport Office (RPO).</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
 
-    <!-- Video Section -->
-    
-    <div th:if="${info != null && !#lists.isEmpty(videos)}">
-    <h2 style="text-align: center; font-size: 2rem; color: #FFD700; margin-top: 40px; margin-bottom: 30px;">Related Videos</h2>
+                            <!-- 2. Incomplete or Incorrect Documentation -->
+                            <div class="card mb-2">
+                                <div class="card-header" id="heading2">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link text-left collapsed" data-toggle="collapse"
+                                            data-target="#collapse2">
+                                            <i class="fas fa-chevron-right mr-2"></i>Incomplete or Incorrect
+                                            Documentation
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapse2" class="collapse">
+                                    <div class="card-body">
+                                        <p>Mismatched names, incorrect dates of birth, or unclear/unattested photocopies
+                                            of documents lead to delays or rejections at the PSK.</p>
+                                        <p><strong>How to fix:</strong></p>
+                                        <ul>
+                                            <li><strong>Check Consistency:</strong> Cross-verify your exact name
+                                                spelling and DOB across all documents (Aadhaar, PAN, Marksheets) before
+                                                applying. They must match perfectly.</li>
+                                            <li><strong>Use Document Advisor:</strong> Use the official <a
+                                                    href="https://www.passportindia.gov.in/psp/docAdvisor/attachmentAdvFreshInp"
+                                                    target="_blank">Document Advisor</a> to generate an exact list of
+                                                valid documents required for your specific case.</li>
+                                            <li><strong>Self-Attestation:</strong> Ensure all photocopies you carry to
+                                                the PSK are clear, legible, and signed (self-attested) by you. Carry
+                                                originals for all copies.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
 
-    <!-- Video List -->
-    <ul th:unless="${#lists.isEmpty(videos)}" style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 20px; max-width: 1200px; margin: 0 auto; padding: 0; list-style: none;">
-        <li th:each="video : ${videos}" style="background-color: white; border: 1px solid #ddd; margin-top: 25px; border-radius: 15px; overflow: hidden; width: calc(33.33% - 20px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); position: relative; transition: transform 0.3s ease, box-shadow 0.3s ease;">
-            
-            <!-- Thumbnail with hover effect -->
-            <a th:href="'https://www.youtube.com/watch?v=' + ${video.videoId}" target="_blank" style="display: block;">
-                <img th:src="${video.thumbnailUrl}" alt="Video Thumbnail" style="width: 100%; height: 200px; object-fit: cover; transition: opacity 0.3s ease;">
-            </a>
+                            <!-- 3. Missing Annexures -->
+                            <div class="card mb-2">
+                                <div class="card-header" id="heading3">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link text-left collapsed" data-toggle="collapse"
+                                            data-target="#collapse3">
+                                            <i class="fas fa-chevron-right mr-2"></i>Missing Annexures
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapse3" class="collapse">
+                                    <div class="card-body">
+                                        <p>Failure to attach specific declarations (Annexure) for cases like minor
+                                            applicants, lost passports, or changes in personal details can put
+                                            applications on hold.</p>
+                                        <p><strong>How to fix:</strong></p>
+                                        <ul>
+                                            <li>Identify if your application falls into a special category (e.g., Minor
+                                                applying without one parent, Tatkal, Lost/Damaged Passport).</li>
+                                            <li>Download the correct and latest standard affidavit formats from the
+                                                "Forms and Affidavits" section on the <a
+                                                    href="https://www.passportindia.gov.in" target="_blank">Passport
+                                                    Seva Portal</a>.</li>
+                                            <li>Ensure the annexure is printed on plain paper (or non-judicial stamp
+                                                paper if specified), properly filled, signed, and notarized if
+                                                explicitly required.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
 
-            <!-- Title overlay -->
-            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.7); padding: 10px; text-align: center;">
-                <h2 style="font-size: 1rem; color: white; margin: 0;" th:text="${video.title}"></h2>
+                            <!-- 4. Application Status Stuck -->
+                            <div class="card mb-2">
+                                <div class="card-header" id="heading4">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link text-left collapsed" data-toggle="collapse"
+                                            data-target="#collapse4">
+                                            <i class="fas fa-chevron-right mr-2"></i>Application Status Stuck
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapse4" class="collapse">
+                                    <div class="card-body">
+                                        <p>Applicants fail to track their applications, leading to missed opportunities
+                                            to rectify issues highlighted by the Passport Seva Kendra (PSK).</p>
+                                        <p><strong>How to fix:</strong></p>
+                                        <ul>
+                                            <li><strong>Track Regularly:</strong> Enter your 15-digit alphanumeric File
+                                                Number and Date of Birth at the <a
+                                                    href="https://www.passportindia.gov.in/psp/trackApplicationService"
+                                                    target="_blank">Application Status Tracking Page</a>.</li>
+                                            <li><strong>Respond to Clarifications:</strong> If the status says a
+                                                document or clarification is pending, book an "Enquiry Appointment" at
+                                                your RPO immediately to provide the missing information.</li>
+                                            <li><strong>SMS Alerts:</strong> Subscribe to SMS alerts during your PSK
+                                                visit for real-time updates directly to your mobile number.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 5. Address Mis-match -->
+                            <div class="card mb-2">
+                                <div class="card-header" id="heading5">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link text-left collapsed" data-toggle="collapse"
+                                            data-target="#collapse5">
+                                            <i class="fas fa-chevron-right mr-2"></i>Address Mis-match
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapse5" class="collapse">
+                                    <div class="card-body">
+                                        <p>Issues arising if an applicant has changed residence and failed to provide
+                                            proof of the new address.</p>
+                                        <p><strong>How to fix:</strong></p>
+                                        <ul>
+                                            <li>You must apply with the address where you currently reside, not your
+                                                permanent address (if they differ).</li>
+                                            <li>Provide valid proof of your current address, such as an Aadhaar card
+                                                updated with the new address, a registered rent agreement, or a recent
+                                                utility bill in your name.</li>
+                                            <li>If you moved immediately before applying, keep proof of your previous
+                                                address handy in case the PSK or police officer requests it.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 6. Signature/Photo Discrepancies -->
+                            <div class="card mb-2">
+                                <div class="card-header" id="heading6">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link text-left collapsed" data-toggle="collapse"
+                                            data-target="#collapse6">
+                                            <i class="fas fa-chevron-right mr-2"></i>Signature/Photo Discrepancies
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapse6" class="collapse">
+                                    <div class="card-body">
+                                        <p>Inconsistent signatures across documents or poor-quality photos can cause
+                                            complications, especially during the biometric capture stage at the PSK.</p>
+                                        <p><strong>How to fix:</strong></p>
+                                        <ul>
+                                            <li><strong>Sign Consistently:</strong> Maintain a standard signature across
+                                                all forms, self-attested copies, and the digital pad at the PSK.</li>
+                                            <li><strong>Photos at PSK:</strong> Remember that your primary passport
+                                                photo is taken live by the camera at the PSK. Wear dark-colored clothing
+                                                (to contrast with the white background) and avoid heavy makeup or large
+                                                accessories.</li>
+                                            <li><strong>Minors & Infants:</strong> For children below 4 years, you may
+                                                need to carry a recent passport-sized photograph with a white background
+                                                as live capture can be difficult.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
             </div>
 
-        </li>
-    </ul>
-    
-    </div>
+            <!-- Search Form -->
 
-    <!-- Message for No Videos -->
-    <p th:if="${#lists.isEmpty(videos)}" style="text-align: center; margin-top: 40px; font-size: 1.2rem; color: #555;">
-        No related videos found.
-    </p>
+            <!-- ── Solve Issue Section ─────────────────────────────── -->
+            <div id="solveissue" style="margin-top: 2.5rem;">
 
-</div>
-</section>
+                <!-- Search Card -->
+                <div style="background: linear-gradient(135deg, #0a1628 0%, #1a2e4a 100%);
+                                        border-radius: 16px;
+                                        padding: 2.5rem 2rem;
+                                        box-shadow: 0 8px 32px rgba(10,22,40,0.18);
+                                        max-width: 720px;
+                                        margin: 0 auto 2rem;">
+                    <p style="text-align:center; color:#C5A059; font-size:0.85rem; letter-spacing:2px;
+                                           text-transform:uppercase; margin-bottom:0.5rem; font-weight:600;">
+                        AI-Powered Help
+                    </p>
+                    <h4 style="text-align:center; color:#ffffff; font-weight:700;
+                                           font-size:1.3rem; margin-bottom:1.5rem;">
+                        Describe Your Passport Problem
+                    </h4>
+
+                    <form action="" th:action="@{/user/getpassportans}" method="get" th:object="${message}">
+                        <div style="position:relative; margin-bottom:1rem;">
+                            <i class="fas fa-search" style="position:absolute; top:50%; left:1rem;
+                                                  transform:translateY(-50%);
+                                                  color:#C5A059; font-size:1rem;"></i>
+                            <input type="text" name="content" id="content"
+                                placeholder="e.g. My Passport address is incorrect…" style="width:100%; padding:0.85rem 1rem 0.85rem 2.8rem;
+                                                      border:2px solid rgba(197,160,89,0.35);
+                                                      border-radius:10px;
+                                                      background:rgba(255,255,255,0.07);
+                                                      color:#ffffff; font-size:1rem;
+                                                      outline:none; box-sizing:border-box;
+                                                      transition:border-color 0.3s;"
+                                onfocus="this.style.borderColor='#C5A059'"
+                                onblur="this.style.borderColor='rgba(197,160,89,0.35)'">
+                        </div>
+                        <button type="submit" style="width:100%; padding:0.85rem;
+                                                   background: linear-gradient(135deg,#C5A059,#e8c97a);
+                                                   color:#0a1628; font-weight:700; font-size:1rem;
+                                                   border:none; border-radius:10px; cursor:pointer;
+                                                   letter-spacing:0.5px;
+                                                   transition:opacity 0.3s, transform 0.2s;"
+                            onmouseover="this.style.opacity='0.88';this.style.transform='translateY(-1px)'"
+                            onmouseout="this.style.opacity='1';this.style.transform='translateY(0)'">
+                            <i class="fas fa-search" style="margin-right:0.5rem;"></i>Find Solution
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Result / Description Card -->
+                <div th:if="${info != null && info.trim().length() > 0}" style="background:#ffffff; border:1px solid #e8e0d0;
+                                        border-left:5px solid #C5A059;
+                                        border-radius:12px; padding:2rem;
+                                        box-shadow:0 4px 20px rgba(0,0,0,0.08);
+                                        margin-bottom:2.5rem;">
+                    <div style="display:flex; align-items:center; margin-bottom:1rem; gap:0.6rem;">
+                        <i class="fas fa-lightbulb" style="color:#C5A059; font-size:1.3rem;"></i>
+                        <h5 style="margin:0; color:#0a1628; font-weight:700; font-size:1.1rem;">
+                            Solution / Information
+                        </h5>
+                    </div>
+                    <textarea th:text="${info}" id="mytextarea" rows="12" readonly style="width:100%; padding:1rem;
+                                                 border:1px solid #dde0e4; border-radius:8px;
+                                                 background:#fafafa; color:#333333;
+                                                 font-size:0.97rem; line-height:1.7;
+                                                 resize:vertical; outline:none;
+                                                 box-sizing:border-box; font-family:inherit;">
+                                </textarea>
+                </div>
+
+                <!-- Related Videos Section -->
+                <div th:if="${info != null && !#lists.isEmpty(videos)}">
+
+                    <!-- Section Header -->
+                    <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1.8rem;">
+                        <div style="flex:1; height:2px;
+                                                background:linear-gradient(to right,#C5A059,transparent);"></div>
+                        <h2 style="margin:0; font-size:1.5rem; font-weight:700;
+                                               color:#0a1628; white-space:nowrap;">
+                            <i class="fab fa-youtube" style="color:#FF0000; margin-right:0.4rem;"></i>
+                            Related Videos
+                        </h2>
+                        <div style="flex:1; height:2px;
+                                                background:linear-gradient(to left,#C5A059,transparent);"></div>
+                    </div>
+
+                    <!-- Video Grid -->
+                    <ul th:unless="${#lists.isEmpty(videos)}" style="display:flex; flex-wrap:wrap; gap:1.5rem;
+                                           list-style:none; padding:0; margin:0;">
+                        <li th:each="video : ${videos}" style="flex: 1 1 calc(33.33% - 1rem); min-width:260px;
+                                               background:#ffffff;
+                                               border-radius:14px; overflow:hidden;
+                                               box-shadow:0 4px 18px rgba(0,0,0,0.10);
+                                               position:relative;
+                                               transition:transform 0.3s ease, box-shadow 0.3s ease;"
+                            onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 32px rgba(0,0,0,0.16)'"
+                            onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 18px rgba(0,0,0,0.10)'">
+
+                            <!-- Thumbnail -->
+                            <a th:href="'https://www.youtube.com/watch?v=' + ${video.videoId}" target="_blank"
+                                style="display:block; position:relative;">
+                                <img th:src="${video.thumbnailUrl}" alt="Video Thumbnail" style="width:100%; height:185px; object-fit:cover;
+                                                        display:block; transition:opacity 0.3s;">
+                                <!-- Play overlay -->
+                                <div style="position:absolute; inset:0;
+                                                         display:flex; align-items:center; justify-content:center;
+                                                         background:rgba(10,22,40,0.28);
+                                                         opacity:0; transition:opacity 0.3s;"
+                                    onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0'">
+                                    <i class="fas fa-play-circle" style="font-size:3.5rem; color:rgba(255,255,255,0.92);
+                                                          filter:drop-shadow(0 2px 8px rgba(0,0,0,0.5));"></i>
+                                </div>
+                            </a>
+
+                            <!-- Video Title Bar -->
+                            <div style="padding:0.75rem 1rem;
+                                                     background:linear-gradient(135deg,#0a1628,#1a2e4a);
+                                                     min-height:56px; display:flex; align-items:center;">
+                                <p th:text="${video.title}" style="margin:0; font-size:0.88rem; color:#ffffff;
+                                                      font-weight:500; line-height:1.4;
+                                                      display:-webkit-box; -webkit-line-clamp:2;
+                                                      -webkit-box-orient:vertical; overflow:hidden;">
+                                </p>
+                            </div>
+
+                            <!-- Gold accent bottom line -->
+                            <div style="height:3px; background:linear-gradient(to right,#C5A059,#e8c97a);">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- No Videos Message -->
+                <div th:if="${info != null && #lists.isEmpty(videos)}" style="text-align:center; padding:2.5rem 1rem;
+                                        background:#f9f7f4; border-radius:12px;
+                                        border:1px dashed #C5A059;">
+                    <i class="fas fa-video-slash"
+                        style="font-size:2.5rem; color:#C5A059; margin-bottom:0.8rem; display:block;"></i>
+                    <p style="margin:0; font-size:1.05rem; color:#555; font-weight:500;">
+                        No related videos found for this query.
+                    </p>
+                    <p style="margin:0.4rem 0 0; font-size:0.9rem; color:#888;">
+                        Try rephrasing your problem for better results.
+                    </p>
+                </div>
+
+            </div>
+
+
+        </div>
+    </section>
 </body>
+
 </html>

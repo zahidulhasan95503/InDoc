@@ -1,70 +1,336 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" 
-      th:replace="normal/base::layout(~{::section})">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+
 <head>
-<meta charset="UTF-8">
-<title>Home page</title>
+  <meta charset="UTF-8">
+  <title>Birth Certificate Services - InDoc</title>
 </head>
+
 <body>
 
+  <section class="py-4">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col-12">
+          <h1 class="display-4 font-weight-bold mb-2" style="color: #0F172A;">Birth Certificate Services</h1>
+          <p class="lead text-muted">Complete guide to Birth Certificate application and services</p>
+        </div>
+      </div>
+
+      <div class="row mb-5">
+        <div class="col-md-4 mb-3">
+          <a th:href="@{/user/birth}" class="text-decoration-none">
+            <div class="p-4 bg-white rounded shadow-sm hover-lift border-left-primary">
+              <h5 class="font-weight-bold"><i class="fas fa-plus-circle mr-2" style="color: #C5A059;"></i>Register Birth
+              </h5>
+              <p class="text-muted small mb-0">Apply for new Birth Certificate</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4 mb-3">
+          <a th:href="@{/user/birth_issue}" class="text-decoration-none">
+            <div class="p-4 bg-white rounded shadow-sm hover-lift border-left-primary">
+              <h5 class="font-weight-bold"><i class="fas fa-tools mr-2" style="color: #C5A059;"></i>Solve Issues</h5>
+              <p class="text-muted small mb-0">Get help with certificate problems</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4 mb-3">
+          <a th:href="@{/user/birth_centre}" class="text-decoration-none">
+            <div class="p-4 bg-white rounded shadow-sm hover-lift border-left-primary">
+              <h5 class="font-weight-bold"><i class="fas fa-map-marker-alt mr-2" style="color: #C5A059;"></i>Find
+                Centers</h5>
+              <p class="text-muted small mb-0">Locate registration offices</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="row">
+        <div class="col-12">
+          <div class="bg-white p-5 rounded shadow-sm">
+            <h2 class="mb-4 font-weight-bold" style="color: #C5A059;">How to get Birth Certificate</h2>
+
+            <div class="content-text">
+              <!-- Introduction -->
+              <div class="mb-5">
+                <p class="lead">A <strong>Birth Certificate</strong> is a vital administrative document issued by the
+                  Government of India that records the birth of a child. It serves as permanent proof of identity, age,
+                  and nationality.</p>
+
+                <p>Registering a birth is mandatory in India under the <strong>Registration of Births and Deaths (RBD)
+                    Act, 1969</strong>. A birth certificate is required for various fundamental rights and services,
+                  including school admissions, obtaining a passport, voter ID, driving license, and Aadhaar card.</p>
+                <p><strong>Official Resource Link:</strong> <a
+                    href="https://services.india.gov.in/service/detail/obtain-birth-certificate" target="_blank"
+                    rel="noopener">National Portal of India - Obtain Birth Certificate</a></p>
+              </div>
+
+              <!-- Quick Facts -->
+              <div class="alert alert-warning mb-5">
+                <h5 class="font-weight-bold"><i class="fas fa-exclamation-triangle mr-2"></i>Important to Know</h5>
+                <ul class="mb-0">
+                  <li>Birth must be registered within <strong>21 days</strong> of the event, totally <strong>FREE of
+                      cost</strong>.</li>
+                  <li>In institutional births (hospitals/nursing homes), the medical institution is responsible for
+                    reporting to the Registrar.</li>
+                  <li>In domiciliary (home) births, the head of the household must report it.</li>
+                  <li>Delayed registration (after 21 days) attracts late fees and requires additional affidavits or
+                    magistrate permission.</li>
+                </ul>
+              </div>
+
+              <!-- DOCUMENTS REQUIRED -->
+              <h3 class="mt-5 mb-4 font-weight-bold" style="color: #C5A059;">
+                <i class="fas fa-file-alt mr-2"></i>Documents Required for Birth Certificate
+              </h3>
+
+              <div class="alert alert-primary">
+                <strong>Note:</strong> Keep <strong>original documents</strong> with you for verification at the
+                Registrar's office.
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="p-3 border rounded h-100">
+                    <h5 class="font-weight-bold mb-3">Institutional Births (Hospital)</h5>
+                    <ul class="small">
+                      <li>Proof of birth / Discharge letter issued by the hospital where the child was born.</li>
+                      <li>Parents' Identity Proof (Aadhaar Card, Voter ID, PAN Card, or Passport).</li>
+                      <li>Parents' Address Proof (Aadhaar, utility bills, etc.).</li>
+                      <li>Marriage Certificate of parents (optional but recommended in some states).</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                  <div class="p-3 border rounded h-100">
+                    <h5 class="font-weight-bold mb-3">Domiciliary Births (Home)</h5>
+                    <ul class="small">
+                      <li>Affidavit from the parents detailing the birth date, time, and location.</li>
+                      <li>Letter/certificate from the person/midwife who assisted in the delivery.</li>
+                      <li>Identity and Address Proof of parents.</li>
+                      <li>Declaration by head of family or nearest relative present at birth.</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- =============================== -->
+              <!-- ONLINE APPLICATION -->
+              <!-- =============================== -->
+              <div class="mb-5 p-4" style="border-left: 4px solid #C5A059; background-color: #f8f9fa;">
+                <h3 class="font-weight-bold mb-4" style="color: #0F172A;">
+                  <i class="fas fa-laptop mr-2" style="color: #C5A059;"></i>How to Apply for Birth Certificate Online
+                </h3>
+
+                <p class="mb-4">The Government of India provides the <strong>Civil Registration System (CRS)</strong>
+                  portal for online birth registration in supported States and Union Territories. Some states also have
+                  their own dedicated municipal portals.</p>
+                <p><strong>Official Online Portal Link:</strong> <a href="https://crsorgi.gov.in/" target="_blank"
+                    rel="noopener">Civil Registration System (crsorgi.gov.in)</a></p>
+
+                <h5 class="font-weight-bold mt-4 mb-3">Step-by-Step Process:</h5>
+                <ol class="pl-4" style="line-height: 2;">
+                  <li class="mb-3">
+                    <strong>Visit the Official CRS Portal</strong><br>
+                    Go to <a href="https://crsorgi.gov.in/" target="_blank" rel="noopener">crsorgi.gov.in</a> — the
+                    official Civil Registration System portal.
+                    <img th:src="@{/images/birth1.png}" alt="CRS Portal Homepage"
+                      class="img-fluid rounded shadow-sm mt-3 mb-2"
+                      style="max-width: 700px; border: 1px solid #dee2e6;">
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>General Public Sign Up / Login</strong><br>
+                    If you are a new user, click on <strong>"General Public Sign Up"</strong> to create an account. You
+                    will need to provide your username, email ID, and mobile number.
+                    <ul class="mt-2">
+                      <li>Select your State, District, Subdistrict, and Village/Town.</li>
+                      <li>Verify using OTP sent to your registered mobile number.</li>
+                      <li>If already registered, log in using your credentials.</li>
+                    </ul>
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Fill the Online Birth Registration Form</strong><br>
+                    After logging in, navigate to the "Add Birth Registration" section. Complete the online form
+                    carefully with these details:
+                    <ul class="mt-2">
+                      <li><strong>Child's Details:</strong> Name (if decided), Date of Birth, Gender.</li>
+                      <li><strong>Place of Birth:</strong> Hospital Name or Home Address.</li>
+                      <li><strong>Parents' Details:</strong> Father's and Mother's names, Aadhaar numbers, and
+                        occupations.</li>
+                      <li><strong>Address:</strong> Current address of parents at the time of birth and permanent
+                        address.</li>
+                    </ul>
+                    <img th:src="@{/images/birth2.png}" alt="Birth Registration Form"
+                      class="img-fluid rounded shadow-sm mt-3 mb-2"
+                      style="max-width: 700px; border: 1px solid #dee2e6;">
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Upload Required Documents</strong><br>
+                    Upload scanned copies of required documents in the specified format (usually PDF/JPEG). This
+                    includes identity proof of parents and hospital letters.
+                    <img th:src="@{/images/birth3.png}" alt="Upload Documents Page"
+                      class="img-fluid rounded shadow-sm mt-3 mb-2"
+                      style="max-width: 700px; border: 1px solid #dee2e6;">
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Submit and Print Application</strong><br>
+                    Review all details thoroughly. Click <strong>"Submit"</strong> to complete your application.<br>
+                    Take a printout of the submitted application form which will bear a reference or registration
+                    number.
+                    <img th:src="@{/images/birth4.png}" alt="Application Confirmation"
+                      class="img-fluid rounded shadow-sm mt-3 mb-2"
+                      style="max-width: 700px; border: 1px solid #dee2e6;">
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Visit Registrar Office</strong><br>
+                    <strong>Important:</strong> You must visit the local Registrar's office with the printed application
+                    form and original documents for physical verification within the stipulated time for the certificate
+                    to be approved.
+                  </li>
+                </ol>
+
+                <div class="alert alert-info mt-4">
+                  <i class="fas fa-info-circle mr-2"></i>
+                  <strong>State Portals:</strong> If your state is not fully covered by CRS, you may need to apply
+                  through your state's specific e-District or Municipal Corporation website (e.g., e-District Delhi,
+                  e-Sevai TN, BMC portal Mumbai).
+                </div>
+              </div>
+
+              <!-- =============================== -->
+              <!-- OFFLINE APPLICATION -->
+              <!-- =============================== -->
+              <div class="mb-5 p-4" style="border-left: 4px solid #C5A059; background-color: #f8f9fa;">
+                <h3 class="font-weight-bold mb-4" style="color: #0F172A;">
+                  <i class="fas fa-building mr-2" style="color: #C5A059;"></i>How to Apply for Birth Certificate offline
+                </h3>
+
+                <p class="mb-4">If you prefer the offline method or if online registration isn't available in your
+                  region, you can apply physically at your local municipal or panchayat office.</p>
+                <p><strong>Official Resource Link:</strong> <a
+                    href="https://www.india.gov.in/how-obtain-birth-certificate" target="_blank"
+                    rel="noopener">India.gov.in - How to Obtain Birth Certificate</a></p>
+
+                <h5 class="font-weight-bold mt-4 mb-3">Step-by-Step Process:</h5>
+                <ol class="pl-4" style="line-height: 2;">
+                  <li class="mb-3">
+                    <strong>Obtain the Registration Form</strong><br>
+                    Get the birth registration form from the local Municipal Corporation, Nagar Palika, or Gram
+                    Panchayat office.
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Collect Hospital Letter (for institutional births)</strong><br>
+                    If the birth occurred in a hospital, collect the discharge summary or the letter provided by the
+                    Medical Officer in charge, confirming the birth.
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Fill the Application Form</strong><br>
+                    Fill in the required information, including child's date of birth, gender, and parents' details.
+                    Make sure no spelling mistakes are made as correction later is difficult.
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Attach Documents</strong><br>
+                    Attach self-attested photocopies of identity proof and address proof of the parents, along with the
+                    hospital discharge summary (if applicable) and a marriage certificate.
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Submit the Application</strong><br>
+                    Submit the completed application form and documents to the Registrar of Births and Deaths at the
+                    local municipal or panchayat authority.
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Physical Verification</strong><br>
+                    The authorities verify the application and documents. For home births, a physical verification of
+                    the address might be conducted by a local officer.
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Collect Certificate</strong><br>
+                    Once verification is complete, the Birth Certificate is issued. You can collect the physical copy
+                    from the office after the designated processing time (usually 7-15 days).
+                  </li>
+                </ol>
+              </div>
+
+              <!-- =============================== -->
+              <!-- DELAYED REGISTRATION -->
+              <!-- =============================== -->
+              <div class="mb-5 p-4" style="background-color: #fff3cd; border-left: 4px solid #ffc107;">
+                <h4 class="font-weight-bold mb-3">
+                  <i class="fas fa-clock mr-2"></i>Delayed Birth Registration Rules
+                </h4>
+                <p>If a birth is not registered within 21 days, delayed registration rules apply under the RBD Act:</p>
+                <div class="table-responsive">
+                  <table class="table table-bordered bg-white">
+                    <thead class="thead-light">
+                      <tr>
+                        <th>Delay Period</th>
+                        <th>Required Action &amp; Authority</th>
+                        <th>Late Fee</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>21 to 30 Days</strong></td>
+                        <td>Written permission of the Registrar.</td>
+                        <td>Nominal late fee (e.g., ₹2 - ₹10 depending on state).</td>
+                      </tr>
+                      <tr>
+                        <td><strong>30 Days to 1 Year</strong></td>
+                        <td>Written permission of the prescribed authority (usually Chief Medical Officer or
+                          Sub-Divisional Magistrate) and production of an affidavit made before a notary public.</td>
+                        <td>Late fee applicable (e.g., ₹5 - ₹50).</td>
+                      </tr>
+                      <tr>
+                        <td><strong>More than 1 Year</strong></td>
+                        <td>Registration can only be made on an order made by a Magistrate of the First Class or
+                          Presidency Magistrate after verifying the correctness of the birth. Obtain a Non-Availability
+                          Certificate (NAC) first.</td>
+                        <td>Higher late fee applicable (e.g., ₹10 - ₹100+).</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
 
 
-<section>
+              <!-- HELPFUL LINKS -->
+              <div class="mt-5 p-4" style="background-color: #e3f2fd; border-radius: 8px;">
+                <h5 class="font-weight-bold mb-3"><i class="fas fa-link mr-2"></i>Helpful Links &amp; Resources</h5>
+                <div class="row">
+                  <div class="col-md-6 mb-2">
+                    <a href="https://crsorgi.gov.in/" target="_blank" rel="noopener" class="d-block">
+                      <i class="fas fa-external-link-alt mr-2"></i>CRS Portal - Govt. of India
+                    </a>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <a href="https://www.digilocker.gov.in/" target="_blank" rel="noopener" class="d-block">
+                      <i class="fas fa-cloud-download-alt mr-2"></i>DigiLocker - Download e-Certificate
+                    </a>
+                  </div>
+                </div>
+              </div>
 
-<div class="sidebar">
-  
-  <span onclick="toggleSidebar()" class="crossBtn">&times;</span>
-  
-  <a href="#" th:href="@{/user/birth}">How to Create new Birth Certificate</a>
-  <a href="#" th:href="@{/user/birth_issue}">Solve Birth Certificate Issues Issues</a>
-  <a href="#" th:href ="@{/user/birth_centre}">Find Birth Certificate Centers</a>
-  <a href="#" th:href="@{/user/update_user}">Settings</a>
-  <a href="#" th:href="@{/logout}">Logout</a>
- 
-  <div class="divider"></div>
-  
-  </div>
-  
-  <div class="content">
-
-<i onclick="toggleSidebar()" class="fas fa-bars m-3"></i>
-
-
-
-
-<h2 class="text-center" style="color:#FFD999;">How to apply for Aadhar Online & Offline!</h2>
-<div class="container" style="font-size: 1.5vmax;">
-<pre style="font-family: Argent CF;">
-<h3>Step 1: Gather Required Documents</h3>
-        <p>Before applying for a birth certificate, ensure you have the following documents ready:</p>
-        <ul><li>Proof of birth (hospital discharge summary or notification).</li>
-            <li>Parent's identification documents (e.g., Aadhar card, passport, etc.).</li>
-            <li>Proof of address.</li>
-            <li>Marriage certificate of parents (if required).</li></ul>
-          <h3>Step 2: Choose Application Method</h3>
-        <p>You can apply for a birth certificate through:</p>
-        <ul><li>The local municipal office.</li>
-            <li>Online via the official government website.</li></ul>
-        <h3>Step 3: Complete the Application</h3>
-        <p>Fill in the application form with accurate details, including:</p>
-        <ul><li>Name of the child.</li>
-            <li>Date, time, and place of birth.</li>
-            <li>Parent's full names and other required information.</li></ul>
-        <h3>Step 4: Submit the Application</h3>
-        <p>Submit the application along with the required documents either:</p>
-        <ul><li>In person at the municipal office.</li>
-            <li>Online via the government portal.</li></ul>
-         <h3>Step 5: Track and Collect Your Birth Certificate</h3>
-        <p>After submission, you can track the status of your application. Once approved, collect your birth certificate:</p>
-        <ul><li>Physically from the municipal office.</li>
-            <li>Download it online (if available).</li></ul>
-</pre>
-</div>
-</div>
-</section>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 </body>
-
- 
 
 </html>

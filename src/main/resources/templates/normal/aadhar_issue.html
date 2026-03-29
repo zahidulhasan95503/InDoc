@@ -1,97 +1,454 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+
 <head>
     <meta charset="UTF-8">
-    <title>Aadhar Problem Solver</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aadhar Issue Resolution - InDoc</title>
 </head>
-<body style="font-family: Arial, sans-serif; background-color: #f0f2f5; color: #333; line-height: 1.6; padding: 20px;">
 
-<section>
-
-<div class="sidebar">
-  
-  <span onclick="toggleSidebar()" class="crossBtn">&times;</span>
-  
-  <a href="#" th:href="@{/user/aadhar}">How To Create new Aadhar</a>
-  <a href="#" th:href="@{/user/aadhar_issue}">Solve Aadhar Issues</a>
-  <a href="#" th:href ="@{/user/aadhar_centre}">Find Aadhar Centers</a>
-  <a href="#" th:href="@{/user/update_user}">Settings</a>
-  <a href="#" th:href="@{/logout}">Logout</a>
- 
-  <div class="divider"></div>
-  
-  </div>
-  
-  <div class="content">
-
-<i onclick="toggleSidebar()" class="fas fa-bars m-3"></i>
-
-
-
-    <!-- Header -->
-    <h2 style="margin-left:20px; text-align: center; font-size: 2.5rem; color: #FFD700; margin-bottom: 20px;">
-        Solve your Aadhar Problems Effortlessly
-    </h2>
-    
-    <p style="text-align: center; margin-bottom: 30px; font-size: 1.2rem; color: #555;">
-        Get your Aadhar-related queries resolved quickly. Enter your problem below and explore relevant videos for solutions!
-    </p>
-
-    <!-- Search Form -->
-    <form action="" th:action="@{/user/getans}" method="get" th:object="${message}" style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; align-items: center;">
-        <input type="text" name="content" id="content" 
-               style="width: 100%; padding: 12px 20px; margin-bottom: 20px; border-radius: 8px; border: 1px solid #ddd; font-size: 1.1rem;" 
-               placeholder="Enter the problem">
-        <button type="submit" 
-                style="background-color: #FFD700; color: white; border: none; padding: 12px 30px; font-size: 1.1rem; border-radius: 8px; cursor: pointer; transition: background-color 0.3s ease;">
-            Search
-        </button>
-    </form>
-
-    <!-- Textarea for Description -->
-    <div class="form-group" style="width:1100px; margin: 30px auto;">
-        <textarea th:if="${info != null && info.trim().length() > 0}" th:text="${info}" id="mytextarea" rows="20" 
-                  style="width: 100%; padding: 15px; border-radius: 8px; border: 1px solid #ddd; font-size: 1.1rem;" 
-                  placeholder="Enter Contact Description"></textarea>
-    </div>
-
-    <!-- Video Section -->
-    
-    <div th:if="${info != null && !#lists.isEmpty(videos)}">
-    <h2 style="text-align: center; font-size: 2rem; color: #FFD700; margin-top: 40px; margin-bottom: 30px;">Related Videos</h2>
-
-    <!-- Video List -->
-    <ul th:unless="${#lists.isEmpty(videos)}" style="display: flex; flex-wrap: wrap; justify-content: space-around; gap: 20px; max-width: 1200px; margin: 0 auto; padding: 0; list-style: none;">
-        <li th:each="video : ${videos}" style="background-color: white; border: 1px solid #ddd; margin-top: 25px; border-radius: 15px; overflow: hidden; width: calc(33.33% - 20px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); position: relative; transition: transform 0.3s ease, box-shadow 0.3s ease;">
-            
-            <!-- Thumbnail with hover effect -->
-            <a th:href="'https://www.youtube.com/watch?v=' + ${video.videoId}" target="_blank" style="display: block;">
-                <img th:src="${video.thumbnailUrl}" alt="Video Thumbnail" style="width: 100%; height: 200px; object-fit: cover; transition: opacity 0.3s ease;">
-            </a>
-
-            <!-- Title overlay -->
-            <div style="position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.7); padding: 10px; text-align: center;">
-                <h2 style="font-size: 1rem; color: white; margin: 0;" th:text="${video.title}"></h2>
+<body>
+    <section class="py-5">
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <a th:href="@{/user/aadhar}" class="text-decoration-none"><i class="fas fa-arrow-left mr-2"></i>Back
+                        to Aadhar Services</a>
+                </div>
             </div>
+            <div class="row flex-column">
+                <div class="col-lg-8 mx-auto">
+                    <div class="bg-white p-5 rounded shadow-sm">
+                        <div class="text-center mb-5"><i class="fas fa-question-circle fa-4x mb-3"
+                                style="color: #C5A059;"></i>
+                            <h1 class="font-weight-bold mb-3">Solve Aadhar Issues</h1>
+                            <p class="lead text-muted">Get help with your Aadhar-related problems</p>
+                        </div>
+                        <h3 class="font-weight-bold mb-4">Common Issues</h3>
+                        <div class="accordion" id="issueAccordion">
 
-        </li>
-    </ul>
-    
-    </div>
+                            <!-- 1. Incorrect Personal Information -->
+                            <div class="card mb-2">
+                                <div class="card-header" id="heading1">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link text-left" data-toggle="collapse"
+                                            data-target="#collapse1">
+                                            <i class="fas fa-chevron-right mr-2"></i>Incorrect Personal
+                                            Information/Update Information
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapse1" class="collapse">
+                                    <div class="card-body">
+                                        <p>Errors in name spelling, date of birth, gender, or address on your Aadhaar
+                                            card can cause issues with government services, banking, and more.</p>
+                                        <p><strong>How to fix:</strong></p>
+                                        <ul>
+                                            <li><strong>Online:</strong> Visit the <a
+                                                    href="https://uidai.gov.in/en/my-aadhaar/update-aadhaar.html"
+                                                    target="_blank">UIDAI
+                                                    Self-Service Update Portal</a> to update your name, date of birth,
+                                                gender, or address using OTP verification. You may need to upload
+                                                supporting documents (e.g., passport, birth certificate).</li>
+                                            <li><strong>Offline:</strong> Visit your nearest <a
+                                                    href="https://bhuvan-app3.nrsc.gov.in/aadhaar/"
+                                                    target="_blank">Aadhaar Seva Kendra</a> with the original supporting
+                                                documents and fill out the Aadhaar Update/Correction Form.</li>
+                                        </ul>
+                                        <p><em>Note:</em> Name change is allowed only once through the online portal.
+                                            For further changes, visit an Aadhaar centre in person.</p>
+                                    </div>
+                                </div>
+                            </div>
 
-    <!-- Message for No Videos -->
-    <p th:if="${#lists.isEmpty(videos)}" style="text-align: center; margin-top: 40px; font-size: 1.2rem; color: #555;">
-        No related videos found.
-    </p>
+                            <!-- 2. Biometric Mismatch / Failure -->
+                            <div class="card mb-2">
+                                <div class="card-header" id="heading2">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link text-left collapsed" data-toggle="collapse"
+                                            data-target="#collapse2">
+                                            <i class="fas fa-chevron-right mr-2"></i>Biometric Mismatch / Failure
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapse2" class="collapse">
+                                    <div class="card-body">
+                                        <p>Fingerprint or iris scan failures during authentication are common,
+                                            especially for elderly individuals, manual labourers, or those with worn
+                                            fingerprints. This can prevent successful Aadhaar-based verification at
+                                            banks, PDS shops, and other services.</p>
+                                        <p><strong>How to fix:</strong></p>
+                                        <ul>
+                                            <li><strong>Update Biometrics:</strong> Visit the nearest <a
+                                                    href="https://bhuvan-app3.nrsc.gov.in/aadhaar/"
+                                                    target="_blank">Aadhaar Enrolment Centre</a> and request a biometric
+                                                update. UIDAI recommends updating biometrics every 10 years.</li>
+                                            <li><strong>Use Face Authentication:</strong> UIDAI has introduced <a
+                                                    href="https://uidai.gov.in/en/my-aadhaar/about-your-aadhaar/aadhaar-authentication.html"
+                                                    target="_blank">Face Authentication</a> as an alternative when
+                                                fingerprint or iris authentication fails.</li>
+                                            <li><strong>File a Grievance:</strong> If authentication keeps failing,
+                                                lodge a complaint at the <a
+                                                    href="https://uidai.gov.in/en/contact-support.html"
+                                                    target="_blank">UIDAI Grievance Portal</a> or call the toll-free
+                                                helpline <strong>1947</strong>.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
 
-</div>
-</section>
+                            <!-- 3. Delayed Generation / Delivery -->
+                            <div class="card mb-2">
+                                <div class="card-header" id="heading3">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link text-left collapsed" data-toggle="collapse"
+                                            data-target="#collapse3">
+                                            <i class="fas fa-chevron-right mr-2"></i>Delayed Generation / Delivery
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapse3" class="collapse">
+                                    <div class="card-body">
+                                        <p>After enrolment, Aadhaar generation typically takes 60–90 days, and the
+                                            physical PVC card may take additional time for delivery via India Post.</p>
+                                        <p><strong>How to fix:</strong></p>
+                                        <ul>
+                                            <li><strong>Check Status Online:</strong> Track your Aadhaar generation
+                                                status using your 14-digit Enrolment ID (EID) at the <a
+                                                    href="https://myaadhaar.uidai.gov.in/CheckAadhaarStatus"
+                                                    target="_blank">UIDAI Status Check Portal</a>.</li>
+                                            <li><strong>Download e-Aadhaar:</strong> Once generated, instantly download
+                                                your e-Aadhaar (digitally signed PDF, equally valid as physical card)
+                                                from the <a href="https://myaadhaar.uidai.gov.in/genricDownloadAadhaar"
+                                                    target="_blank">e-Aadhaar Download Portal</a>.</li>
+                                            <li><strong>Order PVC Card:</strong> If the physical card is lost or not
+                                                received, order an Aadhaar PVC card (₹50 fee) at <a
+                                                    href="https://myaadhaar.uidai.gov.in/genricPVC"
+                                                    target="_blank">UIDAI PVC Order Page</a>.</li>
+                                            <li>If it has been more than 90 days with no update, visit the nearest <a
+                                                    href="https://bhuvan-app3.nrsc.gov.in/aadhaar/"
+                                                    target="_blank">Aadhaar Seva Kendra</a> or call
+                                                <strong>1947</strong>.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
 
-<!-- Footer -->
-<footer style="text-align: center; margin-top: 50px; padding-top: 20px; border-top: 1px solid #ddd; color: #777;">
-    <p>&copy; 2024 Aadhar Problem Solver. All rights reserved.</p>
-</footer>
+                            <!-- 4. Application Rejection -->
+                            <div class="card mb-2">
+                                <div class="card-header" id="heading4">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link text-left collapsed" data-toggle="collapse"
+                                            data-target="#collapse4">
+                                            <i class="fas fa-chevron-right mr-2"></i>Application Rejection
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapse4" class="collapse">
+                                    <div class="card-body">
+                                        <p>Aadhaar enrolment or update requests may be rejected due to insufficient or
+                                            invalid documentation, incomplete application forms, poor-quality biometric
+                                            captures, or duplicate Aadhaar detection.</p>
+                                        <p><strong>How to fix:</strong></p>
+                                        <ul>
+                                            <li><strong>Check Rejection Reason:</strong> Use your EID to check the
+                                                status and rejection reason at <a
+                                                    href="https://myaadhaar.uidai.gov.in/CheckAadhaarStatus"
+                                                    target="_blank">UIDAI Status Portal</a>.</li>
+                                            <li><strong>Re-apply with Valid Documents:</strong> Ensure you carry
+                                                original documents from the <a
+                                                    href="https://uidai.gov.in/images/commdoc/List_of_Supporting_Document_for_Aadhaar_Enrolment_and_Update.pdf"
+                                                    target="_blank">UIDAI Valid Documents List</a> (e.g., Voter ID,
+                                                Passport, PAN Card, Ration Card, Driving License).</li>
+                                            <li><strong>Visit Aadhaar Centre:</strong> Re-enrol at the nearest <a
+                                                    href="https://bhuvan-app3.nrsc.gov.in/aadhaar/"
+                                                    target="_blank">Aadhaar Seva Kendra</a> with correct documents.</li>
+                                        </ul>
+                                        <p><em>Tip:</em> Ensure your photograph and biometrics are captured clearly
+                                            during the enrolment to avoid rejection.</p>
+                                    </div>
+                                </div>
+                            </div>
 
+                            <!-- 5. Data Inconsistencies (Aadhaar Seeding Issues) -->
+                            <div class="card mb-2">
+                                <div class="card-header" id="heading5">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link text-left collapsed" data-toggle="collapse"
+                                            data-target="#collapse5">
+                                            <i class="fas fa-chevron-right mr-2"></i>Data Inconsistencies (Aadhaar
+                                            Seeding)
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapse5" class="collapse">
+                                    <div class="card-body">
+                                        <p>Linking (seeding) Aadhaar with your bank account, PAN card, or SIM card may
+                                            fail if there are data mismatches — for example, your name or date of birth
+                                            differs between Aadhaar and the other service.</p>
+                                        <p><strong>How to fix:</strong></p>
+                                        <ul>
+                                            <li><strong>Aadhaar-PAN Linking:</strong> Link or check status at the <a
+                                                    href="https://eportal.incometax.gov.in/iec/foservices/#/pre-login/link-aadhaar-status"
+                                                    target="_blank">Income Tax e-Filing Portal</a>. If names don't
+                                                match, first correct them in Aadhaar or PAN before linking.</li>
+                                            <li><strong>Aadhaar-Bank Account Linking:</strong> Visit your bank branch
+                                                with your original Aadhaar card and request seeding. Ensure the name and
+                                                date of birth match your bank records.</li>
+                                            <li><strong>Aadhaar-SIM Linking:</strong> Visit your mobile operator's store
+                                                with your Aadhaar card for re-verification. You can also check if your
+                                                mobile is linked via the <a href="https://tafcop.sancharsaathi.gov.in/"
+                                                    target="_blank">TAFCOP Portal</a>.</li>
+                                            <li><strong>Fix Mismatches First:</strong> Update your Aadhaar details at
+                                                the <a href="https://uidai.gov.in/en/my-aadhaar/update-aadhaar.html"
+                                                    target="_blank">UIDAI
+                                                    Update Portal</a> to ensure consistency across all linked services.
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 6. Lost / Misplaced Aadhaar Card -->
+                            <div class="card mb-2">
+                                <div class="card-header" id="heading6">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link text-left collapsed" data-toggle="collapse"
+                                            data-target="#collapse6">
+                                            <i class="fas fa-chevron-right mr-2"></i>Lost / Misplaced Aadhaar Card
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapse6" class="collapse">
+                                    <div class="card-body">
+                                        <p>If you have lost or misplaced your physical Aadhaar card, you can easily
+                                            retrieve your Aadhaar number and download a digital copy.</p>
+                                        <p><strong>How to fix:</strong></p>
+                                        <ul>
+                                            <li><strong>Retrieve Aadhaar Number:</strong> If you have forgotten your
+                                                Aadhaar number, retrieve it using your registered mobile number at <a
+                                                    href="https://myaadhaar.uidai.gov.in/retrieve-eid-uid"
+                                                    target="_blank">UIDAI Retrieve Lost UID/EID</a>.</li>
+                                            <li><strong>Download e-Aadhaar:</strong> Download your digitally signed
+                                                e-Aadhaar PDF (equally valid as physical card) from the <a
+                                                    href="https://myaadhaar.uidai.gov.in/genricDownloadAadhaar"
+                                                    target="_blank">e-Aadhaar Portal</a> using your Aadhaar number or
+                                                EID and OTP.</li>
+                                            <li><strong>Order PVC Reprint:</strong> Order a new Aadhaar PVC card online
+                                                (₹50 fee) at <a href="https://myaadhaar.uidai.gov.in/genricPVC"
+                                                    target="_blank">UIDAI PVC Order Page</a>.</li>
+                                            <li><strong>Lock Your Aadhaar:</strong> If you suspect misuse, immediately
+                                                lock your Aadhaar biometrics at <a
+                                                    href="https://myaadhaar.uidai.gov.in/lock-unlock-aadhaar/en"
+                                                    target="_blank">UIDAI Lock/Unlock Portal</a> or via the mAadhaar
+                                                app.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 7. Mobile Number Linking Issues -->
+                            <div class="card mb-2">
+                                <div class="card-header" id="heading7">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link text-left collapsed" data-toggle="collapse"
+                                            data-target="#collapse7">
+                                            <i class="fas fa-chevron-right mr-2"></i>Mobile Number Linking Issues
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="collapse7" class="collapse">
+                                    <div class="card-body">
+                                        <p>If the enrolment operator missed linking your mobile number or entered it
+                                            incorrectly, you will <strong>not receive the OTP</strong> required to
+                                            download e-Aadhaar, use online self-service portals, or perform Aadhaar
+                                            authentication.</p>
+                                        <p><strong>How to fix:</strong></p>
+                                        <ul>
+                                            <li><strong>Update Mobile Number</strong> If no mobile number is
+                                                linked (no OTP possible), you <strong>must visit</strong> the nearest <a
+                                                    href="https://bhuvan-app3.nrsc.gov.in/aadhaar/"
+                                                    target="_blank">Aadhaar Seva Kendra</a> with your Aadhaar card and a
+                                                valid ID proof to add or change your mobile number.</li>
+                                            <li><strong>Verify Linked Mobile:</strong> Check which mobile number is
+                                                currently linked by calling the UIDAI helpline at <strong>1947</strong>.
+                                            </li>
+                                        </ul>
+                                        <p><em>Important:</em> A registered mobile number is essential for all online
+                                            Aadhaar services. Always keep it updated.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card mb-2">
+                                <div class="card-header" id="heading7">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link text-left collapsed">
+                                            <a href="https://www.uidai.gov.in/en/?catid=0&tmpl=component&faqid=46"
+                                                target="_blank">Check
+                                                Aadhar Status</a>
+                                        </button>
+                                    </h5>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search Form -->
+
+                <!-- ── Solve Issue Section ─────────────────────────────── -->
+                <div id="solveissue" style="margin-top: 2.5rem;">
+
+                    <!-- Search Card -->
+                    <div style="background: linear-gradient(135deg, #0a1628 0%, #1a2e4a 100%);
+                                        border-radius: 16px;
+                                        padding: 2.5rem 2rem;
+                                        box-shadow: 0 8px 32px rgba(10,22,40,0.18);
+                                        max-width: 720px;
+                                        margin: 0 auto 2rem;">
+                        <p style="text-align:center; color:#C5A059; font-size:0.85rem; letter-spacing:2px;
+                                           text-transform:uppercase; margin-bottom:0.5rem; font-weight:600;">
+                            AI-Powered Help
+                        </p>
+                        <h4 style="text-align:center; color:#ffffff; font-weight:700;
+                                           font-size:1.3rem; margin-bottom:1.5rem;">
+                            Describe Your Aadhar Problem
+                        </h4>
+
+                        <form action="" th:action="@{/user/getans}" method="get" th:object="${message}">
+                            <div style="position:relative; margin-bottom:1rem;">
+                                <i class="fas fa-search" style="position:absolute; top:50%; left:1rem;
+                                                  transform:translateY(-50%);
+                                                  color:#C5A059; font-size:1rem;"></i>
+                                <input type="text" name="content" id="content"
+                                    placeholder="e.g. My Aadhar address is incorrect…" style="width:100%; padding:0.85rem 1rem 0.85rem 2.8rem;
+                                                      border:2px solid rgba(197,160,89,0.35);
+                                                      border-radius:10px;
+                                                      background:rgba(255,255,255,0.07);
+                                                      color:#ffffff; font-size:1rem;
+                                                      outline:none; box-sizing:border-box;
+                                                      transition:border-color 0.3s;"
+                                    onfocus="this.style.borderColor='#C5A059'"
+                                    onblur="this.style.borderColor='rgba(197,160,89,0.35)'">
+                            </div>
+                            <button type="submit" style="width:100%; padding:0.85rem;
+                                                   background: linear-gradient(135deg,#C5A059,#e8c97a);
+                                                   color:#0a1628; font-weight:700; font-size:1rem;
+                                                   border:none; border-radius:10px; cursor:pointer;
+                                                   letter-spacing:0.5px;
+                                                   transition:opacity 0.3s, transform 0.2s;"
+                                onmouseover="this.style.opacity='0.88';this.style.transform='translateY(-1px)'"
+                                onmouseout="this.style.opacity='1';this.style.transform='translateY(0)'">
+                                <i class="fas fa-search" style="margin-right:0.5rem;"></i>Find Solution
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Result / Description Card -->
+                    <div th:if="${info != null && info.trim().length() > 0}" style="background:#ffffff; border:1px solid #e8e0d0;
+                                        border-left:5px solid #C5A059;
+                                        border-radius:12px; padding:2rem;
+                                        box-shadow:0 4px 20px rgba(0,0,0,0.08);
+                                        margin-bottom:2.5rem;">
+                        <div style="display:flex; align-items:center; margin-bottom:1rem; gap:0.6rem;">
+                            <i class="fas fa-lightbulb" style="color:#C5A059; font-size:1.3rem;"></i>
+                            <h5 style="margin:0; color:#0a1628; font-weight:700; font-size:1.1rem;">
+                                Solution / Information
+                            </h5>
+                        </div>
+                        <textarea th:text="${info}" id="mytextarea" rows="12" readonly style="width:100%; padding:1rem;
+                                                 border:1px solid #dde0e4; border-radius:8px;
+                                                 background:#fafafa; color:#333333;
+                                                 font-size:0.97rem; line-height:1.7;
+                                                 resize:vertical; outline:none;
+                                                 box-sizing:border-box; font-family:inherit;">
+                                </textarea>
+                    </div>
+
+                    <!-- Related Videos Section -->
+                    <div th:if="${info != null && !#lists.isEmpty(videos)}">
+
+                        <!-- Section Header -->
+                        <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1.8rem;">
+                            <div style="flex:1; height:2px;
+                                                background:linear-gradient(to right,#C5A059,transparent);"></div>
+                            <h2 style="margin:0; font-size:1.5rem; font-weight:700;
+                                               color:#0a1628; white-space:nowrap;">
+                                <i class="fab fa-youtube" style="color:#FF0000; margin-right:0.4rem;"></i>
+                                Related Videos
+                            </h2>
+                            <div style="flex:1; height:2px;
+                                                background:linear-gradient(to left,#C5A059,transparent);"></div>
+                        </div>
+
+                        <!-- Video Grid -->
+                        <ul th:unless="${#lists.isEmpty(videos)}" style="display:flex; flex-wrap:wrap; gap:1.5rem;
+                                           list-style:none; padding:0; margin:0;">
+                            <li th:each="video : ${videos}" style="flex: 1 1 calc(33.33% - 1rem); min-width:260px;
+                                               background:#ffffff;
+                                               border-radius:14px; overflow:hidden;
+                                               box-shadow:0 4px 18px rgba(0,0,0,0.10);
+                                               position:relative;
+                                               transition:transform 0.3s ease, box-shadow 0.3s ease;"
+                                onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 32px rgba(0,0,0,0.16)'"
+                                onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='0 4px 18px rgba(0,0,0,0.10)'">
+
+                                <!-- Thumbnail -->
+                                <a th:href="'https://www.youtube.com/watch?v=' + ${video.videoId}" target="_blank"
+                                    style="display:block; position:relative;">
+                                    <img th:src="${video.thumbnailUrl}" alt="Video Thumbnail" style="width:100%; height:185px; object-fit:cover;
+                                                        display:block; transition:opacity 0.3s;">
+                                    <!-- Play overlay -->
+                                    <div style="position:absolute; inset:0;
+                                                         display:flex; align-items:center; justify-content:center;
+                                                         background:rgba(10,22,40,0.28);
+                                                         opacity:0; transition:opacity 0.3s;"
+                                        onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0'">
+                                        <i class="fas fa-play-circle" style="font-size:3.5rem; color:rgba(255,255,255,0.92);
+                                                          filter:drop-shadow(0 2px 8px rgba(0,0,0,0.5));"></i>
+                                    </div>
+                                </a>
+
+                                <!-- Video Title Bar -->
+                                <div style="padding:0.75rem 1rem;
+                                                     background:linear-gradient(135deg,#0a1628,#1a2e4a);
+                                                     min-height:56px; display:flex; align-items:center;">
+                                    <p th:text="${video.title}" style="margin:0; font-size:0.88rem; color:#ffffff;
+                                                      font-weight:500; line-height:1.4;
+                                                      display:-webkit-box; -webkit-line-clamp:2;
+                                                      -webkit-box-orient:vertical; overflow:hidden;">
+                                    </p>
+                                </div>
+
+                                <!-- Gold accent bottom line -->
+                                <div style="height:3px; background:linear-gradient(to right,#C5A059,#e8c97a);">
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- No Videos Message -->
+                    <div th:if="${info != null && #lists.isEmpty(videos)}" style="text-align:center; padding:2.5rem 1rem;
+                                        background:#f9f7f4; border-radius:12px;
+                                        border:1px dashed #C5A059;">
+                        <i class="fas fa-video-slash"
+                            style="font-size:2.5rem; color:#C5A059; margin-bottom:0.8rem; display:block;"></i>
+                        <p style="margin:0; font-size:1.05rem; color:#555; font-weight:500;">
+                            No related videos found for this query.
+                        </p>
+                        <p style="margin:0.4rem 0 0; font-size:0.9rem; color:#888;">
+                            Try rephrasing your problem for better results.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
 </body>
+
 </html>

@@ -1,30 +1,91 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      th:replace="base::layout(~{::section})">
-<head>
-<meta charset="UTF-8">
-<title>Home Page</title>
-</head>
-<body>
-<section class="banner d-flex justify-content-center align-items-center">
-		<div class="text-center">
-		<h1 class="display-2 font-weight-bold" style="color:rgb(255, 255, 0);">InDoc</h1>
-		<p class="lead font-weight-bold" style="color:black;">One Solution To Solve All Your Legal Doc Problems
-		</p>
-		<div>
-		
-		<a th:href="@{/about}">  
-        <button class="btn btn-primary btn-lg" style="margin-right:90px;">Who are we</button>
-       </a>
-	  
-	  <a th:href="@{/signin}">  
-         <button class="btn btn-primary btn-lg">Get started</button> 
-       </a>
-	   
-	   
-	   </div>
-		</div>
-</section>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
 
+<head>
+	<meta charset="UTF-8">
+	<title>Home Page</title>
+</head>
+
+<body>
+	<section>
+		<!-- Hero Section -->
+		<div class="hero-section d-flex align-items-center position-relative">
+			<div class="overlay"></div>
+			<div class="container text-center position-relative z-index-1">
+				<h1 class="display-3 font-weight-bold text-white mb-4 animate-fade-in">InDoc Legal Solutions</h1>
+				<p class="lead text-light mb-5 font-weight-normal animate-slide-up">Simplify your legal Services.
+					One solution for all your needs.</p>
+				<div class="hero-buttons animate-slide-up delay-200">
+					<a th:href="@{/signin}"
+						class="btn btn-primary btn-lg px-5 py-3 rounded-pill mr-3 shadow-lg hover-scale">Get Started</a>
+					<a th:href="@{/about}"
+						class="btn btn-outline-light btn-lg px-5 py-3 rounded-pill shadow-lg hover-scale">Learn More</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- Intro Section -->
+		<div class="py-5 bg-white">
+			<div class="container text-center py-5">
+				<div class="row justify-content-center">
+					<div class="col-lg-8">
+						<h2 class="text-primary mb-4 font-weight-bold">Why Choose InDoc?</h2>
+						<p class="text-muted h5 line-height-18">
+							We provide comprehensive legal document solutions tailored to your specific requirements.
+							Fast, reliable, and secure - we handle the complexities so you can focus on what matters.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Features Cards -->
+		<div class="py-5 bg-light">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4 mb-4">
+						<div class="feature-card p-4 bg-white rounded shadow-sm text-center h-100 hover-lift">
+							<div class="icon-box mb-4 text-primary">
+								<i class="fas fa-file-contract fa-3x"></i>
+							</div>
+							<h4 class="mb-3 font-weight-bold">Drafting</h4>
+							<p class="text-muted">Professional drafting services for all types of legal contracts and
+								agreements.</p>
+						</div>
+					</div>
+					<div class="col-md-4 mb-4">
+						<div class="feature-card p-4 bg-white rounded shadow-sm text-center h-100 hover-lift">
+							<div class="icon-box mb-4 text-primary">
+								<i class="fas fa-search-plus fa-3x"></i>
+							</div>
+							<h4 class="mb-3 font-weight-bold">Review</h4>
+							<p class="text-muted">Expert review of your documents to ensure compliance and protection.
+							</p>
+						</div>
+					</div>
+					<div class="col-md-4 mb-4">
+						<div class="feature-card p-4 bg-white rounded shadow-sm text-center h-100 hover-lift">
+							<div class="icon-box mb-4 text-primary">
+								<i class="fas fa-shield-alt fa-3x"></i>
+							</div>
+							<h4 class="mb-3 font-weight-bold">Security</h4>
+							<p class="text-muted">Bank-grade security encryption to keep your sensitive data safe.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Pre-Footer CTA -->
+		<div class="cta-section py-5 text-white text-center" style="background-color: #002147;">
+			<div class="container py-4">
+				<h2 class="font-weight-bold mb-4">Ready to simplify your legal work?</h2>
+				<a th:href="@{/signin}"
+					class="btn btn-light btn-lg rounded-pill px-5 py-3 shadow hover-scale text-primary font-weight-bold">Join
+					Now</a>
+			</div>
+		</div>
+	</section>
 </body>
+
 </html>

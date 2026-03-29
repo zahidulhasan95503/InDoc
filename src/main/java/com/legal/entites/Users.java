@@ -8,37 +8,40 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.AssertTrue;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
-
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class Users {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	
-	@NotBlank(message="username should not be blank")
-	@Size(min=3,max=13,message="username should be between 3 to 13 characters")
+
+	@NotBlank(message = "username should not be blank")
+	@Size(min = 3, max = 13, message = "username should be between 3 to 13 characters")
 	private String Name;
 
-	@Column(unique=true)
+	@Size(min = 10, message = "phone no should be 10 Numerics")
+	@Column(unique = true)
+	@Pattern(regexp = "^[0-9]*$", message = "Only numbers are allowed")
 	private String Phone;
-	
-	@Column(unique=true)
-	@NotBlank(message="Email should not be blank")
-	@Email(regexp = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}",message ="Please enter valid email id")
+
+	@Column(unique = true)
+	@NotBlank(message = "Email should not be blank")
+	@Email(regexp = "[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,3}", message = "Please enter valid email id")
 	private String Email;
-	
+
 	private boolean ismale;
-	
+
 	private String Password;
-	
-	@AssertTrue(message="must agree terms and conditions")
+
+	@AssertTrue(message = "must agree terms and conditions")
 	private boolean agreement;
-	
+
 	private String role;
 
 	public int getId() {
@@ -115,9 +118,5 @@ public class Users {
 		return "Users [id=" + id + ", Name=" + Name + ", Phone=" + Phone + ", Email=" + Email + ", ismale=" + ismale
 				+ ", Password=" + Password + ", agreement=" + agreement + ", role=" + role + "]";
 	}
-	
-	
-	
 
-	
 }

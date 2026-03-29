@@ -1,193 +1,717 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" 
-      th:replace="normal/base::layout(~{::section})">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+
 <head>
-<meta charset="UTF-8">
-<title>Home page</title>
+  <meta charset="UTF-8">
+  <title>Passport Services - InDoc</title>
 </head>
+
 <body>
 
-
-
-<section>
-
-<div class="sidebar">
-  
-  <span onclick="toggleSidebar()" class="crossBtn">&times;</span>
-  
-  <a href="#" th:href="@{/user/passport}">How to Create new new passport</a>
-  <a href="#" th:href="@{/user/passport_issue}">Solve Passport Issues</a>
-  <a href="#" th:href ="@{/user/passport_centre}">Find Passport Centers</a>
-  <a href="#" th:href="@{/user/update_user}">Settings</a>
-  <a href="#" th:href="@{/logout}">Logout</a>
- 
-  <div class="divider"></div>
-  
-  </div>
-  
-  <div class="content">
-
-<i onclick="toggleSidebar()" class="fas fa-bars m-3"></i>
-
-
-
-
-<h2 class="text-center" style="color:#FFD999;">How to apply for Passport Online & Offline!</h2>
-<div class="container" style="font-size: 1.5vmax;">
-<pre style="font-family: Argent CF;">
-
-Individuals travelling abroad for the first time can feel overwhelmed and confused about procuring essential travel documents such as a 
-passport. However, the passport application process is not very complicated, especially when you know how to go about it. When you apply 
-for a new passport, there are essentially two things you want to ensure: carry the right documents and be aware of the process. Let’s 
-look at both offline and online passport application methods so that you can choose a convenient alternative for yourself
-
-<h3>Eligibility Criteria for Passport Application</h3>
-<ul><li>You have to be eligible to apply for the passport. Here are the basic eligibility criteria for passport application:</li>
-<li>The eligibility requirements that need to be met are as follows: </li>
-<li>Indian nationals who are at least eighteen years old may apply.</li>
-<li>For minors under 18, the passport is valid for five years or until the child turns eighteen, whichever comes first. </li>
-<li>Children between 15 and 18 are eligible for a passport with a 10-year validity period. </li>
-<li>The parents may also apply for good passports until the children turn eighteen.</li></ul>
-<h3>Documents Needed for the Passport Application Process</h3>
-When applying for a new passport, individuals will need the following documents:
-
-Proof of address (any one of the following:
-
-Any of the utility bills; for example, electricity bill, water bill, gas bill, etc.
-Assessment order of your income tax, photo ID of the election commission
-Agreement of the place you are renting at or your Aadhar Card
-In case a minor is applying for his/her passport, they might need a copy of the first and last page of their parent’s passport
-Proof of Birth (any one of the following):
-
-Birth certificate that has been issued by the Registrar of Birth and Death or Municipal Corporation or another prescribed authority
-Voter ID card
-Aadhar card
-PAN card
-Any document that acts as proof of any of the Non-ECR categories
-
-<h4>Here are the detailed steps for an online passport application:</h4>
-Step 1: Go to the official Passport Seva website and register yourself. You can also log in to your existing account.
-
-Step 2: Now, Click on “Apply for Fresh Passport/ Re-issue of Passport”. Note that you must not own an existing Indian passport to apply 
-for a passport online under the “Fresh Passport” category.
-
-<img style="width:600px;" th:src="@{/images/pass1.jpg}">
-
-Step 3: Fill in the passport online application form with accurate details carefully and click on “Submit”.
-
-Step 4: Now, go back to the home page and select “View Saved/Submitted Applications”.
-
-Step 5: Click on “Pay and Schedule Appointment” from “View Saved/ Submitted Applications”.
-
-Step 6: You can book an appointment at a Passport Seva Kendra of your choice. Then, select and proceed to make the payment online or offline.
-
-After completing this process, you can download a copy of the application receipt with your application reference number by clicking on ‘Print Application Receipt’.
-
-You will receive an SMS with appointment details. This will act as proof of your appointment on your visit to the Passport Seva Kendra on the scheduled date.
-
-Make sure to carry all original documents on your visit as proof of your eligibility.
-
-<h3>How to Apply for a Passport Offline?</h3>
-Specific criteria must be followed to ensure the passport form is accepted. These guidelines include guidance on what forms to apply for 
-a passport and how to fill it out correctly. Forms for passports can be: 
-
-Downloaded and printed from the passport (PSP) website (www.passportindia.gov.in) on A4 paper, back-to-back. 
-
-The form is available on the website's main page as a print application link. 
-
-Purchased from the locations above.
-
-Apply for a Passport at the District Passport Cell:
-
-You will need to contact the district's relevant passport unit. You may find a list of DPCs. The DPC counter requires you to:
-
-Step 1: Send in the passport application and the required photos. 
-
-Step 2: Provide self-attested supporting documentation 
-
-Step 3: Submit original paperwork for validation (if needed) 
-
-Step 4: Use DD to pay the passport fee. 
-
-Step 5: Get a letter of acknowledgement with the file number. 
-
-The passport application can be manually completed by downloading, printing, and submitting it from the Passport Seva website. The form 
-is also available at the DPC for ₹10. Only the new format should be used while filling out the passport form.
-
-<h3>How to Check Passport Status Online in India?</h3>
-You will need the following information to check the progress of your passport application: 
-
-Date of the applicant's birth.
-
-A distinct 15-digit identification number is provided after the passport application is submitted.
-
-You can trace the status of your passport application online or offline using the credentials in the various methods listed below.
-
-Check the Status of Your Passport Application on Passport Seva Portal
-
-The following procedures must be followed to check the status of your passport application using the Passport Seva platform:
-
-Step 1: Visit the Passport Seva platform.
-
-Step 2: The "Track Application Status" button is one of the options listed on the home screen's right side. Select it. 
-
-Step 3: After being routed, you must choose the passport type you applied for. 
-
-Step 4: Enter your application's "File Number," a 15-digit number. 
-
-Step 5: Click the "Track Status" button after entering your birthdate. 
-
-Step 6: The passport application status check should appear on your screen.
-<h3>How to Track Passport Application Status Offline?</h3>
-If you do not want to use the internet alternatives, here's how to check your passport application:
-
-Track Passport Application Status via SMS
-
-Use SMS to check the status of your passport application. To track your passport application via the SMS service, follow these instructions.
-
-Step 1: Make use of the mobile number you registered. 
-
-Step 2: Text "STATUS (File Number)" to 9704100100 via SMS. 
-
-Step 3: An SMS with the status of your passport application will be sent to you. 
-
-Important: Please be aware that this SMS feature requires payment. Therefore, ordinary SMS fees will be charged.
-
-Track Passport Application Status via Toll-Free Service Number
-
-To track the status of your passport application via the toll-free service, follow these steps:
-
-Step 1: Dial the toll-free number "1800-258-1800" to reach the National Call Centre. 
-
-Step 2: An executive or an automated interactive voice response will be your connection. 
-
-Step 3: Give your file number and enquire about the progress of your passport application. 
-
-Important: Please note that, as indicated below, the contact information for the same service differs in some areas.
-
-<h3>How to Check Passport Dispatch and Delivery Status?</h3>
-You can monitor the passport's application and dispatch and delivery status. The India Speed Post service delivers a passport to the correct recipient at the address provided on the application form. 
-
-The official India Post website allows you to check the status of your passport online for both shipping and delivery. The steps for the same are as follows: 
-
-Step 1: Get your 13-digit tracking ID by going to the Passport Seva portal. 
-
-Step 2: Visit "India Post's" official website. 
-
-Step 3: Select the "Track Consignment" section. 
-
-Step 4: Enter the code on your screen and fill in the tracking ID under "Consignment Number.”
-
-Step 5: To view the passport's dispatch and delivery status, click "Track Now." 
-
-PSK still needs to send your passport if no information is found during the search.
-</pre>
-</div>
-</div>
-</section>
+  <section class="py-4">
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col-12">
+          <h1 class="display-4 font-weight-bold mb-2" style="color: #0F172A;">Passport Services</h1>
+          <p class="lead text-muted">Complete guide to Passport application and services</p>
+        </div>
+      </div>
+
+      <div class="row mb-5">
+        <div class="col-md-4 mb-3">
+          <a th:href="@{/user/passport}" class="text-decoration-none">
+            <div class="p-4 bg-white rounded shadow-sm hover-lift border-left-primary">
+              <h5 class="font-weight-bold"><i class="fas fa-plus-circle mr-2" style="color: #C5A059;"></i>Create New
+                Passport</h5>
+              <p class="text-muted small mb-0">Apply for new Passport</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4 mb-3">
+          <a th:href="@{/user/passport_issue}" class="text-decoration-none">
+            <div class="p-4 bg-white rounded shadow-sm hover-lift border-left-primary">
+              <h5 class="font-weight-bold"><i class="fas fa-tools mr-2" style="color: #C5A059;"></i>Solve Issues</h5>
+              <p class="text-muted small mb-0">Get help with Passport problems</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4 mb-3">
+          <a th:href="@{/user/passport_centre}" class="text-decoration-none">
+            <div class="p-4 bg-white rounded shadow-sm hover-lift border-left-primary">
+              <h5 class="font-weight-bold"><i class="fas fa-map-marker-alt mr-2" style="color: #C5A059;"></i>Find
+                Centers</h5>
+              <p class="text-muted small mb-0">Locate Passport Seva Kendras</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="row">
+        <div class="col-12">
+          <div class="bg-white p-5 rounded shadow-sm">
+            <h2 class="mb-4 font-weight-bold" style="color: #C5A059;">How to Apply for Passport Online &amp;
+              Offline</h2>
+
+            <div class="content-text">
+              <!-- Introduction -->
+              <div class="mb-5">
+                <p class="lead">A <strong>Passport</strong> is an official government-issued travel document that
+                  certifies the identity and nationality of its holder for the purpose of international travel. In
+                  India, passports are issued by the <strong>Ministry of External Affairs (MEA)</strong> through the
+                  <strong>Central Passport Organization (CPO)</strong> and its network of <strong>Passport Seva Kendras
+                    (PSKs)</strong> and <strong>Post Office Passport Seva Kendras (POPSKs)</strong> across the
+                  country.
+                </p>
+
+                <p>An Indian passport contains the holder's <strong>name, photograph, date of birth, place of birth,
+                    gender, nationality</strong>, and a unique <strong>Passport Number</strong>. It is one of the most
+                  important identity and travel documents for any Indian citizen. There are three types of Indian
+                  passports:</p>
+                <ul>
+                  <li><strong>Ordinary Passport (Type P)</strong> — Blue cover, issued to regular citizens for
+                    leisure/business travel</li>
+                  <li><strong>Official Passport (Type S)</strong> — White cover, issued to government officials for
+                    official travel</li>
+                  <li><strong>Diplomatic Passport (Type D)</strong> — Maroon cover, issued to diplomats and senior
+                    government officials</li>
+                </ul>
+              </div>
+
+              <!-- Quick Facts -->
+              <div class="alert alert-warning mb-5">
+                <h5 class="font-weight-bold"><i class="fas fa-exclamation-triangle mr-2"></i>Important to Know</h5>
+                <ul class="mb-0">
+                  <li>A passport is <strong>mandatory</strong> for travelling to any foreign country</li>
+                  <li>The application fee is <strong>₹1,500</strong> for a normal (36-page) passport and
+                    <strong>₹2,000</strong> for a jumbo (60-page) passport
+                  </li>
+                  <li>Tatkal (urgent) fee is an additional <strong>₹2,000</strong> on top of the normal fee</li>
+                  <li>You must apply through the official <strong>Passport Seva Portal</strong> —
+                    <a href="https://www.passportindia.gov.in" target="_blank"
+                      rel="noopener">www.passportindia.gov.in</a>
+                  </li>
+                  <li>After online submission, a mandatory <strong>appointment at PSK/POPSK</strong> is required for
+                    document verification</li>
+                  <li><strong>Police verification</strong> will be conducted at your residential address after PSK visit
+                  </li>
+                  <li>Normal processing takes <strong>30-45 days</strong>; Tatkal takes <strong>1-3 working
+                      days</strong>
+                    (after PSK visit)</li>
+                  <li>Passport is valid for <strong>10 years</strong> for adults (18+) and <strong>5 years</strong> for
+                    minors (below 18)</li>
+                </ul>
+              </div>
+
+              <!-- DOCUMENTS REQUIRED -->
+              <h3 class="mt-5 mb-4 font-weight-bold" style="color: #C5A059;">
+                <i class="fas fa-file-alt mr-2"></i>Documents Required for Passport Application
+              </h3>
+
+              <div class="alert alert-primary">
+                <strong>Note:</strong> You must carry <strong>original documents</strong> along with
+                <strong>self-attested photocopies</strong> to the Passport Seva Kendra. <strong>Aadhaar Card</strong>
+                is now <strong>mandatory</strong> for all passport applications.
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="p-3 border rounded h-100">
+                    <h5 class="font-weight-bold mb-3">Proof of Date of Birth (any one)</h5>
+                    <ul class="small">
+                      <li>Birth Certificate issued by the Municipal Authority / Registrar of Births & Deaths</li>
+                      <li>Transfer / School Leaving Certificate (with DOB mentioned)</li>
+                      <li>PAN Card</li>
+                      <li>Aadhaar Card / Aadhaar Letter</li>
+                      <li>Voter ID Card (EPIC)</li>
+                      <li>Driving License</li>
+                      <li>Policy Bond issued by Public Life Insurance Corporations / Companies with DOB</li>
+                      <li>Affidavit from Executive Magistrate / First Class Judicial Magistrate (if no other document)
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                  <div class="p-3 border rounded h-100">
+                    <h5 class="font-weight-bold mb-3">Proof of Present Address (any one)</h5>
+                    <ul class="small">
+                      <li>Aadhaar Card (preferred — linked with address)</li>
+                      <li>Electricity Bill (not older than 3 months)</li>
+                      <li>Water Bill (not older than 3 months)</li>
+                      <li>Telephone / Landline Bill (not older than 3 months)</li>
+                      <li>Bank Account Statement / Passbook (recent)</li>
+                      <li>Voter ID Card</li>
+                      <li>Income Tax Assessment Order</li>
+                      <li>Gas Connection Proof (Piped Gas bill in applicant's name)</li>
+                      <li>Registered Rent Agreement</li>
+                      <li>Spouse's Passport (for women — first and last page copy with address)</li>
+                      <li>Parent's Passport (for minors — first and last page copy)</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                  <div class="p-3 border rounded h-100">
+                    <h5 class="font-weight-bold mb-3">For Re-issue / Renewal</h5>
+                    <ul class="small">
+                      <li><strong>Old Passport</strong> (original — mandatory)</li>
+                      <li>Self-attested photocopy of first 2 and last 2 pages of old passport</li>
+                      <li>Self-attested photocopy of ECR / Non-ECR page</li>
+                      <li>Self-attested photocopy of validity page and observation page (if any)</li>
+                      <li>All previous passports (if applicable)</li>
+                      <li>If name changed: Legal document (e.g., Gazette Notification, Marriage Certificate, Deed
+                        Poll)</li>
+                      <li>If address changed: New address proof</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                  <div class="p-3 border rounded h-100">
+                    <h5 class="font-weight-bold mb-3">Special Cases</h5>
+                    <ul class="small">
+                      <li><strong>Minor (below 18):</strong> Birth Certificate + Parents' passports + Aadhaar of
+                        parents. Consent of both parents required (Annexure D)</li>
+                      <li><strong>Government Employees:</strong> NOC (No Objection Certificate) from the employer or
+                        prior intimation letter / Identity Certificate</li>
+                      <li><strong>Tatkal Applications:</strong> Additional verification annexures (Annexure F —
+                        verification certificate from employer/educational institution/known person)</li>
+                      <li><strong>Lost / Damaged Passport:</strong> FIR copy + old passport details + affidavit</li>
+                      <li><strong>Senior Citizens (60+):</strong> May get priority tokens and expedited processing at
+                        some PSKs</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+
+              <!-- =============================== -->
+              <!-- ONLINE APPLICATION: Passport Seva Portal -->
+              <!-- =============================== -->
+              <div class="mb-5 p-4" style="border-left: 4px solid #C5A059; background-color: #f8f9fa;">
+                <h3 class="font-weight-bold mb-4" style="color: #0F172A;">
+                  <i class="fas fa-laptop mr-2" style="color: #C5A059;"></i>How to Apply for Passport Online (via
+                  Passport Seva Portal)
+                </h3>
+
+                <p class="mb-4">The <strong>Passport Seva Portal</strong> is the official online platform by the
+                  Ministry of External Affairs for all passport-related services. You can fill the application form,
+                  pay the fee, and book an appointment at the nearest Passport Seva Kendra — all from the comfort of
+                  your home.</p>
+
+                <h5 class="font-weight-bold mt-4 mb-3">Step-by-Step Process:</h5>
+                <ol class="pl-4" style="line-height: 2;">
+                  <li class="mb-3">
+                    <strong>Visit the Passport Seva Portal</strong><br>
+                    Go to <a href="https://www.passportindia.gov.in" target="_blank"
+                      rel="noopener">www.passportindia.gov.in</a> — the official Passport Seva website by the Ministry
+                    of External Affairs, Government of India.
+                    <img th:src="@{/images/passport1.png}" alt="Passport Seva Portal Homepage"
+                      class="img-fluid rounded shadow-sm mt-3 mb-2"
+                      style="max-width: 700px; border: 1px solid #dee2e6;">
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Register as a New User</strong><br>
+                    If you are a first-time user:
+                    <ul class="mt-2">
+                      <li>Click on <strong>"Register Now"</strong> on the homepage</li>
+                      <li>Select the <strong>Passport Office</strong> nearest to your residential address</li>
+                      <li>Enter your <strong>Full Name</strong>, <strong>Date of Birth</strong>,
+                        <strong>Email ID</strong>, and <strong>Login ID</strong> (create a username)
+                      </li>
+                      <li>Set a <strong>Password</strong> and choose a <strong>Hint Question</strong></li>
+                      <li>Enter the <strong>CAPTCHA</strong> and click <strong>"Register"</strong></li>
+                      <li>You will receive an <strong>activation link</strong> on your email — click it to activate your
+                        account</li>
+                    </ul>
+                    If already registered, simply <strong>Login</strong> with your Login ID and password.
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Click on "Apply for Fresh Passport / Re-issue of Passport"</strong><br>
+                    After logging in, go to the <strong>Dashboard</strong> and click on:
+                    <ul class="mt-2">
+                      <li><strong>"Apply for Fresh Passport"</strong> — if applying for the first time</li>
+                      <li><strong>"Re-issue of Passport"</strong> — if renewing, replacing a damaged/lost passport, or
+                        making changes (name, address, etc.)</li>
+                    </ul>
+                    Select <strong>"Click here to fill the application form online"</strong> to proceed.
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Fill the Passport Application Form</strong><br>
+                    Complete the application form with the following details across multiple sections:
+                    <ul class="mt-2">
+                      <li><strong>Type of Application</strong> — Fresh / Re-issue</li>
+                      <li><strong>Type of Passport Booklet</strong> — 36 pages (Normal) or 60 pages (Jumbo)</li>
+                      <li><strong>Applicant's Name</strong> — Given Name, Surname (as per supporting documents)</li>
+                      <li><strong>Date of Birth</strong> and <strong>Place of Birth</strong></li>
+                      <li><strong>Gender</strong> and <strong>Marital Status</strong></li>
+                      <li><strong>Father's / Mother's / Legal Guardian's Name</strong></li>
+                      <li><strong>Present Residential Address</strong> (with PIN code)</li>
+                      <li><strong>Permanent Address</strong> (can be same as present address)</li>
+                      <li><strong>Emergency Contact Details</strong></li>
+                      <li><strong>Identity Certificate / Aadhaar Number</strong></li>
+                      <li><strong>Previous Passport Details</strong> (if Re-issue)</li>
+                    </ul>
+                    <img th:src="@{/images/passport2.png}" alt="Passport Application Form"
+                      class="img-fluid rounded shadow-sm mt-3 mb-2"
+                      style="max-width: 700px; border: 1px solid #dee2e6;">
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Upload Supporting Documents (if applicable)</strong><br>
+                    For certain services (e.g., Tatkal, Re-issue), you may need to upload:
+                    <ul class="mt-2">
+                      <li>Scanned copy of old passport (first and last pages)</li>
+                      <li>Scanned copy of self-attested supporting documents</li>
+                      <li>Aadhaar card (front and back)</li>
+                    </ul>
+                    <strong>Note:</strong> For a normal fresh passport, document upload may not be required at this
+                    stage — you will present originals at the PSK.
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Preview and Submit Application</strong><br>
+                    Review all the details you entered carefully. Once satisfied, check the
+                    <strong>declaration</strong> and click <strong>"Submit"</strong>.<br>
+                    After submission, you will receive an <strong>Application Reference Number (ARN)</strong>.
+                    <span class="text-danger font-weight-bold">SAVE THIS NUMBER!</span> You'll need it for payment,
+                    appointment booking, and tracking.
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Pay the Passport Fee Online</strong><br>
+                    After submission, go to <strong>"Pay and Schedule Appointment"</strong>. Payment options include:
+                    <ul class="mt-2">
+                      <li><strong>Credit Card / Debit Card</strong> (Visa, MasterCard, RuPay)</li>
+                      <li><strong>Net Banking</strong> (SBI and associate banks)</li>
+                      <li><strong>UPI</strong></li>
+                      <li><strong>Challan</strong> — Pay at SBI branch (valid for 3 days)</li>
+                    </ul>
+                    <strong>Fee Structure:</strong>
+                    <div class="table-responsive mt-2">
+                      <table class="table table-bordered table-sm">
+                        <thead class="thead-light">
+                          <tr>
+                            <th>Service</th>
+                            <th>Normal Fee</th>
+                            <th>Tatkal Fee (additional)</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Fresh Passport (36 pages)</td>
+                            <td>₹1,500</td>
+                            <td>+₹2,000</td>
+                          </tr>
+                          <tr>
+                            <td>Fresh Passport (60 pages / Jumbo)</td>
+                            <td>₹2,000</td>
+                            <td>+₹2,000</td>
+                          </tr>
+                          <tr>
+                            <td>Re-issue (36 pages)</td>
+                            <td>₹1,500</td>
+                            <td>+₹2,000</td>
+                          </tr>
+                          <tr>
+                            <td>Police Clearance Certificate (PCC)</td>
+                            <td>₹500</td>
+                            <td>N/A</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Schedule an Appointment at PSK / POPSK</strong><br>
+                    After payment, you will be directed to book an appointment:
+                    <ul class="mt-2">
+                      <li>Select the <strong>Passport Seva Kendra (PSK)</strong> or <strong>Post Office Passport Seva
+                          Kendra (POPSK)</strong> nearest to you</li>
+                      <li>Choose an available <strong>Date and Time Slot</strong></li>
+                      <li>Confirm and <strong>print the appointment confirmation</strong></li>
+                    </ul>
+                    <img th:src="@{/images/passport3.png}" alt="Appointment Booking Page"
+                      class="img-fluid rounded shadow-sm mt-3 mb-2"
+                      style="max-width: 700px; border: 1px solid #dee2e6;">
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Visit the PSK / POPSK on Appointment Date</strong><br>
+                    On the day of your appointment, visit the PSK/POPSK with:
+                    <ul class="mt-2">
+                      <li><strong>Printed Application Receipt</strong> with ARN and appointment details</li>
+                      <li><strong>All original documents</strong> (address proof, age proof, ID proof)</li>
+                      <li><strong>Self-attested photocopies</strong> of all documents</li>
+                      <li><strong>Aadhaar Card</strong> (original + photocopy)</li>
+                    </ul>
+                    At the PSK, you will go through:
+                    <ul class="mt-2">
+                      <li><strong>Counter A</strong> — Token and document submission</li>
+                      <li><strong>Counter B</strong> — Document verification by Passport Officer</li>
+                      <li><strong>Counter C</strong> — Biometrics (photo, fingerprints, digital signature)</li>
+                      <li><strong>Counter D</strong> — Final verification and Granting Officer approval</li>
+                    </ul>
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Police Verification</strong><br>
+                    After the PSK visit, police verification will be initiated at your residential address:
+                    <ul class="mt-2">
+                      <li>A <strong>Police Officer</strong> will visit your home to verify your identity and address
+                      </li>
+                      <li>Keep your <strong>original documents</strong> and <strong>passport application
+                          receipt</strong>
+                        ready</li>
+                      <li>For <strong>Tatkal applications</strong>, police verification may happen <em>after</em>
+                        passport dispatch</li>
+                      <li>For <strong>Normal applications</strong>, passport is dispatched <em>after</em> positive
+                        police verification</li>
+                    </ul>
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Receive Your Passport</strong><br>
+                    Once the police verification is cleared and your application is approved:
+                    <ul class="mt-2">
+                      <li>The passport is <strong>printed at the Central Passport Printing Facility</strong></li>
+                      <li>It is dispatched to your registered address via <strong>Speed Post</strong></li>
+                      <li>You will receive an <strong>SMS notification</strong> with the Speed Post tracking number</li>
+                      <li>Normal processing: <strong>30-45 days</strong> from PSK visit</li>
+                      <li>Tatkal processing: <strong>1-3 working days</strong> from PSK visit</li>
+                    </ul>
+                    <img th:src="@{/images/passport4.png}" alt="Application Confirmation"
+                      class="img-fluid rounded shadow-sm mt-3 mb-2"
+                      style="max-width: 700px; border: 1px solid #dee2e6;">
+                  </li>
+                </ol>
+
+                <div class="alert alert-success mt-4">
+                  <i class="fas fa-check-circle mr-2"></i>
+                  <strong>Note:</strong> Save your <strong>Application Reference Number (ARN)</strong> and
+                  <strong>File Number</strong> safely. You can track your application status at
+                  <a href="https://www.passportindia.gov.in/psp/trackApplicationService" target="_blank"
+                    rel="noopener">Track Application Status</a>.
+                </div>
+              </div>
+
+              <!-- =============================== -->
+              <!-- ONLINE METHOD 2: mPassport Seva App -->
+              <!-- =============================== -->
+              <div class="mb-5 p-4" style="border-left: 4px solid #28a745; background-color: #f0fff4;">
+                <h3 class="font-weight-bold mb-4" style="color: #0F172A;">
+                  <i class="fas fa-mobile-alt mr-2" style="color: #28a745;"></i>Apply via mPassport Seva Mobile App
+                </h3>
+
+                <p class="mb-4">The <strong>mPassport Seva App</strong> is the official mobile application by the
+                  Ministry of External Affairs. It is available on both <strong>Android</strong> and
+                  <strong>iOS</strong>. The app provides the same functionality as the Passport Seva Portal, optimised
+                  for mobile devices.
+                </p>
+
+                <h5 class="font-weight-bold mt-4 mb-3">Step-by-Step Process:</h5>
+                <ol class="pl-4" style="line-height: 2;">
+                  <li class="mb-3">
+                    <strong>Download the mPassport Seva App</strong><br>
+                    <a href="https://play.google.com/store/apps/details?id=gov.mea.pspv2&hl=en_IN" target="_blank"
+                      rel="noopener"><i class="fab fa-google-play mr-1"></i> Google Play Store (Android)</a><br>
+                    <a href="https://apps.apple.com/in/app/passport-seva-app/id6479501019" target="_blank"
+                      rel="noopener"><i class="fab fa-apple mr-1"></i> Apple App Store (iOS)</a>
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Register & Login</strong><br>
+                    Open the app → Create a new account or login with your existing Passport Seva Portal credentials
+                    (same account works across both platforms).
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Select "Apply for Fresh Passport" or "Re-issue"</strong><br>
+                    From the app dashboard, select the appropriate service and fill the application form (same fields as
+                    the web portal).
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Pay Fee & Book Appointment</strong><br>
+                    Pay using available online methods (Credit/Debit Card, Net Banking, UPI) and book your PSK/POPSK
+                    appointment.
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Visit PSK with Documents</strong><br>
+                    Visit the PSK on the appointment date with all original documents for verification and biometric
+                    capture.
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Track Application</strong><br>
+                    Track your passport application status directly in the app using your ARN or File Number.
+                  </li>
+                </ol>
+
+                <div class="alert alert-info mt-4">
+                  <i class="fas fa-info-circle mr-2"></i>
+                  <strong>Tip:</strong> The mPassport Seva app also lets you locate nearby PSK/POPSKs, check fee
+                  structure, download forms, and get real-time application status updates.
+                </div>
+              </div>
+
+              <!-- =============================== -->
+              <!-- OFFLINE APPLICATION -->
+              <!-- =============================== -->
+              <div class="mb-5 p-4" style="border-left: 4px solid #C5A059; background-color: #f8f9fa;">
+                <h3 class="font-weight-bold mb-4" style="color: #0F172A;">
+                  <i class="fas fa-building mr-2" style="color: #C5A059;"></i>How to Apply for Passport Offline
+                  (Visit Passport Seva Kendra)
+                </h3>
+
+                <p class="mb-4">While the Government of India strongly recommends using the online portal,
+                  you can still apply for a passport by visiting a <strong>Passport Seva Kendra (PSK)</strong>,
+                  <strong>Regional Passport Office (RPO)</strong>, or <strong>Post Office Passport Seva Kendra
+                    (POPSK)</strong>. However, even for the offline process, you <strong>must fill the application form
+                    online</strong> on the Passport Seva Portal — the form cannot be submitted manually on paper
+                  anymore.
+                </p>
+
+                <div class="alert alert-danger mb-4">
+                  <i class="fas fa-exclamation-circle mr-2"></i>
+                  <strong>Important Note:</strong> As of current government guidelines, there is <strong>no fully
+                    offline paper-based application process</strong> for passports. The application form
+                  <strong>must</strong> be filled online at <a href="https://www.passportindia.gov.in" target="_blank"
+                    rel="noopener">passportindia.gov.in</a>. However, you can get assistance at the PSK or authorised
+                  centres. Here is how the process works:
+                </div>
+
+                <h5 class="font-weight-bold mt-4 mb-3">Step-by-Step Process:</h5>
+                <ol class="pl-4" style="line-height: 2;">
+                  <li class="mb-3">
+                    <strong>Get Help at a Common Service Centre (CSC) or Internet Café</strong><br>
+                    If you are unable to fill the form online yourself, visit a:
+                    <ul class="mt-2">
+                      <li><strong>Common Service Centre (CSC)</strong> — Government-authorised centres available across
+                        India. Find one at <a href="https://www.csc.gov.in/" target="_blank"
+                          rel="noopener">www.csc.gov.in</a></li>
+                      <li><strong>Internet café or authorised agent</strong></li>
+                      <li><strong>Post Office Passport Seva Kendra (POPSK)</strong> — Many post offices assist in form
+                        filling</li>
+                    </ul>
+                    They will help you fill the online form, pay the fee, and book an appointment on your behalf.
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Gather All Required Documents</strong><br>
+                    Prepare the following documents before your PSK visit:
+                    <ul class="mt-2">
+                      <li><strong>Printed Application Receipt</strong> (with ARN and barcode)</li>
+                      <li><strong>Proof of Date of Birth</strong> — Birth Certificate, School Leaving Certificate, 10th
+                        marksheet, etc.</li>
+                      <li><strong>Proof of Present Address</strong> — Aadhaar, Electricity bill, Water bill, Telephone
+                        bill, Bank statement, Rent agreement, etc.</li>
+                      <li><strong>Aadhaar Card</strong> (mandatory — original + photocopy)</li>
+                      <li><strong>PAN Card</strong> (optional but recommended)</li>
+                      <li><strong>Old Passport</strong> (for re-issue applications)</li>
+                      <li><strong>2 Passport-sized Photographs</strong> (white background, recent)</li>
+                    </ul>
+                    Carry both <strong>originals and self-attested photocopies</strong> of all documents.
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Visit the PSK / POPSK on Your Appointment Date</strong><br>
+                    Arrive at the Passport Seva Kendra at least <strong>15 minutes before</strong> your appointment
+                    time. The process at PSK involves:
+                    <ul class="mt-2">
+                      <li><strong>Queue Management</strong> — Token generation at the entrance</li>
+                      <li><strong>Counter A</strong> — Form and document submission</li>
+                      <li><strong>Counter B</strong> — Document verification by the Passport Granting Officer</li>
+                      <li><strong>Counter C</strong> — Biometric data capture (photograph, fingerprints, digital
+                        signature)</li>
+                      <li><strong>Counter D</strong> — Final verification and file completion</li>
+                    </ul>
+                    The entire PSK process usually takes <strong>2-4 hours</strong>.
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Police Verification</strong><br>
+                    Police verification will be initiated after your PSK visit:
+                    <ul class="mt-2">
+                      <li>A local <strong>Police Officer</strong> will visit your residential address</li>
+                      <li>Verify your identity, address, and personal details</li>
+                      <li>You may be asked to visit the local <strong>Police Station</strong> in some cases</li>
+                    </ul>
+                    <strong>Tip:</strong> Keep your application receipt and original documents ready at all times until
+                    police verification is complete.
+                  </li>
+
+                  <li class="mb-3">
+                    <strong>Passport Dispatch via Speed Post</strong><br>
+                    After successful police verification and application approval:
+                    <ul class="mt-2">
+                      <li>The passport is printed and dispatched via <strong>India Post Speed Post</strong></li>
+                      <li>You will receive an <strong>SMS notification</strong> with the tracking number</li>
+                      <li>Delivery typically takes <strong>3-7 working days</strong> after dispatch</li>
+                    </ul>
+                  </li>
+                </ol>
+
+                <div class="alert alert-info mt-4">
+                  <i class="fas fa-clock mr-2"></i>
+                  <strong>Processing Time:</strong> Normal passport processing takes <strong>30-45 days</strong> from
+                  PSK visit. Tatkal passport is dispatched within <strong>1-3 working days</strong> of the PSK visit
+                  (police verification may be conducted post-dispatch for Tatkal).
+                </div>
+              </div>
+
+              <!-- AFTER APPLICATION -->
+              <div class="mb-5 p-4" style="background-color: #fff3cd; border-left: 4px solid #ffc107;">
+                <h4 class="font-weight-bold mb-3">
+                  <i class="fas fa-tasks mr-2"></i>After Application — What Next?
+                </h4>
+
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <h6 class="font-weight-bold">Track Application Status</h6>
+                    <p>Visit <a href="https://www.passportindia.gov.in/psp/trackApplicationService" target="_blank"
+                        rel="noopener">Track Status on Passport Seva Portal</a><br>
+                      Login → Go to "Track Application Status" → Enter your File Number to check the current status
+                      including police verification, printing, and dispatch.
+                    </p>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <h6 class="font-weight-bold">Track Speed Post Delivery</h6>
+                    <p>Visit <a href="https://www.indiapost.gov.in/" target="_blank" rel="noopener">India Post Speed
+                        Post Tracking</a><br>
+                      Once your passport is dispatched, track your Speed Post delivery using the tracking number
+                      received
+                      via SMS.
+                    </p>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <h6 class="font-weight-bold">Check Police Verification Status</h6>
+                    <p>Visit <a href="https://www.passportindia.gov.in" target="_blank" rel="noopener">Passport Seva
+                        Portal</a><br>
+                      Login → Track Application Status → Your police verification status will be shown along with the
+                      name and contact of the verifying officer.
+                    </p>
+                  </div>
+
+                  <div class="col-md-6 mb-3">
+                    <h6 class="font-weight-bold">Download e-Passport / Appointment Receipt</h6>
+                    <p>Visit <a href="https://services2.passportindia.gov.in/forms/login" target="_blank"
+                        rel="noopener">Passport Seva Portal Login</a><br>
+                      Login and download your appointment receipt, application receipt (with ARN), and check if your
+                      passport has been dispatched.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+
+              <!-- TYPES OF PASSPORT SERVICES -->
+              <div class="mb-5 p-4" style="background-color: #f0f4ff; border-left: 4px solid #4a6cf7;">
+                <h4 class="font-weight-bold mb-3">
+                  <i class="fas fa-clipboard-list mr-2" style="color: #4a6cf7;"></i>Types of Passport Services
+                </h4>
+                <div class="row">
+                  <div class="col-md-6 mb-2">
+                    <strong>Fresh Passport</strong> — First-time passport application (Normal & Tatkal)
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <strong>Re-issue of Passport</strong> — Renewal, name/address change, damaged, lost, additional
+                    pages
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <strong>Police Clearance Certificate (PCC)</strong> — Required for visa/immigration of certain
+                    countries
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <strong>Identity Certificate</strong> — Issued to non-Indian nationals in India
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <strong>Emergency Certificate (EC)</strong> — Issued to Indian nationals abroad for emergency
+                    one-time travel
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <strong>Diplomatic / Official Passport</strong> — For government officials on official duty abroad
+                  </div>
+                </div>
+              </div>
+
+              <!-- HELPFUL LINKS -->
+              <div class="mt-5 p-4" style="background-color: #e3f2fd; border-radius: 8px;">
+                <h5 class="font-weight-bold mb-3"><i class="fas fa-link mr-2"></i>Helpful Links &amp; Resources</h5>
+                <div class="row">
+                  <div class="col-md-6 mb-2">
+                    <a href="https://www.passportindia.gov.in" target="_blank" rel="noopener" class="d-block">
+                      <i class="fas fa-external-link-alt mr-2"></i>Passport Seva Portal (Apply / Track / Download)
+                    </a>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <a href="https://www.passportindia.gov.in/psp/trackApplicationService" target="_blank"
+                      rel="noopener" class="d-block">
+                      <i class="fas fa-search mr-2"></i>Track Passport Application Status
+                    </a>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <a href="https://www.passportindia.gov.in/psp/LocatePsk" target="_blank" rel="noopener"
+                      class="d-block">
+                      <i class="fas fa-map-marker-alt mr-2"></i>Locate Nearest PSK / POPSK / RPO
+                    </a>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <a href="https://www.passportindia.gov.in/psp/docAdvisor/attachmentAdvFreshInp" target="_blank"
+                      rel="noopener" class="d-block">
+                      <i class="fas fa-file-alt mr-2"></i>Document Advisor — Check Required Documents
+                    </a>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <a href="https://www.passportindia.gov.in/psp/feeCalculator" target="_blank" rel="noopener"
+                      class="d-block">
+                      <i class="fas fa-calculator mr-2"></i>Fee Calculator — Calculate Passport Fees
+                    </a>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <a href="https://www.mea.gov.in/" target="_blank" rel="noopener" class="d-block">
+                      <i class="fas fa-landmark mr-2"></i>Ministry of External Affairs — Official Website
+                    </a>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <a href="https://play.google.com/store/apps/details?id=gov.mea.pspv2&hl=en_IN" target="_blank"
+                      rel="noopener" class="d-block">
+                      <i class="fab fa-google-play mr-2"></i>mPassport Seva App (Android)
+                    </a>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <a href="https://apps.apple.com/in/app/passport-seva-app/id6479501019" target="_blank"
+                      rel="noopener" class="d-block">
+                      <i class="fab fa-apple mr-2"></i>mPassport Seva App (iOS)
+                    </a>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <a href="tel:1800-258-1800" class="d-block">
+                      <i class="fas fa-phone mr-2"></i>Passport Seva Helpline: 1800-258-1800 (Toll Free)
+                    </a>
+                  </div>
+                  <div class="col-md-6 mb-2">
+                    <a href="mailto:passportgrievances@mea.gov.in" class="d-block">
+                      <i class="fas fa-envelope mr-2"></i>Grievance Email: passportgrievances@mea.gov.in
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 </body>
-
- 
 
 </html>
