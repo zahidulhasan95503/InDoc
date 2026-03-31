@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.legal.DTO.YouTubeVideo;
@@ -14,7 +16,9 @@ import com.legal.DTO.YouTubeVideo;
 @Service
 public class YouTubeService {
 	
-	private static final String YOUTUBE_API_KEY = "AIzaSyA8DKU9vfZRDmCBXpW93vGNCtY7ZDSLGOI"; 
+	@Value("${youtube.api.key}")
+	private String youtubeApiKey;
+	
     private static final String YOUTUBE_SEARCH_URL = "https://www.googleapis.com/youtube/v3/search";
     
     public List<YouTubeVideo> searchVideos(String query) throws Exception {
@@ -24,13 +28,13 @@ public class YouTubeService {
     	UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(YOUTUBE_SEARCH_URL)
     			.queryParam("part","snippet")
     			.queryParam("q", query)
-    			.queryParam("key",YOUTUBE_API_KEY)
+    			.queryParam("key",youtubeApiKey)
     			.queryParam("maxResults", 6);
     	        
     	
     	
     	// Make the API call and get response as a string
-    	String jsonResponse =  restTemplate.getForObject(builder.toUriString(),String.class);
+    	String jsonResponse = restTemplate.getForObject(builder.toUriString(), String.class);
     	
     		//Parse JSON and extract video details
     	

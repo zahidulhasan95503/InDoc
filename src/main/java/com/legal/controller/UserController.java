@@ -5,11 +5,15 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.model.ChatModel;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -38,6 +42,8 @@ import reactor.core.publisher.Mono;
 @RequestMapping("/user")
 public class UserController {
 
+	private static final Logger log = LoggerFactory.getLogger(UserController.class);
+
 	@Autowired
 	private UserRepository userRepository;
 
@@ -47,23 +53,27 @@ public class UserController {
 	@Autowired
 	private YouTubeService youtubeService;
 
+	@Value("${google.maps.api.key}")
+	private String googleMapsApiKey;
+
 	@ModelAttribute
 	public void addcommondata(Principal principal, Model model) {
 		String username = principal.getName();
-		System.out.println("UserName: " + username);
+
 		Users user = userRepository.GetUserByUserName(username);
-		System.out.println(user.getEmail());
+
 		model.addAttribute("users", user);
 	}
 
 	@GetMapping("/index")
 	public String index(Model m, Principal principal) {
 		m.addAttribute("title", "InDoc<-User dasboard");
-		System.out.println("index page");
+
 		return "normal/index.html";
 	}
 
-	///////////////////////////////////////// Aadhaar //////////////////////////////////////////////
+	///////////////////////////////////////// Aadhaar
+	///////////////////////////////////////// //////////////////////////////////////////////
 
 	@GetMapping("/aadhar")
 	public String aadhar(Model m, Principal principal) {
@@ -84,8 +94,6 @@ public class UserController {
 
 	@GetMapping("/getans")
 	public String chatgptresult(@ModelAttribute("message") message Messages, Model m) {
-		System.out.println(Messages);
-		System.out.println(Messages.getContent());
 
 		if (Messages.getContent().toLowerCase().contains("aadhar card")) {
 			org.springframework.ai.chat.prompt.Prompt prompt = new org.springframework.ai.chat.prompt.Prompt(
@@ -100,6 +108,7 @@ public class UserController {
 				List<YouTubeVideo> videos = youtubeService.searchVideos(Messages.getContent());
 				m.addAttribute("videos", videos);
 			} catch (Exception e) {
+				log.error("YouTube API error: {}", e.getMessage());
 				m.addAttribute("error", "Failed to fetch video results. Please try again later.");
 			}
 
@@ -114,6 +123,7 @@ public class UserController {
 	@GetMapping("/aadhar_centre")
 	public String aadhar_centre(Model model) {
 		model.addAttribute("places", "Aadhaar Seva Kendras");
+		model.addAttribute("googleMapsApiKey", googleMapsApiKey);
 		return "normal/aadhar_centre";
 	}
 
@@ -125,26 +135,22 @@ public class UserController {
 	@PostMapping("/update")
 	public String update(@Valid @ModelAttribute("users") Users user, BindingResult result, HttpSession session,
 			Model model) {
-		System.out.println(user.getId());
-		System.out.println(user.getName());
 
 		try {
 			if (result.hasErrors()) {
-				System.out.println(result.toString());
 				model.addAttribute("users", user);
 				return "normal/update_user";
 			}
 			userRepository.save(user);
-			System.out.println(user.getName());
-			System.out.println(user.getEmail());
 			session.setAttribute("message", new Mes("contact updated succesfully", "success"));
 		} catch (Exception e) {
-			e.printStackTrace();
+			log.error("Error updating user: {}", e.getMessage());
 		}
 		return "normal/update_user";
 	}
 
-	//////////////////////////////// PAN CARD ///////////////////////////////////////////////////
+	//////////////////////////////// PAN CARD
+	//////////////////////////////// ///////////////////////////////////////////////////
 
 	@GetMapping("/pan")
 	public String pan() {
@@ -158,8 +164,6 @@ public class UserController {
 
 	@GetMapping("/getpanans")
 	public String panchatgptresult(@ModelAttribute("message") message Messages, Model m) {
-		System.out.println(Messages);
-		System.out.println(Messages.getContent());
 
 		if (Messages.getContent().toLowerCase().contains("pan card")) {
 			org.springframework.ai.chat.prompt.Prompt prompt = new org.springframework.ai.chat.prompt.Prompt(
@@ -174,6 +178,7 @@ public class UserController {
 				List<YouTubeVideo> videos = youtubeService.searchVideos(Messages.getContent());
 				m.addAttribute("videos", videos);
 			} catch (Exception e) {
+				log.error("YouTube API error: {}", e.getMessage());
 				m.addAttribute("error", "Failed to fetch video results. Please try again later.");
 			}
 
@@ -187,6 +192,7 @@ public class UserController {
 	@GetMapping("/pan_centre")
 	public String pan_centre(Model model) {
 		model.addAttribute("places", "PAN centeres near me");
+		model.addAttribute("googleMapsApiKey", googleMapsApiKey);
 		return "normal/pan_centre";
 	}
 
@@ -204,8 +210,6 @@ public class UserController {
 
 	@GetMapping("/getvoterans")
 	public String voterchatgptresult(@ModelAttribute("message") message Messages, Model m) {
-		System.out.println(Messages);
-		System.out.println(Messages.getContent());
 
 		if (Messages.getContent().toLowerCase().contains("voter card")) {
 			org.springframework.ai.chat.prompt.Prompt prompt = new org.springframework.ai.chat.prompt.Prompt(
@@ -220,6 +224,7 @@ public class UserController {
 				List<YouTubeVideo> videos = youtubeService.searchVideos(Messages.getContent());
 				m.addAttribute("videos", videos);
 			} catch (Exception e) {
+				log.error("YouTube API error: {}", e.getMessage());
 				m.addAttribute("error", "Failed to fetch video results. Please try again later.");
 			}
 
@@ -233,6 +238,7 @@ public class UserController {
 	@GetMapping("/voter_centre")
 	public String voter_centre(Model model) {
 		model.addAttribute("places", "local Electoral Registration Office");
+		model.addAttribute("googleMapsApiKey", googleMapsApiKey);
 		return "normal/voter_centre";
 	}
 
@@ -250,8 +256,6 @@ public class UserController {
 
 	@GetMapping("/getpassportans")
 	public String passportchatgptresult(@ModelAttribute("message") message Messages, Model m) {
-		System.out.println(Messages);
-		System.out.println(Messages.getContent());
 
 		if (Messages.getContent().toLowerCase().contains("passport")) {
 			org.springframework.ai.chat.prompt.Prompt prompt = new org.springframework.ai.chat.prompt.Prompt(
@@ -266,6 +270,7 @@ public class UserController {
 				List<YouTubeVideo> videos = youtubeService.searchVideos(Messages.getContent());
 				m.addAttribute("videos", videos);
 			} catch (Exception e) {
+				log.error("YouTube API error: {}", e.getMessage());
 				m.addAttribute("error", "Failed to fetch video results. Please try again later.");
 			}
 
@@ -279,6 +284,7 @@ public class UserController {
 	@GetMapping("/passport_centre")
 	public String passport_centre(Model model) {
 		model.addAttribute("places", "Passport Seva Kendras / POPSK");
+		model.addAttribute("googleMapsApiKey", googleMapsApiKey);
 		return "normal/passport_centre";
 	}
 
@@ -296,8 +302,6 @@ public class UserController {
 
 	@GetMapping("/getbirthans")
 	public String birthchatgptresult(@ModelAttribute("message") message Messages, Model m) {
-		System.out.println(Messages);
-		System.out.println(Messages.getContent());
 
 		if (Messages.getContent().toLowerCase().contains("birth certificate")) {
 			org.springframework.ai.chat.prompt.Prompt prompt = new org.springframework.ai.chat.prompt.Prompt(
@@ -312,6 +316,7 @@ public class UserController {
 				List<YouTubeVideo> videos = youtubeService.searchVideos(Messages.getContent());
 				m.addAttribute("videos", videos);
 			} catch (Exception e) {
+				log.error("YouTube API error: {}", e.getMessage());
 				m.addAttribute("error", "Failed to fetch video results. Please try again later.");
 			}
 
@@ -325,6 +330,7 @@ public class UserController {
 	@GetMapping("/birth_centre")
 	public String birth_centre(Model model) {
 		model.addAttribute("places", "birth certificate office near me");
+		model.addAttribute("googleMapsApiKey", googleMapsApiKey);
 		return "normal/birth_centre";
 	}
 }

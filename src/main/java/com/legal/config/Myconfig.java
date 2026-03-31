@@ -33,7 +33,6 @@ public class Myconfig {
 		DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
 		authenticationProvider.setUserDetailsService(userDetailsDervice());
 		authenticationProvider.setPasswordEncoder(passwordEncoder());
-		System.out.println("authenticationProvider");
 
 		return authenticationProvider;
 	}
@@ -41,7 +40,7 @@ public class Myconfig {
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
 
-		httpSecurity.csrf(AbstractHttpConfigurer::disable).authorizeHttpRequests(auth -> {
+		httpSecurity.authorizeHttpRequests(auth -> {
 			auth.requestMatchers("/admin/**").hasRole("ADMIN")
 					.requestMatchers("/user/**").hasRole("USER")
 					.requestMatchers("/**").permitAll().anyRequest()

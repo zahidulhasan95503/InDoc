@@ -68,23 +68,18 @@ public class HomeController {
 			@RequestParam(value = "agreement", defaultValue = "false") boolean agreement,
 			@RequestParam(value = "ismale", defaultValue = "false") boolean ismale, Model model, HttpSession session) {
 
-		System.out.println(users.getName());
-		System.out.println(users.getPhone());
-		System.out.println(users.getEmail());
-		System.out.println(users.isIsmale());
-		System.out.println(users.getPassword());
-		System.out.println(users.isAgreement());
+		
 
 		try {
 
 			if (result.hasErrors()) {
-				System.out.println(result.toString());
+				
 				model.addAttribute("users", users);
 				return "signin";
 			}
 
 			if (!agreement) {
-				System.out.println("you have not agreed terms and conditions");
+				
 				throw new Exception("Agree Terms and conditions");
 			}
 

@@ -47,9 +47,11 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" th:href="@{/logout}">
-              <i class="fas fa-sign-out-alt mr-1"></i>Logout
-            </a>
+            <form th:action="@{/logout}" method="post" style="display:inline;">
+              <button type="submit" class="nav-link btn btn-link" style="cursor:pointer;">
+                <i class="fas fa-sign-out-alt mr-1"></i>Logout
+              </button>
+            </form>
           </li>
         </ul>
       </div>
