@@ -18,7 +18,7 @@ import jakarta.validation.constraints.Size;
 public class Users {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	@NotBlank(message = "username should not be blank")
