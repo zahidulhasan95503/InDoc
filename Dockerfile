@@ -5,14 +5,14 @@ COPY pom.xml .
 COPY src ./src
 
 # Build with limited memory to avoid OOM on free tier
-RUN mvn clean package -DskipTests -Dmaven.compiler.fork=false -T 1
+RUN mvn clean package -DskipTests
 
 # Run stage
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 
-EXPOSE 8081
+EXPOSE 8081 
 
 # Memory-optimized JVM flags for free tier (512MB RAM)
-ENTRYPOINT ["java", "-Xmx384m", "-Xms256m", "-XX:+UseSerialGC", "-jar", "app.jar"]
+ENTRYPOINT ["java","-jar", "app.jar"]
