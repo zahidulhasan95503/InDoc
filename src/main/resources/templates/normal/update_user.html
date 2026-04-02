@@ -17,7 +17,7 @@
               <h1 class="font-weight-bold mb-3">Update Your Profile</h1>
               <p class="lead text-muted">Manage your account information</p>
             </div>
-            <form th:action="@{/user/update_user}" method="post">
+            <form th:action="@{/user/update}" method="post">
               <div class="form-group">
                 <label class="font-weight-bold">Full Name</label>
                 <input type="text" th:value="${users.Name}" name="name" class="form-control"
