@@ -191,12 +191,33 @@ h6 {
   box-shadow: 0 0 20px 6px #090b6f85;
 }
 
+/* Box Form Overlay */
+.box-form .left .overlay {
+  padding: 50px 40px;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.92));
+  box-sizing: border-box;
+}
+
 @media (max-width: 980px) {
   .box-form {
-    flex-flow: wrap;
-    text-align: center;
-    align-content: center;
-    align-items: center;
+    flex-direction: column;
+  }
+
+  .box-form .left,
+  .box-form .right {
+    width: 100%;
+    flex: none;
+  }
+
+
+  .box-form .left .overlay {
+    padding: 40px 20px;
+  }
+
+  .box-form .right {
+    padding: 40px 20px;
   }
 }
 
@@ -211,14 +232,7 @@ h6 {
   position: relative;
 }
 
-/* Box Form Overlay */
-.box-form .left .overlay {
-  padding: 50px 40px;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95), rgba(30, 41, 59, 0.92));
-  box-sizing: border-box;
-}
+
 
 .box-form .left h1 {
   font-size: 2.5rem;
