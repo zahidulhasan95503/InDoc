@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{normal/base::layout(~{::section})}">
+
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${documentTitle} + ' - InDoc'">Document - InDoc</title>
+</head>
+
+<body>
+
+  <section class="py-4">
+    <div class="container">
+
+      <!-- Page Header -->
+      <div class="row mb-4">
+        <div class="col-12">
+          <h1 class="display-4 font-weight-bold mb-2" style="color: #0F172A;" th:text="${documentTitle}">Document</h1>
+          <p class="lead text-muted" id="page-subtitle">Select your state to view the complete guide</p>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="row mb-5">
+        <div class="col-md-4 mb-3">
+          <a th:href="@{/user/document(type=${documentType})}" class="text-decoration-none">
+            <div class="p-4 bg-white rounded shadow-sm hover-lift border-left-primary">
+              <h5 class="font-weight-bold"><i class="fas fa-file-alt mr-2" style="color: #C5A059;"></i>How to Apply</h5>
+              <p class="text-muted small mb-0">Step-by-step application guide</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4 mb-3">
+          <a th:href="@{/user/document_issue(type=${documentType})}" class="text-decoration-none">
+            <div class="p-4 bg-white rounded shadow-sm hover-lift border-left-primary">
+              <h5 class="font-weight-bold"><i class="fas fa-tools mr-2" style="color: #C5A059;"></i>Solve Issues</h5>
+              <p class="text-muted small mb-0">Fix common document problems</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4 mb-3">
+          <a th:href="@{/user/document_centre(type=${documentType})}" class="text-decoration-none">
+            <div class="p-4 bg-white rounded shadow-sm hover-lift border-left-primary">
+              <h5 class="font-weight-bold"><i class="fas fa-map-marker-alt mr-2" style="color: #C5A059;"></i>Find
+                Centres</h5>
+              <p class="text-muted small mb-0">Locate nearest offices</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- State Selector -->
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <div class="p-4 bg-white rounded shadow-sm">
+            <label for="stateSelect" class="font-weight-bold mb-2" style="color: #0F172A;">
+              <i class="fas fa-map-marked-alt mr-2" style="color:#C5A059;"></i>Select Your State
+            </label>
+            <select id="stateSelect" class="form-control form-control-lg" onchange="loadContent()">
+              <option value="">-- Select State --</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Loading Spinner -->
+      <div id="loading" style="display:none; text-align:center; padding:2rem;">
+        <i class="fas fa-spinner fa-spin fa-2x" style="color:#C5A059;"></i>
+        <p class="mt-2 text-muted">Loading content...</p>
+      </div>
+
+      <!-- No Data Message -->
+      <div id="no-data" style="display:none;" class="alert alert-warning">
+        <i class="fas fa-exclamation-circle mr-2"></i>
+        No data available for this state yet. Please check back later.
+      </div>
+
+      <!-- ===== Main Content — exact same structure as aadhar.html ===== -->
+      <div class="row" id="content-section" style="display:none;">
+        <div class="col-12">
+          <div class="bg-white rounded shadow-sm">
+
+            <h2 class="mb-4 font-weight-bold" style="color: #C5A059;">
+              How to Apply for <span id="doc-title-heading"></span> — <span id="selected-state-name"></span>
+            </h2>
+
+            <div class="content-text">
+
+              <!-- Introduction -->
+              <div id="sec-introduction"></div>
+
+              <!-- Quick Facts -->
+              <div id="sec-quick-facts"></div>
+
+              <!-- Documents Required -->
+              <div id="sec-documents-required"></div>
+
+              <!-- Online Application -->
+              <div id="sec-online-application"></div>
+
+              <!-- Offline Application -->
+              <div id="sec-offline-application"></div>
+
+              <!-- After Applying -->
+              <div id="sec-after-applying"></div>
+
+              <!-- Helpful Links -->
+              <div id="sec-helpful-links"></div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Hidden fields inside <section> so Thymeleaf includes them -->
+    <input type="hidden" id="docType" th:value="${documentType}">
+    <input type="hidden" id="docTitle" th:value="${documentTitle}">
+
+    <script>
+      var docType = document.getElementById('docType').value;
+      var docTitle = document.getElementById('docTitle').value;
+
+      // Populate state dropdown
+      fetch('/api/states')
+        .then(function (res) { return res.json(); })
+        .then(function (states) {
+          var select = document.getElementById('stateSelect');
+          var savedState = localStorage.getItem('selectedWelegalState');
+          states.forEach(function (state) {
+            var opt = document.createElement('option');
+            opt.value = state;
+            opt.textContent = state;
+            select.appendChild(opt);
+          });
+          if (savedState && states.includes(savedState)) {
+            select.value = savedState;
+            loadContent();
+          }
+        })
+        .catch(function (err) { console.error('Could not load states:', err); });
+
+      function loadContent() {
+        var state = document.getElementById('stateSelect').value;
+        if (!state) return;
+
+        localStorage.setItem('selectedWelegalState', state);
+
+        document.getElementById('content-section').style.display = 'none';
+        document.getElementById('no-data').style.display = 'none';
+        document.getElementById('loading').style.display = 'block';
+
+        fetch('/api/procedures?state=' + encodeURIComponent(state) + '&type=' + encodeURIComponent(docType))
+          .then(function (res) {
+            if (!res.ok) throw new Error('Not found');
+            return res.json();
+          })
+          .then(function (data) {
+            document.getElementById('loading').style.display = 'none';
+
+            // Fill the h2 heading
+            document.getElementById('doc-title-heading').textContent = docTitle;
+            document.getElementById('selected-state-name').textContent = state;
+
+            // Fill each section with the stored HTML
+            fill('sec-introduction', data.introduction);
+            fill('sec-quick-facts', data.quickFacts);
+            fill('sec-documents-required', data.documentsRequired);
+            fill('sec-online-application', data.onlineApplication);
+            fill('sec-offline-application', data.offlineApplication);
+            fill('sec-after-applying', data.afterApplying);
+            fill('sec-helpful-links', data.helpfulLinks);
+
+            document.getElementById('content-section').style.display = 'block';
+          })
+          .catch(function () {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('no-data').style.display = 'block';
+          });
+      }
+
+      function fill(id, html) {
+        var el = document.getElementById(id);
+        el.innerHTML = (html && html.trim() !== '') ? html : '';
+      }
+    </script>
+
+  </section>
+
+</body>
+
+</html>

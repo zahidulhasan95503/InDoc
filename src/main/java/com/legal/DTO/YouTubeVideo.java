@@ -1,11 +1,11 @@
 package com.legal.DTO;
 
 public class YouTubeVideo {
-	
+
 	private String title;
-	
+
 	private String videoId;
-	
+
 	private String thumbnailUrl;
 
 	public String getTitle() {
@@ -31,7 +31,5 @@ public class YouTubeVideo {
 	public void setThumbnailUrl(String thumbnailUrl) {
 		this.thumbnailUrl = thumbnailUrl;
 	}
-	
-	
 
 }

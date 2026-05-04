@@ -8,7 +8,6 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.AssertTrue;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
@@ -22,7 +21,8 @@ public class Users {
 	private int id;
 
 	@NotBlank(message = "username should not be blank")
-	@Size(min = 3, max = 13, message = "username should be between 3 to 13 characters")
+	@Size(min = 1, max = 30, message = "username should be between 1 to 30 letters with spaces")
+	@Pattern(regexp = "^[a-zA-Z ]+$", message = "Only letters are allowed")
 	private String Name;
 
 	@Size(min = 10, message = "phone no should be 10 Numerics")
@@ -37,6 +37,9 @@ public class Users {
 
 	private boolean ismale;
 
+	@NotBlank(message = "password should not be blank")
+	@Size(min = 3, max = 73, message = "password should be between 3 to 73 characters")
+	@Column(length = 500)
 	private String Password;
 
 	@AssertTrue(message = "must agree terms and conditions")

@@ -1,9 +1,9 @@
 package com.legal.helper;
 
 public class Mes {
-	
+
 	private String Content;
-	
+
 	private String type;
 
 	public String getContent() {
@@ -25,9 +25,7 @@ public class Mes {
 	public Mes(String content, String type) {
 		super();
 		this.Content = content;
-	    this.type = type;
+		this.type = type;
 	}
-	
-	
 
 }

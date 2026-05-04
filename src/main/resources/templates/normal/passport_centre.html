@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{normal/base::layout(~{::section})}">
 
 <head>
   <meta charset="UTF-8">
@@ -43,7 +43,7 @@
             </h3>
             <div style="flex:1; height:2px; background:linear-gradient(to left,#C5A059,transparent);"></div>
           </div>
- 
+
           <!-- Loading spinner -->
           <div id="cards-loading" style="text-align:center; padding:2rem;">
             <i class="fas fa-spinner fa-spin fa-2x" style="color:#C5A059;"></i>

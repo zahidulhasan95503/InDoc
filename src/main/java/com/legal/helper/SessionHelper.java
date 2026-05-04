@@ -8,23 +8,21 @@ import jakarta.servlet.http.HttpSession;
 
 @Component
 public class SessionHelper {
-	
-public void removeMessageFromHelper() {
-		
+
+	public void removeMessageFromHelper() {
+
 		try {
-			
-			
-			
-			HttpSession session =  ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest().getSession();
-			
+
+			HttpSession session = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest()
+					.getSession();
+
 			session.removeAttribute("message");
-			
-		}
-		catch(Exception e) {
+
+		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 		}
-		
+
 	}
 
 }

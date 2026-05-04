@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{normal/base::layout(~{::section})}">
 
 <head>
   <meta charset="UTF-8">
@@ -190,7 +190,7 @@
                     Go to <a href="https://onlineservices.proteantech.in/paam/endUserRegisterContact.html"
                       target="_blank" rel="noopener">onlineservices.nsdl.com</a> — the official NSDL PAN application
                     page.<br>
-                    <img th:src="@{/images/pan1.png}" alt="NSDL PAN Portal Homepage"
+                    <img th:src="@{/images/pan_new_nsdl.jpg}" alt="NSDL PAN Portal Homepage"
                       class="img-fluid rounded shadow-sm mt-3 mb-2"
                       style="width: 100%; max-width: 700px; height: auto; border: 1px solid #dee2e6;">
                   </li>
@@ -200,9 +200,7 @@
                     Choose <strong>"New PAN - Indian Citizen (Form 49A)"</strong> from the dropdown.<br>
                     For foreign citizens, select <strong>"Form 49AA"</strong>.<br>
                     Select the Category: <strong>Individual, HUF, Company, Firm, Trust, etc.</strong>
-                    <img th:src="@{/images/pan2.png}" alt="Select Application Type"
-                      class="img-fluid rounded shadow-sm mt-3 mb-2"
-                      style="width: 100%; max-width: 700px; height: auto; border: 1px solid #dee2e6;">
+
                   </li>
 
                   <li class="mb-3">
@@ -216,18 +214,14 @@
                       <li>Enter the Captcha code displayed</li>
                     </ul>
                     Click <strong>"Submit"</strong> to proceed.
-                    <img th:src="@{/images/pan3.png}" alt="Fill Personal Details"
-                      class="img-fluid rounded shadow-sm mt-3 mb-2"
-                      style="width: 100%; max-width: 700px; height: auto; border: 1px solid #dee2e6;">
+
                   </li>
 
                   <li class="mb-3">
                     <strong>Receive Token Number</strong><br>
                     After submitting, you will receive a <strong>Token Number</strong> on your registered email.<br>
                     Click on the link in the email or use the token number to continue your application.
-                    <img th:src="@{/images/pan4.png}" alt="Token Number Email"
-                      class="img-fluid rounded shadow-sm mt-3 mb-2"
-                      style="width: 100%; max-width: 700px; height: auto; border: 1px solid #dee2e6;">
+
                   </li>
 
                   <li class="mb-3">
@@ -240,9 +234,7 @@
                       <li><strong>Document Details:</strong> Select proof documents for Identity, Address, and Date of
                         Birth</li>
                     </ul>
-                    <img th:src="@{/images/pan5.png}" alt="Complete Application Form"
-                      class="img-fluid rounded shadow-sm mt-3 mb-2"
-                      style="width: 100%; max-width: 700px; height: auto; border: 1px solid #dee2e6;">
+
                   </li>
 
                   <li class="mb-3">
@@ -256,9 +248,7 @@
                       <li><strong>Forward application documents physically:</strong> Post the documents to the NSDL
                         office</li>
                     </ul>
-                    <img th:src="@{/images/pan6.png}" alt="Document Submission Mode"
-                      class="img-fluid rounded shadow-sm mt-3 mb-2"
-                      style="width: 100%; max-width: 700px; height: auto; border: 1px solid #dee2e6;">
+
                   </li>
 
                   <li class="mb-3">
@@ -271,9 +261,7 @@
                       <li>Proof of Address document</li>
                       <li>Proof of Date of Birth document</li>
                     </ul>
-                    <img th:src="@{/images/pan7.png}" alt="Upload Documents"
-                      class="img-fluid rounded shadow-sm mt-3 mb-2"
-                      style="width: 100%; max-width: 700px; height: auto; border: 1px solid #dee2e6;">
+
                   </li>
 
                   <li class="mb-3">
@@ -285,8 +273,7 @@
                       <li>UPI</li>
                       <li>Demand Draft</li>
                     </ul>
-                    <img th:src="@{/images/pan8.jpg}" alt="Payment Page" class="img-fluid rounded shadow-sm mt-3 mb-2"
-                      style="width: 100%; max-width: 700px; height: auto; border: 1px solid #dee2e6;">
+
                   </li>
 
                   <li class="mb-3">
@@ -294,9 +281,7 @@
                     If you chose digital submission, authenticate using Aadhaar OTP.<br>
                     An OTP will be sent to your Aadhaar-registered mobile number. Enter the OTP to digitally sign your
                     application.
-                    <img th:src="@{/images/pan9.png}" alt="Aadhaar Authentication"
-                      class="img-fluid rounded shadow-sm mt-3 mb-2"
-                      style="width: 100%; max-width: 700px; height: auto; border: 1px solid #dee2e6;">
+
                   </li>
 
                   <li class="mb-3">
@@ -304,9 +289,7 @@
                     After successful submission, download and save your <strong>Acknowledgment Receipt</strong>.<br>
                     Note down the <strong>15-digit Acknowledgment Number</strong> — you will need this to track your
                     application.
-                    <img th:src="@{/images/pan10.png}" alt="Acknowledgment Receipt"
-                      class="img-fluid rounded shadow-sm mt-3 mb-2"
-                      style="width: 100%; max-width: 700px; height: auto; border: 1px solid #dee2e6;">
+
                   </li>
                 </ol>
 
@@ -339,7 +322,7 @@
                     <strong>Visit Income Tax e-Filing Portal</strong><br>
                     Go to <a href="https://eportal.incometax.gov.in/iec/foservices/#/pre-login/instant-e-pan"
                       target="_blank" rel="noopener">incometax.gov.in — Instant e-PAN</a>
-                    <img th:src="@{/images/pan11.png}" alt="Income Tax Portal - Instant e-PAN"
+                    <img th:src="@{/images/pan_new_epan.jpg}" alt="Income Tax Portal - Instant e-PAN"
                       class="img-fluid rounded shadow-sm mt-3 mb-2"
                       style="width: 100%; max-width: 700px; height: auto; border: 1px solid #dee2e6;">
                   </li>
@@ -400,7 +383,7 @@
                   <li class="mb-3">
                     <strong>Visit the UTIITSL Portal</strong><br>
                     Go to <a href="https://www.pan.utiitsl.com/PAN/" target="_blank" rel="noopener">pan.utiitsl.com</a>
-                    <img th:src="@{/images/pan12.png}" alt="UTIITSL Portal Homepage"
+                    <img th:src="@{/images/pan_new_utiitsl.jpg}" alt="UTIITSL Portal Homepage"
                       class="img-fluid rounded shadow-sm mt-3 mb-2"
                       style="width: 100%; max-width: 700px; height: auto; border: 1px solid #dee2e6;">
                   </li>
@@ -465,9 +448,7 @@
                       rel="noopener">UTIITSL
                       PAN Centre Locator</a><br>
                     • You can also find centres at select post offices and bank branches.
-                    <img th:src="@{/images/pan13.png}" alt="TIN Facilitation Centre"
-                      class="img-fluid rounded shadow-sm mt-3 mb-2"
-                      style="width: 100%; max-width: 700px; height: auto; border: 1px solid #dee2e6;">
+
                   </li>
 
                   <li class="mb-3">
@@ -641,6 +622,8 @@
                   </div>
                 </div>
               </div>
+
+
             </div>
           </div>
         </div>

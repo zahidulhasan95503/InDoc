@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{normal/base::layout(~{::section})}">
 
 <head>
     <meta charset="UTF-8">
@@ -325,7 +325,8 @@
                                 Describe Your Aadhar Problem
                             </h4>
 
-                            <form action="" th:action="@{/user/getans}" method="get" th:object="${message}">
+                            <form action="" th:action="@{/user/getans}" method="get"
+                                th:object="${message}">
                                 <div style="position:relative; margin-bottom:1rem;">
                                     <i class="fas fa-search" style="position:absolute; top:50%; left:1rem;
                                                   transform:translateY(-50%);

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{normal/base::layout(~{::section})}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Update Profile - InDoc</title>
+</head>
+
+<body>
+    <section class="py-5">
+        <h1>ration</h1>
+
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-6">
+                <label for="stateSelector" class="form-label fw-bold">Select Your State / UT</label>
+                <select id="stateSelector" class="form-select form-select-lg shadow-sm"
+                    onchange="fetchStateDetails('RATION_CARD')">
+                    <option value="" selected disabled>Choose State...</option>
+                    <option value="MH">Maharashtra</option>
+                    <option value="KA">Karnataka</option>
+                    <option value="DL">Delhi</option>
+                    <!-- Add all states here -->
+                </select>
+            </div>
+        </div>
+
+    </section>
+</body>
+
+</html>

@@ -68,19 +68,24 @@ public class HomeController {
 			@RequestParam(value = "agreement", defaultValue = "false") boolean agreement,
 			@RequestParam(value = "ismale", defaultValue = "false") boolean ismale, Model model, HttpSession session) {
 
-		
-
 		try {
 
 			if (result.hasErrors()) {
-				
+
 				model.addAttribute("users", users);
 				return "signin";
 			}
 
-			if (!agreement) {
-				
-				throw new Exception("Agree Terms and conditions");
+			Users existingUserEmail = userRepository.GetUserByUserName(users.getEmail());
+			if (existingUserEmail != null) {
+				session.setAttribute("message", new Mes("This email is already registered!", "alert-danger"));
+				return "signin";
+			}
+
+			Users existingUserPhoneNo = userRepository.GetUserByPhoneNo(users.getPhone());
+			if (existingUserPhoneNo != null) {
+				session.setAttribute("message", new Mes("This Phone Number is already registered!", "alert-danger"));
+				return "signin";
 			}
 
 			users.setRole("ROLE_USER");
@@ -92,12 +97,11 @@ public class HomeController {
 
 		}
 
-		catch (Exception e) {
-			e.printStackTrace();
+		catch (org.springframework.dao.DataIntegrityViolationException e) {
 			model.addAttribute("users", users);
-			session.setAttribute("message", new Mes("Something went wrong" + e.getMessage(), "alert-danger"));
+			session.setAttribute("message",
+					new Mes("Error: This email or phone is already registered (Concurrent error).", "alert-danger"));
 			return "signin";
-
 		}
 
 		return "login";

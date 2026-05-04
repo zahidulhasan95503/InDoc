@@ -6,14 +6,20 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.client.RestTemplate;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Configuration
 @EnableWebSecurity
 public class Myconfig {
+
+	@Bean
+	public ObjectMapper objectMapper() {
+		return new ObjectMapper();
+	}
 
 	@Bean
 	public UserDetailsService userDetailsDervice() {
@@ -25,6 +31,12 @@ public class Myconfig {
 	public BCryptPasswordEncoder passwordEncoder() {
 
 		return new BCryptPasswordEncoder();
+	}
+
+	@Bean
+	public RestTemplate restTemplate() {
+
+		return new RestTemplate();
 	}
 
 	@Bean
@@ -46,7 +58,9 @@ public class Myconfig {
 					.requestMatchers("/**").permitAll().anyRequest()
 					.authenticated();
 		}).formLogin(
-				login -> login.loginPage("/login").loginProcessingUrl("/dologin").defaultSuccessUrl("/user/index"));
+				login -> login.loginPage("/login").loginProcessingUrl("/dologin").defaultSuccessUrl("/user/index"))
+				.sessionManagement(session -> session
+						.invalidSessionUrl("/signin"));
 
 		return httpSecurity.build();
 

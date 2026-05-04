@@ -8,9 +8,12 @@ import org.springframework.stereotype.Repository;
 import com.legal.entites.Users;
 
 @Repository
-public interface UserRepository extends JpaRepository<Users,Integer> {
-	
+public interface UserRepository extends JpaRepository<Users, Integer> {
+
 	@Query("select u from Users u where u.Email = :email")
 	public Users GetUserByUserName(@Param("email") String email);
+
+	@Query("select u from Users u where u.Phone = :phone")
+	public Users GetUserByPhoneNo(@Param("phone") String phone);
 
 }

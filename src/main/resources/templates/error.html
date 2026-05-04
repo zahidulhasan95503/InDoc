@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home page</title>
+</head>
+
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f9; color: #333;">
+
+    <section>
+
+        <h1>this is error page</h1>
+
+        <h2>
+            <p th:text="${errorMessage}"></p>
+        </h2>
+
+        <a href="/">Go back to Home</a>
+
+    </section>
+
+</body>
+
+</html>

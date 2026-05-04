@@ -1,15 +1,12 @@
 package com.legal.controller;
 
 import java.security.Principal;
-import java.time.Duration;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import org.springframework.ai.chat.model.ChatResponse;
-import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.model.ChatModel;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,23 +17,20 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.reactive.result.view.Rendering;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.legal.DTO.AiResponse;
 import com.legal.DTO.YouTubeVideo;
 import com.legal.dao.UserRepository;
 import com.legal.entites.Users;
 import com.legal.entites.message;
+import com.legal.service.Aiassistance_youtube;
 import com.legal.service.YouTubeService;
 import com.legal.helper.Mes;
 
-import io.netty.handler.timeout.TimeoutException;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
-import reactor.core.publisher.Flux;
-import reactor.core.publisher.Mono;
 
 @Controller
 @RequestMapping("/user")
@@ -48,10 +42,7 @@ public class UserController {
 	private UserRepository userRepository;
 
 	@Autowired
-	private ChatModel chatModel;
-
-	@Autowired
-	private YouTubeService youtubeService;
+	private Aiassistance_youtube aiService;
 
 	@Value("${google.maps.api.key}")
 	private String googleMapsApiKey;
@@ -96,23 +87,12 @@ public class UserController {
 	public String chatgptresult(@ModelAttribute("message") message Messages, Model m) {
 
 		if (Messages.getContent().toLowerCase().contains("aadhar card")) {
-			org.springframework.ai.chat.prompt.Prompt prompt = new org.springframework.ai.chat.prompt.Prompt(
-					List.of(
-							new org.springframework.ai.chat.messages.SystemMessage(
-									"Your role is to assist with problems related to Aadhar document. If asked about anything outside of these topics, don't respond."),
-							new org.springframework.ai.chat.messages.UserMessage(Messages.getContent())));
+			AiResponse response = aiService.getAssistance(
+					"Your role is to assist with problems related to Aadhar document. If asked about anything outside of these topics, don't respond.",
+					Messages.getContent());
 
-			ChatResponse response = chatModel.call(prompt);
-
-			try {
-				List<YouTubeVideo> videos = youtubeService.searchVideos(Messages.getContent());
-				m.addAttribute("videos", videos);
-			} catch (Exception e) {
-				log.error("YouTube API error: {}", e.getMessage());
-				m.addAttribute("error", "Failed to fetch video results. Please try again later.");
-			}
-
-			m.addAttribute("info", response.getResult().getOutput().getContent());
+			m.addAttribute("info", response.getAiContent());
+			m.addAttribute("videos", response.getVideos());
 		} else {
 			m.addAttribute("info", "search only about aadhar card");
 		}
@@ -134,17 +114,26 @@ public class UserController {
 
 	@PostMapping("/update")
 	public String update(@Valid @ModelAttribute("users") Users user, BindingResult result, HttpSession session,
-			Model model) {
+			Model model, Principal principal) {
 
 		try {
 			if (result.hasErrors()) {
 				model.addAttribute("users", user);
 				return "normal/update_user";
 			}
-			userRepository.save(user);
-			session.setAttribute("message", new Mes("contact updated succesfully", "success"));
+
+			// Security fix: Only update allowed fields to prevent mass assignment (e.g.,
+			// role escalation)
+			Users currentUser = userRepository.GetUserByUserName(principal.getName());
+			currentUser.setName(user.getName());
+			currentUser.setEmail(user.getEmail());
+			currentUser.setPhone(user.getPhone());
+
+			userRepository.save(currentUser);
+			session.setAttribute("message", new Mes("Profile updated successfully", "success"));
 		} catch (Exception e) {
 			log.error("Error updating user: {}", e.getMessage());
+			session.setAttribute("message", new Mes("Failed to update profile: " + e.getMessage(), "danger"));
 		}
 		return "normal/update_user";
 	}
@@ -166,23 +155,12 @@ public class UserController {
 	public String panchatgptresult(@ModelAttribute("message") message Messages, Model m) {
 
 		if (Messages.getContent().toLowerCase().contains("pan card")) {
-			org.springframework.ai.chat.prompt.Prompt prompt = new org.springframework.ai.chat.prompt.Prompt(
-					List.of(
-							new org.springframework.ai.chat.messages.SystemMessage(
-									"Your role is just to assist with problems related to PAN card and nothing other than that. If asked about anything outside of this topic, don't respond."),
-							new org.springframework.ai.chat.messages.UserMessage(Messages.getContent())));
+			AiResponse response = aiService.getAssistance(
+					"Your role is just to assist with problems related to PAN card and nothing other than that. If asked about anything outside of this topic, don't respond.",
+					Messages.getContent());
 
-			ChatResponse response = chatModel.call(prompt);
-
-			try {
-				List<YouTubeVideo> videos = youtubeService.searchVideos(Messages.getContent());
-				m.addAttribute("videos", videos);
-			} catch (Exception e) {
-				log.error("YouTube API error: {}", e.getMessage());
-				m.addAttribute("error", "Failed to fetch video results. Please try again later.");
-			}
-
-			m.addAttribute("info", response.getResult().getOutput().getContent());
+			m.addAttribute("info", response.getAiContent());
+			m.addAttribute("videos", response.getVideos());
 		} else {
 			m.addAttribute("info", "search only about PAN card");
 		}
@@ -212,23 +190,12 @@ public class UserController {
 	public String voterchatgptresult(@ModelAttribute("message") message Messages, Model m) {
 
 		if (Messages.getContent().toLowerCase().contains("voter card")) {
-			org.springframework.ai.chat.prompt.Prompt prompt = new org.springframework.ai.chat.prompt.Prompt(
-					List.of(
-							new org.springframework.ai.chat.messages.SystemMessage(
-									"Your role is just to assist with problems related to VoterId card and nothing other than that. If asked about anything outside of this topic, don't respond."),
-							new org.springframework.ai.chat.messages.UserMessage(Messages.getContent())));
+			AiResponse response = aiService.getAssistance(
+					"Your role is just to assist with problems related to VoterId card and nothing other than that. If asked about anything outside of this topic, don't respond.",
+					Messages.getContent());
 
-			ChatResponse response = chatModel.call(prompt);
-
-			try {
-				List<YouTubeVideo> videos = youtubeService.searchVideos(Messages.getContent());
-				m.addAttribute("videos", videos);
-			} catch (Exception e) {
-				log.error("YouTube API error: {}", e.getMessage());
-				m.addAttribute("error", "Failed to fetch video results. Please try again later.");
-			}
-
-			m.addAttribute("info", response.getResult().getOutput().getContent());
+			m.addAttribute("info", response.getAiContent());
+			m.addAttribute("videos", response.getVideos());
 		} else {
 			m.addAttribute("info", "search only about Voter card");
 		}
@@ -258,23 +225,12 @@ public class UserController {
 	public String passportchatgptresult(@ModelAttribute("message") message Messages, Model m) {
 
 		if (Messages.getContent().toLowerCase().contains("passport")) {
-			org.springframework.ai.chat.prompt.Prompt prompt = new org.springframework.ai.chat.prompt.Prompt(
-					List.of(
-							new org.springframework.ai.chat.messages.SystemMessage(
-									"Your role is just to assist with problems related to Passport and nothing other than that. If asked about anything outside of this topic, don't respond."),
-							new org.springframework.ai.chat.messages.UserMessage(Messages.getContent())));
+			AiResponse response = aiService.getAssistance(
+					"Your role is just to assist with problems related to Passport and nothing other than that. If asked about anything outside of this topic, don't respond.",
+					Messages.getContent());
 
-			ChatResponse response = chatModel.call(prompt);
-
-			try {
-				List<YouTubeVideo> videos = youtubeService.searchVideos(Messages.getContent());
-				m.addAttribute("videos", videos);
-			} catch (Exception e) {
-				log.error("YouTube API error: {}", e.getMessage());
-				m.addAttribute("error", "Failed to fetch video results. Please try again later.");
-			}
-
-			m.addAttribute("info", response.getResult().getOutput().getContent());
+			m.addAttribute("info", response.getAiContent());
+			m.addAttribute("videos", response.getVideos());
 		} else {
 			m.addAttribute("info", "search only about Passportsss"); // Keeping original typo if any
 		}
@@ -304,23 +260,12 @@ public class UserController {
 	public String birthchatgptresult(@ModelAttribute("message") message Messages, Model m) {
 
 		if (Messages.getContent().toLowerCase().contains("birth certificate")) {
-			org.springframework.ai.chat.prompt.Prompt prompt = new org.springframework.ai.chat.prompt.Prompt(
-					List.of(
-							new org.springframework.ai.chat.messages.SystemMessage(
-									"Your role is just to assist with problems related to birth certificate and nothing other than that. If asked about anything outside of this topic, don't respond."),
-							new org.springframework.ai.chat.messages.UserMessage(Messages.getContent())));
+			AiResponse response = aiService.getAssistance(
+					"Your role is just to assist with problems related to birth certificate and nothing other than that. If asked about anything outside of this topic, don't respond.",
+					Messages.getContent());
 
-			ChatResponse response = chatModel.call(prompt);
-
-			try {
-				List<YouTubeVideo> videos = youtubeService.searchVideos(Messages.getContent());
-				m.addAttribute("videos", videos);
-			} catch (Exception e) {
-				log.error("YouTube API error: {}", e.getMessage());
-				m.addAttribute("error", "Failed to fetch video results. Please try again later.");
-			}
-
-			m.addAttribute("info", response.getResult().getOutput().getContent());
+			m.addAttribute("info", response.getAiContent());
+			m.addAttribute("videos", response.getVideos());
 		} else {
 			m.addAttribute("info", "search only about birth certificate");
 		}
@@ -333,4 +278,120 @@ public class UserController {
 		model.addAttribute("googleMapsApiKey", googleMapsApiKey);
 		return "normal/birth_centre";
 	}
+
+	// =================== STATE-SPECIFIC DOCUMENT PAGES ===================
+	// Handles all documents dynamically
+
+	@GetMapping("/getdynamicans")
+	public String dynamicChatGptResult(@ModelAttribute("message") message Messages,
+			@RequestParam("type") String type,
+			@RequestParam(value = "state", required = false) String state,
+			Model m) {
+
+		String displayTitle = toDisplayTitle(type);
+		String stateDisplay = (state != null && !state.isEmpty()) ? state : "";
+
+		if (Messages.getContent() != null && !Messages.getContent().trim().isEmpty()) {
+
+			String queryLower = Messages.getContent().toLowerCase();
+
+			// Validation: User requested strict enforcement of context keywords within the
+			// search to prevent irrelevant querying.
+			boolean isValidSearch = true;
+
+			// Validation: Ensure the user's query explicitly mentions the document title
+			// e.g. If on "Ration Card" page, the query must contain "ration card"
+			if (!queryLower.contains(displayTitle.toLowerCase())) {
+				isValidSearch = false;
+			}
+
+			if (isValidSearch) {
+				String role = "Your role is to assist with problems related to the " + displayTitle
+						+ " document in India, specifically for the state of " + stateDisplay
+						+ ". If asked about anything outside of this topic, politely decline and remind them you can only help with "
+						+ displayTitle + " problems in " + stateDisplay + ".";
+
+				AiResponse response = aiService.getAssistance(role,
+						displayTitle + " " + stateDisplay + " " + Messages.getContent());
+
+				m.addAttribute("info", response.getAiContent());
+				m.addAttribute("videos", response.getVideos());
+			} else {
+				// Failed validation
+				m.addAttribute("info",
+						"Please search only about " + displayTitle
+								+ (stateDisplay.isEmpty() ? "" : " for " + stateDisplay)
+								+ " (e.g., ensure your query specifically mentions these keywords).");
+			}
+		} else {
+			m.addAttribute("info", "Please provide a description of your issue.");
+		}
+
+		m.addAttribute("documentType", type);
+		m.addAttribute("documentTitle", displayTitle);
+
+		return "normal/document_issue";
+	}
+
+	@GetMapping("/document")
+	public String document(@RequestParam String type, Model model) {
+		model.addAttribute("documentType", type);
+		model.addAttribute("documentTitle", toDisplayTitle(type));
+		return "normal/document";
+	}
+
+	@GetMapping("/document_issue")
+	public String documentIssue(@RequestParam String type, Model model) {
+		model.addAttribute("documentType", type);
+		model.addAttribute("documentTitle", toDisplayTitle(type));
+		return "normal/document_issue";
+	}
+
+	private String getPlacesKeyword(String type) {
+		switch (type.toLowerCase()) {
+			case "ration_card":
+				return "Ration Card Office or MeeSeva Centre";
+			case "driving_licence":
+				return "RTO Office";
+			case "marriage_certificate":
+				return "Registrar of Marriage Office";
+			case "house_land":
+				return "Sub Registrar Office";
+			case "death_certificate":
+				return "Municipal Corporation Health Department";
+			case "caste_certificate":
+				return "Tehsildar Office";
+			case "registered_will":
+				return "Sub Registrar Office";
+			default:
+				return toDisplayTitle(type) + " Office";
+		}
+	}
+
+	@GetMapping("/document_centre")
+	public String documentCentre(@RequestParam String type, Model model) {
+		model.addAttribute("documentType", type);
+		model.addAttribute("documentTitle", toDisplayTitle(type));
+		model.addAttribute("googleMapsApiKey", googleMapsApiKey);
+
+		String places = getPlacesKeyword(type);
+		model.addAttribute("places", places);
+
+		return "normal/document_centre";
+	}
+
+	/** Converts "ration_card" -> "Ration Card" */
+	private String toDisplayTitle(String type) {
+		String[] words = type.replace("_", " ").split(" ");
+		StringBuilder sb = new StringBuilder();
+		for (String word : words) {
+			if (!word.isEmpty()) {
+				sb.append(Character.toUpperCase(word.charAt(0)))
+						.append(word.substring(1).toLowerCase())
+						.append(" ");
+			}
+		}
+		return sb.toString().trim();
+	}
+
 }
