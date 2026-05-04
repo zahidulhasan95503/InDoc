@@ -25,9 +25,9 @@ public class Users {
 	@Pattern(regexp = "^[a-zA-Z ]+$", message = "Only letters are allowed")
 	private String Name;
 
-	@Size(min = 10, message = "phone no should be 10 Numerics")
+	@Size(min = 10, max = 10, message = "Phone number must be exactly 10 digits")
 	@Column(unique = true)
-	@Pattern(regexp = "^[0-9]*$", message = "Only numbers are allowed")
+	@Pattern(regexp = "^[0-9]{10}$", message = "Phone number must contain exactly 10 numeric digits")
 	private String Phone;
 
 	@Column(unique = true)
