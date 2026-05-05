@@ -9,7 +9,7 @@ import org.springframework.cache.annotation.EnableCaching;
 public class WelegalApplication {
 
 	public static void main(String[] args) {
-         SpringApplication.run(WelegalApplication.class, args);
+		SpringApplication.run(WelegalApplication.class, args);
 	}
 
 }

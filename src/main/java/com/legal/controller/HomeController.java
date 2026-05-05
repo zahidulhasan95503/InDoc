@@ -17,8 +17,16 @@ import com.legal.helper.Mes;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
+import org.springframework.web.bind.annotation.ResponseBody;
+
 @Controller
 public class HomeController {
+
+	@RequestMapping("favicon.ico")
+	@ResponseBody
+	public void disableFavicon() {
+		// Suppress NoResourceFoundException for favicon.ico
+	}
 
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
