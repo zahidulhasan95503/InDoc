@@ -3,21 +3,75 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Home page</title>
+    <title>Error - InDoc</title>
 </head>
 
-<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f9; color: #333;">
+<body>
 
     <section>
+        <div class="d-flex align-items-center justify-content-center min-vh-100 py-5 bg-light">
+            <div class="container py-5">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6">
+                        <div class="card border-0 shadow-lg rounded-lg text-center overflow-hidden animate-fade-in" style="border-radius: 16px;">
+                            <!-- Header Accent Line -->
+                            <div style="height: 6px; background: linear-gradient(90deg, #0F172A, #C5A059);"></div>
+                            
+                            <div class="card-body p-5">
+                                <!-- Elegant Legal Warning Icon -->
+                                <div class="icon-container mb-4 d-inline-flex align-items-center justify-content-center bg-light rounded-circle shadow-sm" style="width: 100px; height: 100px; background-color: #fdfaf2 !important;">
+                                    <i class="fa-solid fa-scale-balanced fa-3x" style="color: #C5A059;"></i>
+                                </div>
 
-        <h1>this is error page</h1>
+                                <h2 class="text-primary font-weight-bold mb-3 animate-slide-up">Oops! Something went wrong</h2>
+                                
+                                <p class="text-muted mb-4 line-height-18 animate-slide-up delay-200">
+                                    We encountered an unexpected request or technical issue while handling your session. Rest assured, our team has been notified.
+                                </p>
 
-        <h2>
-            <p th:text="${errorMessage}"></p>
-        </h2>
+                                <!-- Error Details Box -->
+                                <div th:if="${errorMessage}" class="alert border-0 text-left px-4 py-3 mb-4 animate-slide-up" 
+                                     style="background-color: #FFF5F5; border-left: 4px solid #E53E3E; border-radius: 8px;">
+                                    <div class="d-flex align-items-start">
+                                        <i class="fa-solid fa-circle-exclamation text-danger mt-1 mr-3"></i>
+                                        <div>
+                                            <strong class="text-danger d-block mb-1" style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px;">Error Details</strong>
+                                            <span class="text-muted" style="font-size: 0.95rem; font-weight: 500;" th:text="${errorMessage}">An unknown error occurred.</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div th:if="${errorMessage == null}" class="alert border-0 text-left px-4 py-3 mb-4 animate-slide-up" 
+                                     style="background-color: #F8FAFC; border-left: 4px solid #C5A059; border-radius: 8px;">
+                                    <div class="d-flex align-items-start">
+                                        <i class="fa-solid fa-circle-info mt-1 mr-3" style="color: #C5A059;"></i>
+                                        <div>
+                                            <strong class="d-block mb-1" style="color: #C5A059; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px;">Status Note</strong>
+                                            <span class="text-muted" style="font-size: 0.95rem; font-weight: 500;">The resource or action requested is temporarily unavailable.</span>
+                                        </div>
+                                    </div>
+                                </div>
 
-        <a href="/">Go back to Home</a>
-
+                                <!-- Action Buttons -->
+                                <div class="d-flex flex-column flex-sm-row justify-content-center align-items-center gap-3 animate-slide-up delay-200">
+                                    <a th:href="@{/}" class="btn btn-primary btn-lg rounded-pill px-4 py-2.5 shadow-sm hover-scale mb-3 mb-sm-0 mx-2">
+                                        <i class="fa-solid fa-house mr-2"></i> Go to Home
+                                    </a>
+                                    <a th:href="@{/contact}" class="btn btn-outline-dark btn-lg rounded-pill px-4 py-2.5 shadow-sm hover-scale mx-2" style="border-width: 2px; font-weight: 600;">
+                                        <i class="fa-solid fa-headset mr-2"></i> Contact Support
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <!-- Bottom Footer Card Area -->
+                            <div class="card-footer bg-white border-0 py-3 text-muted" style="font-size: 0.85rem; letter-spacing: 0.5px;">
+                                <span>Secured by <strong>InDoc Legal System</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
 </body>

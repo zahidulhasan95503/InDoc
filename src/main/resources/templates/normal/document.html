@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title th:text="${documentTitle} + ' - InDoc'">Document - InDoc</title>
+  <title th:text="${stateName} + ' Documents - InDoc'">State Documents - InDoc</title>
 </head>
 
 <body>
@@ -14,15 +14,15 @@
       <!-- Page Header -->
       <div class="row mb-4">
         <div class="col-12">
-          <h1 class="display-4 font-weight-bold mb-2" style="color: #0F172A;" th:text="${documentTitle}">Document</h1>
-          <p class="lead text-muted" id="page-subtitle">Select your state to view the complete guide</p>
+          <h1 class="display-4 font-weight-bold mb-2" style="color: #0F172A;" th:text="${stateName}">State</h1>
+          <p class="lead text-muted" id="page-subtitle">Select a document to view the complete guide</p>
         </div>
       </div>
 
       <!-- Quick Actions -->
       <div class="row mb-5">
         <div class="col-md-4 mb-3">
-          <a th:href="@{/user/document(type=${documentType})}" class="text-decoration-none">
+          <a th:href="@{/user/document(state=${stateName})}" class="text-decoration-none">
             <div class="p-4 bg-white rounded shadow-sm hover-lift border-left-primary">
               <h5 class="font-weight-bold"><i class="fas fa-file-alt mr-2" style="color: #C5A059;"></i>How to Apply</h5>
               <p class="text-muted small mb-0">Step-by-step application guide</p>
@@ -30,7 +30,7 @@
           </a>
         </div>
         <div class="col-md-4 mb-3">
-          <a th:href="@{/user/document_issue(type=${documentType})}" class="text-decoration-none">
+          <a th:href="@{/user/document_issue(state=${stateName})}" id="solve-issues-link" class="text-decoration-none">
             <div class="p-4 bg-white rounded shadow-sm hover-lift border-left-primary">
               <h5 class="font-weight-bold"><i class="fas fa-tools mr-2" style="color: #C5A059;"></i>Solve Issues</h5>
               <p class="text-muted small mb-0">Fix common document problems</p>
@@ -38,7 +38,7 @@
           </a>
         </div>
         <div class="col-md-4 mb-3">
-          <a th:href="@{/user/document_centre(type=${documentType})}" class="text-decoration-none">
+          <a th:href="@{/user/document_centre(state=${stateName})}" id="find-centres-link" class="text-decoration-none">
             <div class="p-4 bg-white rounded shadow-sm hover-lift border-left-primary">
               <h5 class="font-weight-bold"><i class="fas fa-map-marker-alt mr-2" style="color: #C5A059;"></i>Find
                 Centres</h5>
@@ -48,15 +48,15 @@
         </div>
       </div>
 
-      <!-- State Selector -->
+      <!-- Document Selector -->
       <div class="row mb-4">
         <div class="col-md-6">
           <div class="p-4 bg-white rounded shadow-sm">
-            <label for="stateSelect" class="font-weight-bold mb-2" style="color: #0F172A;">
-              <i class="fas fa-map-marked-alt mr-2" style="color:#C5A059;"></i>Select Your State
+            <label for="documentSelect" class="font-weight-bold mb-2" style="color: #0F172A;">
+              <i class="fas fa-file-alt mr-2" style="color:#C5A059;"></i>Select Document
             </label>
-            <select id="stateSelect" class="form-control form-control-lg" onchange="loadContent()">
-              <option value="">-- Select State --</option>
+            <select id="documentSelect" class="form-control form-control-lg" onchange="loadContent()">
+              <option value="">-- Select Document --</option>
             </select>
           </div>
         </div>
@@ -71,7 +71,7 @@
       <!-- No Data Message -->
       <div id="no-data" style="display:none;" class="alert alert-warning">
         <i class="fas fa-exclamation-circle mr-2"></i>
-        No data available for this state yet. Please check back later.
+        No data available for this document yet. Please check back later.
       </div>
 
       <!-- ===== Main Content — exact same structure as aadhar.html ===== -->
@@ -114,43 +114,52 @@
     </div>
 
     <!-- Hidden fields inside <section> so Thymeleaf includes them -->
-    <input type="hidden" id="docType" th:value="${documentType}">
-    <input type="hidden" id="docTitle" th:value="${documentTitle}">
+    <input type="hidden" id="stateName" th:value="${stateName}">
 
     <script>
-      var docType = document.getElementById('docType').value;
-      var docTitle = document.getElementById('docTitle').value;
+      var stateName = document.getElementById('stateName').value;
 
-      // Populate state dropdown
-      fetch('/api/states')
+      function toDisplayTitle(type) {
+        if(!type) return "";
+        return type.split('_').map(function(word) {
+          return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+        }).join(' ');
+      }
+
+      // Populate document dropdown for this state
+      fetch('/api/documents?state=' + encodeURIComponent(stateName))
         .then(function (res) { return res.json(); })
-        .then(function (states) {
-          var select = document.getElementById('stateSelect');
-          var savedState = localStorage.getItem('selectedWelegalState');
-          states.forEach(function (state) {
+        .then(function (documents) {
+          var select = document.getElementById('documentSelect');
+          var savedDoc = localStorage.getItem('selectedWelegalDoc_' + stateName);
+          documents.forEach(function (doc) {
             var opt = document.createElement('option');
-            opt.value = state;
-            opt.textContent = state;
+            opt.value = doc;
+            opt.textContent = toDisplayTitle(doc);
             select.appendChild(opt);
           });
-          if (savedState && states.includes(savedState)) {
-            select.value = savedState;
+          if (savedDoc && documents.includes(savedDoc)) {
+            select.value = savedDoc;
             loadContent();
           }
         })
-        .catch(function (err) { console.error('Could not load states:', err); });
+        .catch(function (err) { console.error('Could not load documents:', err); });
 
       function loadContent() {
-        var state = document.getElementById('stateSelect').value;
-        if (!state) return;
+        var docType = document.getElementById('documentSelect').value;
+        if (!docType) return;
 
-        localStorage.setItem('selectedWelegalState', state);
+        localStorage.setItem('selectedWelegalDoc_' + stateName, docType);
+
+        // Update Quick Action links to include the selected document type
+        document.getElementById('solve-issues-link').href = '/user/document_issue?state=' + encodeURIComponent(stateName) + '&type=' + encodeURIComponent(docType);
+        document.getElementById('find-centres-link').href = '/user/document_centre?state=' + encodeURIComponent(stateName) + '&type=' + encodeURIComponent(docType);
 
         document.getElementById('content-section').style.display = 'none';
         document.getElementById('no-data').style.display = 'none';
         document.getElementById('loading').style.display = 'block';
 
-        fetch('/api/procedures?state=' + encodeURIComponent(state) + '&type=' + encodeURIComponent(docType))
+        fetch('/api/procedures?state=' + encodeURIComponent(stateName) + '&type=' + encodeURIComponent(docType))
           .then(function (res) {
             if (!res.ok) throw new Error('Not found');
             return res.json();
@@ -159,8 +168,8 @@
             document.getElementById('loading').style.display = 'none';
 
             // Fill the h2 heading
-            document.getElementById('doc-title-heading').textContent = docTitle;
-            document.getElementById('selected-state-name').textContent = state;
+            document.getElementById('doc-title-heading').textContent = toDisplayTitle(docType);
+            document.getElementById('selected-state-name').textContent = stateName;
 
             // Fill each section with the stored HTML
             fill('sec-introduction', data.introduction);

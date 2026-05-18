@@ -1,7 +1,7 @@
 package com.legal.controller;
 
-import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -33,9 +33,18 @@ public class StateDocumentApiController {
         // ── All Indian states list (used to populate dropdown on all 3 pages) ────
         @GetMapping("/states")
         public List<String> getAllStates() {
-                return Arrays.asList(
+                return java.util.Arrays.asList(
                                 "Andhra Pradesh", "Karnataka", "Madhya Pradesh", "Maharashtra",
                                 "Rajasthan", "Tamil Nadu", "Telangana", "Uttar Pradesh", "Delhi", "West bengal");
+        }
+
+        // ── Available documents for a state ──────────────────────────────────────
+        @GetMapping("/documents")
+        public List<String> getDocumentsForState(@RequestParam String state) {
+                return procedureRepository.findByStateName(state)
+                                .stream()
+                                .map(DocumentProcedure::getDocumentType)
+                                .collect(Collectors.toList());
         }
 
         // ── Full document content for a state + document type ────────────────────

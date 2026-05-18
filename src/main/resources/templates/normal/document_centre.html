@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title th:text="${documentTitle} + ' Centres - InDoc'">Document Centres - InDoc</title>
+  <title th:text="${stateName} + ' Centres - InDoc'">Document Centres - InDoc</title>
 </head>
 
 <body>
@@ -11,14 +11,14 @@
     <div class="content text-center">
 
       <h2 style="text-align: center; font-size: 2.5rem; color: #FFD700; margin-bottom: 20px;" class="px-2">
-        Know Your <span th:text="${documentTitle}"></span> Centers
+        Know Your <span th:text="${documentTitle}"></span> Centers in <span th:text="${stateName}"></span>
       </h2>
 
       <div class="row mb-4 text-left px-4">
         <div class="col-12 text-center text-md-left">
-          <a th:href="@{/user/document(type=${documentType})}" class="text-decoration-none"
+          <a th:href="@{/user/document(state=${stateName})}" class="text-decoration-none"
             style="display:inline-block; margin-left: 20px; font-weight: 500;">
-            <i class="fas fa-arrow-left mr-2"></i>Back to <span th:text="${documentTitle}"></span> Services
+            <i class="fas fa-arrow-left mr-2"></i>Back to <span th:text="${stateName}"></span> Services
           </a>
         </div>
       </div>
@@ -93,33 +93,67 @@
         </div>
       </div>
 
-      <script>
-        var docTypeVal = "[[${documentType}]]";
-        document.addEventListener("DOMContentLoaded", function () {
-          var state = localStorage.getItem('selectedWelegalState');
-          if (state) {
-            fetch('/api/centre?state=' + encodeURIComponent(state) + '&type=' + encodeURIComponent(docTypeVal))
-              .then(function (res) {
-                if (res.ok) return res.json();
-                throw new Error('Not found');
-              })
-              .then(function (centre) {
-                // Inject information blocks
-                document.getElementById('centreDescription').textContent = centre.centreDescription || '-';
-                document.getElementById('contactInfo').textContent = centre.contactInfo || '-';
-                document.getElementById('workingHours').textContent = centre.workingHours || '-';
-                document.getElementById('centre-info-section').style.display = 'block';
+      <!-- Hidden state name field -->
+      <input type="hidden" id="stateName" th:value="${stateName}">
+      <input type="hidden" id="docType" th:value="${documentType}">
+      <input type="hidden" id="docTitle" th:value="${documentTitle}">
 
-                // Update the Map search keyword so mapsscript.js targets the exact state-specific office!
-                if (centre.mapsSearchKeyword && centre.mapsSearchKeyword.trim() !== '') {
-                  document.getElementById('places').textContent = centre.mapsSearchKeyword;
-                }
-              })
-              .catch(function (e) {
-                console.log("No explicit custom center info found for this state fallback to generic...");
-              });
-          }
+      <script>
+        var stateName = document.getElementById('stateName').value;
+        var docType = document.getElementById('docType').value;
+        var docTitle = document.getElementById('docTitle').value;
+
+        document.addEventListener("DOMContentLoaded", function () {
+          loadCentres();
+          setupLocationButton();
         });
+
+        function loadCentres() {
+          if (!docType || !stateName) return;
+
+          fetch('/api/centre?state=' + encodeURIComponent(stateName) + '&type=' + encodeURIComponent(docType))
+            .then(function (res) {
+              if (res.ok) return res.json();
+              throw new Error('Not found');
+            })
+            .then(function (centre) {
+              // Inject information blocks
+              document.getElementById('centreDescription').textContent = centre.centreDescription || '-';
+              document.getElementById('contactInfo').textContent = centre.contactInfo || '-';
+              document.getElementById('workingHours').textContent = centre.workingHours || '-';
+              document.getElementById('centre-info-section').style.display = 'block';
+
+              // Store the custom mapsSearchKeyword if available (used as base for nearby search)
+              if (centre.mapsSearchKeyword && centre.mapsSearchKeyword.trim() !== '') {
+                window._customSearchKeyword = centre.mapsSearchKeyword;
+              }
+            })
+            .catch(function (e) {
+              console.log("No explicit custom center info found for this state, using generic search...");
+              document.getElementById('centre-info-section').style.display = 'none';
+            });
+
+          // Set a generic (non-state-specific) search keyword so nearby search
+          // relies on the user's actual location, not a particular state.
+          document.getElementById('places').textContent = docTitle + " centre";
+        }
+
+        /**
+         * Override the default location button behavior:
+         * 1. Get user's geolocation
+         * 2. Update the search query to be location-aware but NOT state-specific
+         * 3. Let mapsscript.js findPlaces() use locationBias for nearby results
+         */
+        function setupLocationButton() {
+          var btn = document.getElementById('mylocation');
+          btn.addEventListener('click', function () {
+            // Update search keyword to generic (no state name)
+            // This ensures Google Places searches near the user, not in a specific state
+            var genericQuery = docTitle + " centre";
+            document.getElementById('places').textContent = genericQuery;
+            console.log("Search query set to generic (location-based):", genericQuery);
+          }, true); // 'true' = capture phase, runs BEFORE mapsscript.js handler
+        }
       </script>
 
       <script>

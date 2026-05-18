@@ -15,4 +15,6 @@ public interface DocumentProcedureRepository extends JpaRepository<DocumentProce
             String stateName, String documentType);
 
     boolean existsByStateNameAndDocumentType(String stateName, String documentType);
+
+    java.util.List<DocumentProcedure> findByStateName(String stateName);
 }

@@ -55,10 +55,17 @@ public class Myconfig {
 		httpSecurity.authorizeHttpRequests(auth -> {
 			auth.requestMatchers("/admin/**").hasRole("ADMIN")
 					.requestMatchers("/user/**").hasRole("USER")
+					.requestMatchers("/actuator/**").hasRole("ADMIN")
 					.requestMatchers("/**").permitAll().anyRequest()
 					.authenticated();
 		}).formLogin(
-				login -> login.loginPage("/login").loginProcessingUrl("/dologin").defaultSuccessUrl("/user/index"))
+				login -> login.loginPage("/login").loginProcessingUrl("/dologin").defaultSuccessUrl("/user/central"))
+				.logout(logout -> logout
+						.logoutUrl("/logout")
+						.logoutSuccessUrl("/login?logout")
+						.invalidateHttpSession(true)
+						.deleteCookies("JSESSIONID")
+						.permitAll())
 				.sessionManagement(session -> session
 						.invalidSessionUrl("/signin"));
 

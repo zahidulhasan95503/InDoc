@@ -1,13 +1,12 @@
 package com.legal.controller;
 
 import java.security.Principal;
-import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import org.springframework.ai.chat.model.ChatResponse;
-import org.springframework.ai.chat.model.ChatModel;
+import java.util.Arrays;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -21,12 +20,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.legal.DTO.AiResponse;
-import com.legal.DTO.YouTubeVideo;
+
 import com.legal.dao.UserRepository;
 import com.legal.entites.Users;
 import com.legal.entites.message;
 import com.legal.service.Aiassistance_youtube;
-import com.legal.service.YouTubeService;
 import com.legal.helper.Mes;
 
 import jakarta.servlet.http.HttpSession;
@@ -56,11 +54,19 @@ public class UserController {
 		model.addAttribute("users", user);
 	}
 
-	@GetMapping("/index")
-	public String index(Model m, Principal principal) {
-		m.addAttribute("title", "InDoc<-User dasboard");
+	@GetMapping("/central")
+	public String central(Model m, Principal principal) {
+		m.addAttribute("title", "InDoc<-Central Documents");
+		return "normal/central.html";
+	}
 
-		return "normal/index.html";
+	@GetMapping("/state")
+	public String state(Model m, Principal principal) {
+		m.addAttribute("title", "InDoc<-State Documents");
+		m.addAttribute("states", Arrays.asList(
+				"Andhra Pradesh", "Karnataka", "Madhya Pradesh", "Maharashtra",
+				"Rajasthan", "Tamil Nadu", "Telangana", "Uttar Pradesh", "Delhi", "West bengal"));
+		return "normal/state.html";
 	}
 
 	///////////////////////////////////////// Aadhaar
@@ -329,21 +335,24 @@ public class UserController {
 
 		m.addAttribute("documentType", type);
 		m.addAttribute("documentTitle", displayTitle);
+		m.addAttribute("stateName", stateDisplay);
 
 		return "normal/document_issue";
 	}
 
 	@GetMapping("/document")
-	public String document(@RequestParam String type, Model model) {
-		model.addAttribute("documentType", type);
-		model.addAttribute("documentTitle", toDisplayTitle(type));
+	public String document(@RequestParam String state, Model model) {
+		model.addAttribute("stateName", state);
 		return "normal/document";
 	}
 
 	@GetMapping("/document_issue")
-	public String documentIssue(@RequestParam String type, Model model) {
-		model.addAttribute("documentType", type);
-		model.addAttribute("documentTitle", toDisplayTitle(type));
+	public String documentIssue(@RequestParam String state, @RequestParam(required = false) String type, Model model) {
+		model.addAttribute("stateName", state);
+		if (type != null) {
+			model.addAttribute("documentType", type);
+			model.addAttribute("documentTitle", toDisplayTitle(type));
+		}
 		return "normal/document_issue";
 	}
 
@@ -369,14 +378,13 @@ public class UserController {
 	}
 
 	@GetMapping("/document_centre")
-	public String documentCentre(@RequestParam String type, Model model) {
-		model.addAttribute("documentType", type);
-		model.addAttribute("documentTitle", toDisplayTitle(type));
+	public String documentCentre(@RequestParam String state, @RequestParam(required = false) String type, Model model) {
+		model.addAttribute("stateName", state);
+		if (type != null) {
+			model.addAttribute("documentType", type);
+			model.addAttribute("documentTitle", toDisplayTitle(type));
+		}
 		model.addAttribute("googleMapsApiKey", googleMapsApiKey);
-
-		String places = getPlacesKeyword(type);
-		model.addAttribute("places", places);
-
 		return "normal/document_centre";
 	}
 

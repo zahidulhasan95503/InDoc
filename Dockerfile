@@ -12,7 +12,7 @@ FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 
-EXPOSE 8081 
+EXPOSE 8081
 
 # Memory-optimized JVM flags for free tier (512MB RAM)
 ENTRYPOINT ["java","-jar", "app.jar"]

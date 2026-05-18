@@ -29,7 +29,13 @@ public class Aiassistance_youtube {
 						new SystemMessage(systemRole),
 						new UserMessage(userQuery)));
 
-		String aiContent = chatModel.call(prompt).getResult().getOutput().getContent();
+		String aiContent = "";
+		try {
+			aiContent = chatModel.call(prompt).getResult().getOutput().getContent();
+		} catch (Exception e) {
+			aiContent = "We are currently experiencing issues connecting to the AI assistant. Please try again later. (Error: "
+					+ e.getMessage() + ")";
+		}
 
 		// 2. Call YouTube
 		List<YouTubeVideo> videos = null;

@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title th:text="${documentTitle} + ' Issues - InDoc'">Document Issues - InDoc</title>
+  <title th:text="${stateName} + ' Issues - InDoc'">Document Issues - InDoc</title>
 </head>
 
 <body>
@@ -13,11 +13,13 @@
       <!-- Back Link row -->
       <div class="row mb-4">
         <div class="col-12">
-          <a th:href="@{/user/document(type=${documentType})}" class="text-decoration-none">
-            <i class="fas fa-arrow-left mr-2"></i>Back to <span th:text="${documentTitle}"></span> Services
+          <a th:href="@{/user/document(state=${stateName})}" class="text-decoration-none">
+            <i class="fas fa-arrow-left mr-2"></i>Back to <span th:text="${stateName}"></span> Services
           </a>
         </div>
       </div>
+
+
 
       <!-- Main Content row -->
       <div class="row justify-content-center">
@@ -42,7 +44,7 @@
                 <i class="fas fa-question-circle fa-4x mb-3" style="color: #C5A059;"></i>
                 <h1 class="font-weight-bold mb-3">Solve <span th:text="${documentTitle}"></span> Issues</h1>
                 <p class="lead text-muted">Get help with your <span th:text="${documentTitle}"></span>-related problems
-                  in <span id="selectedStateName"></span></p>
+                  in <span th:text="${stateName}"></span></p>
               </div>
               <h3 class="font-weight-bold mb-4">Common Issues</h3>
               <div class="accordion" id="issues-container">
@@ -62,21 +64,19 @@
                 AI-Powered Help
               </p>
               <h4 style="text-align:center; color:#ffffff; font-weight:700; font-size:1.3rem; margin-bottom:1.5rem;"
-                th:text="'Describe Your ' + ${documentTitle} + ' Problem'">
+                th:text="'Describe Your Problem'">
                 Describe Your Problem
               </h4>
 
-              <form action="" th:action="@{/user/getdynamicans}" method="get" th:object="${message}"
-                onsubmit="document.getElementById('formState').value = localStorage.getItem('selectedWelegalState') || ''; return true;">
+              <form action="" th:action="@{/user/getdynamicans}" method="get" th:object="${message}">
                 <!-- Passing the document type implicitly to the Controller -->
-                <input type="hidden" name="type" th:value="${documentType}">
-                <input type="hidden" name="state" id="formState" value="">
+                <input type="hidden" name="type" id="formType" th:value="${documentType}">
+                <input type="hidden" name="state" id="formState" th:value="${stateName}">
 
                 <div style="position:relative; margin-bottom:1rem;">
                   <i class="fas fa-search"
                     style="position:absolute; top:50%; left:1rem; transform:translateY(-50%); color:#C5A059; font-size:1rem;"></i>
-                  <input type="text" name="content" id="content"
-                    th:placeholder="'e.g. My ' + ${documentTitle} + ' address is incorrect…'"
+                  <input type="text" name="content" id="content" placeholder="e.g. My address is incorrect…"
                     style="width:100%; padding:0.85rem 1rem 0.85rem 2.8rem; border:2px solid rgba(197,160,89,0.35); border-radius:10px; background:rgba(255,255,255,0.07); color:#ffffff; font-size:1rem; outline:none; box-sizing:border-box; transition:border-color 0.3s;"
                     onfocus="this.style.borderColor='#C5A059'" onblur="this.style.borderColor='rgba(197,160,89,0.35)'">
                 </div>
@@ -171,9 +171,11 @@
     </div>
 
     <!-- Hidden field inside section so Thymeleaf includes it -->
+    <input type="hidden" id="stateName" th:value="${stateName}">
     <input type="hidden" id="docType" th:value="${documentType}">
 
     <script>
+      var stateName = document.getElementById('stateName').value;
       var docType = document.getElementById('docType').value;
 
       document.addEventListener("DOMContentLoaded", function () {
@@ -181,10 +183,9 @@
       });
 
       function loadIssues() {
-        var state = localStorage.getItem('selectedWelegalState');
-        if (!state) {
+        if (!docType || !stateName) {
           document.getElementById('no-data').style.display = 'block';
-          document.getElementById('no-data-text').innerHTML = 'Please select a state on the <strong>How to Apply</strong> page first.';
+          document.getElementById('no-data-text').innerHTML = 'Please select a state and document first.';
           return;
         }
 
@@ -192,17 +193,25 @@
         document.getElementById('no-data').style.display = 'none';
         document.getElementById('loading').style.display = 'block';
 
-        fetch('/api/issues?state=' + encodeURIComponent(state) + '&type=' + encodeURIComponent(docType))
+        // Always show the AI help section if we have a valid state and document selected
+        document.getElementById('ai-help-section').style.display = 'block';
+
+        // Auto-scroll to results if info was present (e.g., after form submit)
+        if (document.getElementById('ai-results')) {
+          document.getElementById('ai-results').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        fetch('/api/issues?state=' + encodeURIComponent(stateName) + '&type=' + encodeURIComponent(docType))
           .then(function (res) { return res.json(); })
           .then(function (issues) {
             document.getElementById('loading').style.display = 'none';
 
             if (!issues || issues.length === 0) {
               document.getElementById('no-data').style.display = 'block';
+              document.getElementById('no-data-text').innerHTML = 'No issue data available for this document yet. Please check back later.';
               return;
             }
 
-            document.getElementById('selectedStateName').textContent = state;
             var container = document.getElementById('issues-container');
             container.innerHTML = '';
 
@@ -213,16 +222,11 @@
             });
 
             document.getElementById('issues-section').style.display = 'block';
-            document.getElementById('ai-help-section').style.display = 'block';
-
-            // Auto-scroll to results if info was present
-            if (document.getElementById('ai-results')) {
-              document.getElementById('ai-results').scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
           })
           .catch(function () {
             document.getElementById('loading').style.display = 'none';
             document.getElementById('no-data').style.display = 'block';
+            document.getElementById('no-data-text').innerHTML = 'Error loading issues. Please try again.';
           });
       }
     </script>
