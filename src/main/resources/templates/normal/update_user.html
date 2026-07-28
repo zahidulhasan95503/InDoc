@@ -37,6 +37,14 @@
                 <i class="fas fa-save mr-2"></i>Save Changes
               </button>
             </form>
+
+            <hr class="mt-4 mb-4">
+            <form th:action="@{/user/delete}" method="post" onsubmit="return confirm('Are you sure you want to permanently delete your account? This action cannot be undone.');">
+              <button type="submit" class="btn btn-outline-danger btn-lg btn-block rounded-pill">
+                <i class="fas fa-trash-alt mr-2"></i>Delete Account
+              </button>
+            </form>
+            
           </div>
         </div>
       </div>

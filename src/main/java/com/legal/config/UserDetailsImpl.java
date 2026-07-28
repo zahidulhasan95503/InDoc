@@ -12,21 +12,19 @@ import com.legal.entites.Users;
 public class UserDetailsImpl implements UserDetails {
 
 	private Users user;
-	
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		
+
 		SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(user.getRole());
-		
+
 		return List.of(simpleGrantedAuthority);
 	}
-	
 
 	public UserDetailsImpl(Users user) {
 		super();
 		this.user = user;
 	}
-
 
 	@Override
 	public String getPassword() {

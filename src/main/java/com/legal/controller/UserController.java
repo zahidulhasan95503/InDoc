@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Arrays;
-
+import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -45,12 +45,34 @@ public class UserController {
 	@Value("${google.maps.api.key}")
 	private String googleMapsApiKey;
 
+	private boolean hasAvailableAiRequests(Users user) {
+		LocalDate today = LocalDate.now();
+		if (user.getLastAiRequestDate() == null || !user.getLastAiRequestDate().equals(today)) {
+			user.setAiRequestCount(0);
+			user.setLastAiRequestDate(today);
+		}
+		if (user.getAiRequestCount() < 50) {
+			user.setAiRequestCount(user.getAiRequestCount() + 1);
+			userRepository.save(user);
+			return true;
+		}
+		return false;
+	}
+
 	@ModelAttribute
 	public void addcommondata(Principal principal, Model model) {
 		String username = principal.getName();
-
 		Users user = userRepository.GetUserByUserName(username);
-
+		
+		int remaining = 50;
+		if (user != null) {
+			LocalDate today = LocalDate.now();
+			if (user.getLastAiRequestDate() != null && user.getLastAiRequestDate().equals(today)) {
+				remaining = 50 - user.getAiRequestCount();
+			}
+		}
+		
+		model.addAttribute("remainingAiRequests", remaining);
 		model.addAttribute("users", user);
 	}
 
@@ -90,17 +112,25 @@ public class UserController {
 	}
 
 	@GetMapping("/getans")
-	public String chatgptresult(@ModelAttribute("message") message Messages, Model m) {
+	public String chatgptresult(@ModelAttribute("message") message Messages, Model m, Principal principal) {
+		String username = principal.getName();
+		Users currentUser = userRepository.GetUserByUserName(username);
 
 		if (Messages.getContent().toLowerCase().contains("aadhar card")) {
-			AiResponse response = aiService.getAssistance(
-					"Your role is to assist with problems related to Aadhar document. If asked about anything outside of these topics, don't respond.",
-					Messages.getContent());
+			if (hasAvailableAiRequests(currentUser)) {
+				AiResponse response = aiService.getAssistance(
+						"Your role is to assist with problems related to Aadhar document. If asked about anything outside of these topics, don't respond.",
+						Messages.getContent());
 
-			m.addAttribute("info", response.getAiContent());
-			m.addAttribute("videos", response.getVideos());
+				m.addAttribute("info", response.getAiContent());
+				m.addAttribute("videos", response.getVideos());
+				int remaining = 50 - currentUser.getAiRequestCount();
+				m.addAttribute("quotaMessage", "You have " + remaining + " AI requests left today.");
+			} else {
+				m.addAttribute("info", "You have reached your daily limit of 50 AI requests. Please try again tomorrow.");
+			}
 		} else {
-			m.addAttribute("info", "search only about aadhar card");
+			m.addAttribute("info", "search only about aadhar card(Your query should include the word 'aadhar card' in the query)");
 		}
 
 		return "normal/aadhar_issue";
@@ -144,6 +174,27 @@ public class UserController {
 		return "normal/update_user";
 	}
 
+	@PostMapping("/delete")
+	public String deleteAccount(Principal principal, HttpSession session) {
+		try {
+			String username = principal.getName();
+			Users currentUser = userRepository.GetUserByUserName(username);
+
+			if (currentUser != null) {
+				userRepository.delete(currentUser);
+			}
+
+			// Invalidate session to log the user out
+			session.invalidate();
+
+			return "redirect:/login?logout";
+		} catch (Exception e) {
+			log.error("Error deleting user: {}", e.getMessage());
+			session.setAttribute("message", new Mes("Failed to delete account: " + e.getMessage(), "danger"));
+			return "redirect:/user/update_user";
+		}
+	}
+
 	//////////////////////////////// PAN CARD
 	//////////////////////////////// ///////////////////////////////////////////////////
 
@@ -158,17 +209,25 @@ public class UserController {
 	}
 
 	@GetMapping("/getpanans")
-	public String panchatgptresult(@ModelAttribute("message") message Messages, Model m) {
+	public String panchatgptresult(@ModelAttribute("message") message Messages, Model m, Principal principal) {
+		String username = principal.getName();
+		Users currentUser = userRepository.GetUserByUserName(username);
 
 		if (Messages.getContent().toLowerCase().contains("pan card")) {
-			AiResponse response = aiService.getAssistance(
-					"Your role is just to assist with problems related to PAN card and nothing other than that. If asked about anything outside of this topic, don't respond.",
-					Messages.getContent());
+			if (hasAvailableAiRequests(currentUser)) {
+				AiResponse response = aiService.getAssistance(
+						"Your role is just to assist with problems related to PAN card and nothing other than that. If asked about anything outside of this topic, don't respond.",
+						Messages.getContent());
 
-			m.addAttribute("info", response.getAiContent());
-			m.addAttribute("videos", response.getVideos());
+				m.addAttribute("info", response.getAiContent());
+				m.addAttribute("videos", response.getVideos());
+				int remaining = 50 - currentUser.getAiRequestCount();
+				m.addAttribute("quotaMessage", "You have " + remaining + " AI requests left today.");
+			} else {
+				m.addAttribute("info", "You have reached your daily limit of 50 AI requests. Please try again tomorrow.");
+			}
 		} else {
-			m.addAttribute("info", "search only about PAN card");
+			m.addAttribute("info", "search only about PAN card(Your query should include the word 'PAN card' in the query)");
 		}
 		return "normal/pan_issue";
 	}
@@ -193,17 +252,25 @@ public class UserController {
 	}
 
 	@GetMapping("/getvoterans")
-	public String voterchatgptresult(@ModelAttribute("message") message Messages, Model m) {
+	public String voterchatgptresult(@ModelAttribute("message") message Messages, Model m, Principal principal) {
+		String username = principal.getName();
+		Users currentUser = userRepository.GetUserByUserName(username);
 
 		if (Messages.getContent().toLowerCase().contains("voter card")) {
-			AiResponse response = aiService.getAssistance(
-					"Your role is just to assist with problems related to VoterId card and nothing other than that. If asked about anything outside of this topic, don't respond.",
-					Messages.getContent());
+			if (hasAvailableAiRequests(currentUser)) {
+				AiResponse response = aiService.getAssistance(
+						"Your role is just to assist with problems related to VoterId card and nothing other than that. If asked about anything outside of this topic, don't respond.",
+						Messages.getContent());
 
-			m.addAttribute("info", response.getAiContent());
-			m.addAttribute("videos", response.getVideos());
+				m.addAttribute("info", response.getAiContent());
+				m.addAttribute("videos", response.getVideos());
+				int remaining = 50 - currentUser.getAiRequestCount();
+				m.addAttribute("quotaMessage", "You have " + remaining + " AI requests left today.");
+			} else {
+				m.addAttribute("info", "You have reached your daily limit of 50 AI requests. Please try again tomorrow.");
+			}
 		} else {
-			m.addAttribute("info", "search only about Voter card");
+			m.addAttribute("info", "search only about Voter card (Your query should include the word 'Voter card' in the query)");
 		}
 		return "normal/voter_issue";
 	}
@@ -214,8 +281,6 @@ public class UserController {
 		model.addAttribute("googleMapsApiKey", googleMapsApiKey);
 		return "normal/voter_centre";
 	}
-
-	////////////////// LAND DOCUMENTS ////////////////
 
 	@GetMapping("/passport")
 	public String land() {
@@ -228,17 +293,25 @@ public class UserController {
 	}
 
 	@GetMapping("/getpassportans")
-	public String passportchatgptresult(@ModelAttribute("message") message Messages, Model m) {
+	public String passportchatgptresult(@ModelAttribute("message") message Messages, Model m, Principal principal) {
+		String username = principal.getName();
+		Users currentUser = userRepository.GetUserByUserName(username);
 
 		if (Messages.getContent().toLowerCase().contains("passport")) {
-			AiResponse response = aiService.getAssistance(
-					"Your role is just to assist with problems related to Passport and nothing other than that. If asked about anything outside of this topic, don't respond.",
-					Messages.getContent());
+			if (hasAvailableAiRequests(currentUser)) {
+				AiResponse response = aiService.getAssistance(
+						"Your role is just to assist with problems related to Passport and nothing other than that. If asked about anything outside of this topic, don't respond.",
+						Messages.getContent());
 
-			m.addAttribute("info", response.getAiContent());
-			m.addAttribute("videos", response.getVideos());
+				m.addAttribute("info", response.getAiContent());
+				m.addAttribute("videos", response.getVideos());
+				int remaining = 50 - currentUser.getAiRequestCount();
+				m.addAttribute("quotaMessage", "You have " + remaining + " AI requests left today.");
+			} else {
+				m.addAttribute("info", "You have reached your daily limit of 50 AI requests. Please try again tomorrow.");
+			}
 		} else {
-			m.addAttribute("info", "search only about Passportsss"); // Keeping original typo if any
+			m.addAttribute("info", "search only about Passport (Your query should include the word 'Passport' in the query)"); // Keeping original typo if any
 		}
 		return "normal/passport_issue";
 	}
@@ -250,41 +323,6 @@ public class UserController {
 		return "normal/passport_centre";
 	}
 
-	////////////////////////////////////// BIRTH DOCUMENTS ////////////////
-
-	@GetMapping("/birth")
-	public String birth() {
-		return "normal/birth";
-	}
-
-	@GetMapping("/birth_issue")
-	public String birth_issue() {
-		return "normal/birth_issue";
-	}
-
-	@GetMapping("/getbirthans")
-	public String birthchatgptresult(@ModelAttribute("message") message Messages, Model m) {
-
-		if (Messages.getContent().toLowerCase().contains("birth certificate")) {
-			AiResponse response = aiService.getAssistance(
-					"Your role is just to assist with problems related to birth certificate and nothing other than that. If asked about anything outside of this topic, don't respond.",
-					Messages.getContent());
-
-			m.addAttribute("info", response.getAiContent());
-			m.addAttribute("videos", response.getVideos());
-		} else {
-			m.addAttribute("info", "search only about birth certificate");
-		}
-		return "normal/birth_issue";
-	}
-
-	@GetMapping("/birth_centre")
-	public String birth_centre(Model model) {
-		model.addAttribute("places", "birth certificate office near me");
-		model.addAttribute("googleMapsApiKey", googleMapsApiKey);
-		return "normal/birth_centre";
-	}
-
 	// =================== STATE-SPECIFIC DOCUMENT PAGES ===================
 	// Handles all documents dynamically
 
@@ -292,7 +330,12 @@ public class UserController {
 	public String dynamicChatGptResult(@ModelAttribute("message") message Messages,
 			@RequestParam("type") String type,
 			@RequestParam(value = "state", required = false) String state,
-			Model m) {
+			Model m, Principal principal) {
+
+		String username = principal.getName();
+		Users currentUser = userRepository.GetUserByUserName(username);
+
+		
 
 		String displayTitle = toDisplayTitle(type);
 		String stateDisplay = (state != null && !state.isEmpty()) ? state : "";
@@ -312,22 +355,30 @@ public class UserController {
 			}
 
 			if (isValidSearch) {
-				String role = "Your role is to assist with problems related to the " + displayTitle
-						+ " document in India, specifically for the state of " + stateDisplay
-						+ ". If asked about anything outside of this topic, politely decline and remind them you can only help with "
-						+ displayTitle + " problems in " + stateDisplay + ".";
+				if (hasAvailableAiRequests(currentUser)) {
+					String role = "Your role is to assist with problems related to the " + displayTitle
+							+ " document in India, specifically for the state of " + stateDisplay
+							+ ". If asked about anything outside of this topic, politely decline and remind them you can only help with "
+							+ displayTitle + " problems in " + stateDisplay + ".";
 
-				AiResponse response = aiService.getAssistance(role,
-						displayTitle + " " + stateDisplay + " " + Messages.getContent());
+							
+					AiResponse response = aiService.getAssistance(role,
+							 Messages.getContent()+" in "+stateDisplay);
 
-				m.addAttribute("info", response.getAiContent());
-				m.addAttribute("videos", response.getVideos());
+                 
+					m.addAttribute("info", response.getAiContent());
+					m.addAttribute("videos", response.getVideos());
+					int remaining = 50 - currentUser.getAiRequestCount();
+					m.addAttribute("quotaMessage", "You have " + remaining + " AI requests left today.");
+				} else {
+					m.addAttribute("info", "You have reached your daily limit of 50 AI requests. Please try again tomorrow.");
+				}
 			} else {
 				// Failed validation
 				m.addAttribute("info",
 						"Please search only about " + displayTitle
 								+ (stateDisplay.isEmpty() ? "" : " for " + stateDisplay)
-								+ " (e.g., ensure your query specifically mentions these keywords).");
+								+ " (your Query should have the word "+displayTitle+").");
 			}
 		} else {
 			m.addAttribute("info", "Please provide a description of your issue.");
@@ -356,33 +407,66 @@ public class UserController {
 		return "normal/document_issue";
 	}
 
-	private String getPlacesKeyword(String type) {
+	private String getPlacesKeyword(String type, String state) {
+		if (type == null)
+			return "Government Office";
+
+		String stateLower = (state != null) ? state.toLowerCase() : "";
+
+		// State-specific e-governance service center branding
+		String centerName = "Seva Kendra";
+		if (stateLower.contains("andhra") || stateLower.contains("telangana")) {
+			centerName = "MeeSeva Centre";
+		} else if (stateLower.contains("tamil nadu")) {
+			centerName = "e-Sevai Centre";
+		} else if (stateLower.contains("karnataka")) {
+			centerName = "Karnataka One";
+		} else if (stateLower.contains("maharashtra")) {
+			centerName = "Maha e-Seva";
+		} else if (stateLower.contains("uttar pradesh")) {
+			centerName = "Jan Seva Kendra";
+		} else if (stateLower.contains("rajasthan")) {
+			centerName = "E-Mitra";
+		} else if (stateLower.contains("delhi")) {
+			centerName = "e-District Kendra";
+		} else if (stateLower.contains("west bengal") || stateLower.contains("bengal")) {
+			centerName = "Bangla Sahayata Kendra BSK";
+		} else if (stateLower.contains("madhya pradesh")) {
+			centerName = "Lok Seva Kendra";
+		}
+
 		switch (type.toLowerCase()) {
 			case "ration_card":
-				return "Ration Card Office or MeeSeva Centre";
+				return "Ration Card Office or " + centerName;
 			case "driving_licence":
 				return "RTO Office";
 			case "marriage_certificate":
-				return "Registrar of Marriage Office";
+				return "Sub Registrar Office or Marriage Registrar Office";
 			case "house_land":
 				return "Sub Registrar Office";
 			case "death_certificate":
-				return "Municipal Corporation Health Department";
+			case "birth_certificate":
+				return "Municipal Corporation Office or Health Department";
 			case "caste_certificate":
-				return "Tehsildar Office";
+				return "Tehsildar Office or " + centerName;
 			case "registered_will":
 				return "Sub Registrar Office";
 			default:
-				return toDisplayTitle(type) + " Office";
+				return toDisplayTitle(type) + " Office or " + centerName;
 		}
 	}
 
 	@GetMapping("/document_centre")
 	public String documentCentre(@RequestParam String state, @RequestParam(required = false) String type, Model model) {
+
 		model.addAttribute("stateName", state);
+
 		if (type != null) {
 			model.addAttribute("documentType", type);
 			model.addAttribute("documentTitle", toDisplayTitle(type));
+			model.addAttribute("places", getPlacesKeyword(type, state));
+		} else {
+			model.addAttribute("places", "Government Office");
 		}
 		model.addAttribute("googleMapsApiKey", googleMapsApiKey);
 		return "normal/document_centre";

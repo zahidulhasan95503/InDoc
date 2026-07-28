@@ -3,75 +3,94 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Contact Us</title>
+    <title>Contact Us - InDoc</title>
 </head>
 
 <body>
     <section>
-        <!-- Contact Hero Section -->
-        <div class="contact-hero py-5 text-white" style="background-color: #002147;">
-            <div class="container text-center py-5">
-                <h1 class="display-4 font-weight-bold mb-3">Get In Touch</h1>
-                <p class="lead">We’re here to help you with all your legal documentation needs.</p>
+        <!-- Contact Hero -->
+        <div class="contact-hero-section py-5 text-center">
+            <div class="container py-5">
+                <div class="hero-badge animate-fade-in mb-4" style="display:inline-flex;">
+                    <span>✉️</span> We'd love to hear from you
+                </div>
+                <h1 class="contact-hero__title animate-fade-in">
+                    Get in touch with InDoc
+                </h1>
+                <p class="contact-hero__subtitle animate-slide-up">
+                    Questions about Indian documents? Need help with procedures?
+                    Our team is ready to assist you.
+                </p>
             </div>
         </div>
 
-        <!-- Contact Info Section -->
+        <!-- Contact Cards -->
         <div class="py-5 bg-white">
             <div class="container">
-                <div class="row justify-content-center  ">
+                <div class="row justify-content-center">
                     <div class="col-lg-10">
                         <div class="row">
                             <!-- Email Card -->
-                            <div class="col-md-6 mb-4">
-                                <div class="contact-card p-5 bg-light rounded shadow-sm h-100 text-center hover-lift">
-                                    <div class="icon-box mb-4">
-                                        <i class="fas fa-envelope fa-3x text-primary"></i>
+                            <div class="col-md-6 col-lg-3 mb-4">
+                                <div class="contact-info-card h-100 text-center">
+                                    <div class="contact-info-card__icon contact-info-card__icon--email">
+                                        <i class="fas fa-envelope"></i>
                                     </div>
-                                    <h4 class="font-weight-bold mb-3">Email Us</h4>
-                                    <p class="text-muted mb-3">Send us an email and we’ll respond within 24 hours.</p>
-                                    <a href="mailto:zahidulhasan95503@gmail.com"
-                                        class="text-primary font-weight-bold">zahidulhasan95503@gmail.com</a>
+                                    <h5 class="font-weight-bold mb-2">Email Us</h5>
+                                    <p class="text-muted mb-3" style="font-size:.9rem;">
+                                        We'll respond within 24 hours.
+                                    </p>
+                                    <a href="mailto:zahidulhasan95503@gmail.com" class="contact-info-card__link">
+                                        zahidulhasan95503@gmail.com
+                                    </a>
                                 </div>
                             </div>
 
                             <!-- Phone Card -->
-                            <div class="col-md-6 mb-4">
-                                <div class="contact-card p-5 bg-light rounded shadow-sm h-100 text-center hover-lift">
-                                    <div class="icon-box mb-4">
-                                        <i class="fas fa-phone-alt fa-3x text-primary"></i>
+                            <div class="col-md-6 col-lg-3 mb-4">
+                                <div class="contact-info-card h-100 text-center">
+                                    <div class="contact-info-card__icon contact-info-card__icon--phone">
+                                        <i class="fas fa-phone-alt"></i>
                                     </div>
-                                    <h4 class="font-weight-bold mb-3">Call Us</h4>
-                                    <p class="text-muted mb-3">Available Monday to Friday, 9 AM -- 6 PM.</p>
-                                    <a href="tel:+1234567890" class="text-primary font-weight-bold">+1
-                                        (234) 567‑8900</a>
+                                    <h5 class="font-weight-bold mb-2">Call Us</h5>
+                                    <p class="text-muted mb-3" style="font-size:.9rem;">
+                                        Mon – Fri, 9 AM – 6 PM IST.
+                                    </p>
+                                    <a href="tel:+911234567890" class="contact-info-card__link">
+                                        +91 12345 67890
+                                    </a>
                                 </div>
                             </div>
 
                             <!-- Office Card -->
-                            <div class="col-md-6 mb-4">
-                                <div class="contact-card p-5 bg-light rounded shadow-sm h-100 text-center hover-lift">
-                                    <div class="icon-box mb-4">
-                                        <i class="fas fa-map-marker-alt fa-3x text-primary"></i>
+                            <div class="col-md-6 col-lg-3 mb-4">
+                                <div class="contact-info-card h-100 text-center">
+                                    <div class="contact-info-card__icon contact-info-card__icon--office">
+                                        <i class="fas fa-map-marker-alt"></i>
                                     </div>
-                                    <h4 class="font-weight-bold mb-3">Visit Us</h4>
-                                    <p class="text-muted mb-3">Stop by our office for in‑person consultations.</p>
-                                    <p class="text-primary font-weight-bold">
-                                        123 Legal Street<br>
-                                        Suite 100, City, State 12345
+                                    <h5 class="font-weight-bold mb-2">Visit Us</h5>
+                                    <p class="text-muted mb-3" style="font-size:.9rem;">
+                                        In-person consultations available.
                                     </p>
+                                    <span class="contact-info-card__link" style="cursor:default;">
+                                        New Delhi, India
+                                    </span>
                                 </div>
                             </div>
 
                             <!-- Live Support Card -->
-                            <div class="col-md-6 mb-4">
-                                <div class="contact-card p-5 bg-light rounded shadow-sm h-100 text-center hover-lift">
-                                    <div class="icon-box mb-4">
-                                        <i class="fas fa-headset fa-3x text-primary"></i>
+                            <div class="col-md-6 col-lg-3 mb-4">
+                                <div class="contact-info-card h-100 text-center">
+                                    <div class="contact-info-card__icon contact-info-card__icon--support">
+                                        <i class="fas fa-headset"></i>
                                     </div>
-                                    <h4 class="font-weight-bold mb-3">Live Support</h4>
-                                    <p class="text-muted mb-3">Chat with our support team in real‑time.</p>
-                                    <a href="#" class="btn btn-primary rounded-pill px-4 py-2">Start Chat</a>
+                                    <h5 class="font-weight-bold mb-2">AI Support</h5>
+                                    <p class="text-muted mb-3" style="font-size:.9rem;">
+                                        Instant answers via our AI assistant.
+                                    </p>
+                                    <a th:href="@{/login}" class="btn btn-primary btn-sm rounded-pill px-3">
+                                        Start Chat <i class="fas fa-arrow-right ml-1"></i>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -80,25 +99,144 @@
             </div>
         </div>
 
-        <!-- Business Hours Section -->
-        <div class="py-5 bg-light">
-            <div class="container text-center">
-                <h2 class="font-weight-bold mb-5">Business Hours</h2>
+        <!-- Contact Form Section -->
+        <div class="py-5" style="background:var(--light-bg);">
+            <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-md-6">
-                        <div class="bg-white p-4 rounded shadow-sm">
-                            <div class="d-flex justify-content-between py-2 border-bottom">
-                                <span class="font-weight-bold">Monday – Friday</span>
-                                <span class="text-muted">9:00 AM – 6:00 PM</span>
+                    <div class="col-lg-8">
+                        <div class="contact-form-card">
+                            <div class="text-center mb-5">
+                                <h2 class="font-weight-bold">Send us a message</h2>
+                                <p class="text-muted">Fill out the form below and we'll get back to you as soon as
+                                    possible.</p>
                             </div>
-                            <div class="d-flex justify-content-between py-2 border-bottom">
-                                <span class="font-weight-bold">Saturday</span>
-                                <span class="text-muted">10:00 AM – 4:00 PM</span>
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="font-weight-bold" for="contact-name">Full Name</label>
+                                            <input type="text" class="form-control contact-form-input" id="contact-name"
+                                                placeholder="Your full name" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="font-weight-bold" for="contact-email">Email Address</label>
+                                            <input type="email" class="form-control contact-form-input"
+                                                id="contact-email" placeholder="you@example.com" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-bold" for="contact-subject">Subject</label>
+                                    <select class="form-control contact-form-input" style="height: fit-content;"
+                                        id="contact-subject">
+                                        <option value="">Select a topic…</option>
+                                        <option>Aadhaar Card</option>
+                                        <option>PAN Card</option>
+                                        <option>Passport</option>
+                                        <option>Voter ID</option>
+                                        <option>Driving Licence</option>
+                                        <option>Birth / Death Certificate</option>
+                                        <option>Property Registration</option>
+                                        <option>General Query</option>
+                                        <option>Bug Report / Feedback</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="font-weight-bold" for="contact-message">Message</label>
+                                    <textarea class="form-control contact-form-input" id="contact-message" rows="5"
+                                        placeholder="Describe your question or issue…" required></textarea>
+                                </div>
+                                <div class="text-center mt-4">
+                                    <button type="submit"
+                                        class="btn btn-primary btn-lg rounded-pill px-5 py-3 hover-scale">
+                                        Send Message <i class="fas fa-paper-plane ml-2"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Business Hours -->
+        <div class="py-5 bg-white">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="row align-items-center">
+                            <div class="col-md-5 text-center text-md-left mb-4 mb-md-0">
+                                <h3 class="font-weight-bold mb-2">Business Hours</h3>
+                                <p class="text-muted mb-0">Our support team is available during these hours.</p>
                             </div>
-                            <div class="d-flex justify-content-between py-2">
-                                <span class="font-weight-bold">Sunday</span>
-                                <span class="text-muted">Closed</span>
+                            <div class="col-md-7">
+                                <div class="hours-card">
+                                    <div class="hours-card__row">
+                                        <span class="hours-card__day">
+                                            <i class="fas fa-circle"
+                                                style="color:#10B981;font-size:8px;margin-right:8px;"></i>
+                                            Monday – Friday
+                                        </span>
+                                        <span class="hours-card__time">9:00 AM – 6:00 PM</span>
+                                    </div>
+                                    <div class="hours-card__row">
+                                        <span class="hours-card__day">
+                                            <i class="fas fa-circle"
+                                                style="color:var(--secondary-color);font-size:8px;margin-right:8px;"></i>
+                                            Saturday
+                                        </span>
+                                        <span class="hours-card__time">10:00 AM – 4:00 PM</span>
+                                    </div>
+                                    <div class="hours-card__row hours-card__row--last">
+                                        <span class="hours-card__day">
+                                            <i class="fas fa-circle"
+                                                style="color:#EF4444;font-size:8px;margin-right:8px;"></i>
+                                            Sunday
+                                        </span>
+                                        <span class="hours-card__time">Closed</span>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Quick Section -->
+        <div class="py-5" style="background:var(--light-bg);">
+            <div class="container text-center">
+                <h2 class="font-weight-bold mb-2">Frequently Asked Questions</h2>
+                <p class="text-muted mb-5">Quick answers to common queries.</p>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="faq-item">
+                            <h5 class="font-weight-bold mb-2">
+                                <i class="fas fa-question-circle mr-2" style="color:var(--secondary-color);"></i>
+                                Is InDoc free to use?
+                            </h5>
+                            <p class="text-muted mb-0">Yes! InDoc is completely free. We provide document guides,
+                                AI assistance, and center locator services at no cost.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h5 class="font-weight-bold mb-2">
+                                <i class="fas fa-question-circle mr-2" style="color:var(--secondary-color);"></i>
+                                Which states are covered?
+                            </h5>
+                            <p class="text-muted mb-0">We currently cover Andhra Pradesh, Delhi, Karnataka,
+                                Madhya Pradesh, Maharashtra, Rajasthan, Tamil Nadu, Telangana, Uttar Pradesh,
+                                and West Bengal — with more coming soon.</p>
+                        </div>
+                        <div class="faq-item">
+                            <h5 class="font-weight-bold mb-2">
+                                <i class="fas fa-question-circle mr-2" style="color:var(--secondary-color);"></i>
+                                How does the AI assistant work?
+                            </h5>
+                            <p class="text-muted mb-0">Our AI assistant is powered by Google Gemini. Simply ask
+                                any question about Indian documents and get instant, intelligent answers
+                                along with relevant YouTube video tutorials.</p>
                         </div>
                     </div>
                 </div>
@@ -106,13 +244,15 @@
         </div>
 
         <!-- CTA Section -->
-        <div class="py-5 text-white text-center" style="background-color: #002147;">
+        <div class="py-5 text-white text-center" style="background-color: #0F172A;">
             <div class="container py-4">
-                <h2 class="font-weight-bold mb-3">Ready to Get Started?</h2>
-                <p class="lead mb-4">Join thousands of satisfied clients who trust InDoc for their legal needs.</p>
+                <h2 class="font-weight-bold mb-3">Still have questions?</h2>
+                <p class="lead mb-4 opacity-75">Create a free account and chat with our AI assistant for instant help.
+                </p>
                 <a th:href="@{/signin}"
-                    class="btn btn-light btn-lg rounded-pill px-5 py-3 shadow hover-scale text-primary font-weight-bold">Create
-                    Account</a>
+                    class="btn btn-primary btn-lg rounded-pill px-5 py-3 shadow hover-scale font-weight-bold">
+                    Get Started Free <i class="fas fa-arrow-right ml-2"></i>
+                </a>
             </div>
         </div>
     </section>

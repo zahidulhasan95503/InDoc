@@ -39,6 +39,9 @@ public class Aiassistance_youtube {
 
 		// 2. Call YouTube
 		List<YouTubeVideo> videos = null;
+
+		
+
 		try {
 			videos = youtubeService.searchVideos(userQuery);
 		} catch (Exception e) {

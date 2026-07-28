@@ -11,6 +11,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "users")
@@ -46,6 +47,28 @@ public class Users {
 	private boolean agreement;
 
 	private String role;
+
+	@Column(name = "ai_request_count")
+	private int aiRequestCount = 0;
+
+	@Column(name = "last_ai_request_date")
+	private LocalDate lastAiRequestDate;
+
+	public int getAiRequestCount() {
+		return aiRequestCount;
+	}
+
+	public void setAiRequestCount(int aiRequestCount) {
+		this.aiRequestCount = aiRequestCount;
+	}
+
+	public LocalDate getLastAiRequestDate() {
+		return lastAiRequestDate;
+	}
+
+	public void setLastAiRequestDate(LocalDate lastAiRequestDate) {
+		this.lastAiRequestDate = lastAiRequestDate;
+	}
 
 	public int getId() {
 		return id;

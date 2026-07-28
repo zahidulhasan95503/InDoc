@@ -11,23 +11,23 @@ import com.legal.entites.Users;
 
 @Component
 public class UserDetailsServiceImpl implements UserDetailsService {
-	
+
 	@Autowired
 	private UserRepository userRepository;
 
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		
+
 		Users user = userRepository.GetUserByUserName(username);
-		
-		if(user==null) {
-			
-			throw new UsernameNotFoundException("User with "+username+" not found");
-			
+
+		if (user == null) {
+
+			throw new UsernameNotFoundException("User with " + username + " not found");
+
 		}
-		
-		UserDetailsImpl userDetailsImpl  = new UserDetailsImpl(user);
-		
+
+		UserDetailsImpl userDetailsImpl = new UserDetailsImpl(user);
+
 		return userDetailsImpl;
 	}
 

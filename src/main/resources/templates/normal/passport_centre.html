@@ -44,6 +44,17 @@
             <div style="flex:1; height:2px; background:linear-gradient(to left,#C5A059,transparent);"></div>
           </div>
 
+          <!-- Filter Buttons -->
+          <div id="place-filter-buttons"
+            style="display:none; justify-content:center; gap:1rem; margin-bottom:1.5rem; flex-wrap:wrap;">
+            <button class="filter-btn active" data-filter="all"
+              style="padding: 6px 20px; border-radius: 20px; border: 1px solid #C5A059; background-color: #C5A059; color: white; cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: all 0.3s;">All</button>
+            <button class="filter-btn" data-filter="official"
+              style="padding: 6px 20px; border-radius: 20px; border: 1px solid #C5A059; background-color: transparent; color: #C5A059; cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: all 0.3s;">Official</button>
+            <button class="filter-btn" data-filter="non-official"
+              style="padding: 6px 20px; border-radius: 20px; border: 1px solid #C5A059; background-color: transparent; color: #C5A059; cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: all 0.3s;">Non-Official</button>
+          </div>
+
           <!-- Loading spinner -->
           <div id="cards-loading" style="text-align:center; padding:2rem;">
             <i class="fas fa-spinner fa-spin fa-2x" style="color:#C5A059;"></i>

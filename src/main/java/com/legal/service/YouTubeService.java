@@ -30,7 +30,7 @@ public class YouTubeService {
 
 	@Cacheable("youtubeVideos")
 	public List<YouTubeVideo> searchVideos(String query) throws Exception {
-		
+
 		// Build the YouTube API URL with query parameters
 		UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(YOUTUBE_SEARCH_URL)
 				.queryParam("part", "snippet")
@@ -42,8 +42,6 @@ public class YouTubeService {
 		String jsonResponse = restTemplate.getForObject(builder.toUriString(), String.class);
 
 		// Parse JSON and extract video details
-
-		
 
 		JsonNode rootNode = objectMapper.readTree(jsonResponse);
 

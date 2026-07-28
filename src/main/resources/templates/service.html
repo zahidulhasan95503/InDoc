@@ -3,52 +3,266 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Home page</title>
+    <title>Services - InDoc</title>
 </head>
 
-<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f9;">
-
+<body>
     <section>
-        <header style="background-color: #002147; color: #fff; text-align: center; padding: 20px;">
-            <h1>Legal Document Services in India</h1>
-            <p>Your One-Stop Solution for Legal Document Assistance</p>
-        </header>
+        <!-- Service Hero Section -->
+        <div class="service-hero py-5 text-center">
+            <div class="container py-5">
+                <h1 class="service-hero__title animate-fade-in">
+                    Navigate India's document maze,<br>with complete confidence
+                </h1>
+                <p class="service-hero__subtitle animate-slide-up">
+                    Integrate AI guidance, step-by-step procedures &amp; center locators — everything
+                    you need for any Indian legal document, in one place.
+                </p>
+            </div>
+        </div>
 
-        <!-- Introduction Section -->
-        <section style="padding: 20px; text-align: center; background-color: #ffffff;">
-            <h2 style="color: #002147;">What We Offer</h2>
-            <p style="font-size:20px;">We provide comprehensive guidance and support for creating and resolving issues
-                related to essential legal documents such as:</p>
-            <ul style="list-style: none; padding: 0;">
-                <li style="margin: 10px 0;">Aadhar Card</li>
-                <li style="margin: 10px 0;">PAN Card</li>
-                <li style="margin: 10px 0;">Voter ID</li>
-                <li style="margin: 10px 0;">Passport</li>
-                <li style="margin: 10px 0;">Birth Certificate</li>
-                <li style="margin: 10px 0;">And Many More...</li>
-            </ul>
-        </section>
+        <!-- Hub & Spoke — Document Ecosystem -->
+        <div class="service-ecosystem py-5">
+            <div class="container">
+                <div class="ecosystem-grid">
+                    <!-- Top-left badge -->
+                    <div class="eco-badge eco-badge--tl animate-float-slow">
+                        <span class="eco-badge__icon"><i class="fas fa-id-card"></i></span>
+                        <span class="eco-badge__label">Aadhaar Card</span>
+                    </div>
+                    <!-- Top-right badge -->
+                    <div class="eco-badge eco-badge--tr animate-float-slow" style="animation-delay:.25s">
+                        <span class="eco-badge__icon"><i class="fas fa-credit-card"></i></span>
+                        <span class="eco-badge__label">PAN Card</span>
+                    </div>
 
-        <!-- Services Section -->
-        <section style="padding: 20px; background-color: #e8eff7;">
-            <h2 style="color: #002147; text-align: center;">Our Services</h2>
-            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
-                <div style="border: 1px solid #ccc; padding: 20px; width: 300px; background-color: #fff;">
-                    <h3 style="color: #002147;">Document Creation</h3>
-                    <p>Get step-by-step guidance for creating essential documents easily and hassle-free.</p>
+                    <!-- Center Hub -->
+                    <div class="eco-hub">
+                        <div class="eco-hub__pill">
+                            <span class="eco-hub__flag">🇮🇳</span>
+                            <span class="eco-hub__name">InDoc</span>
+                        </div>
+                    </div>
+
+                    <!-- Mid-left badge -->
+                    <div class="eco-badge eco-badge--ml animate-float-slow" style="animation-delay:.5s">
+                        <span class="eco-badge__icon"><i class="fas fa-vote-yea"></i></span>
+                        <span class="eco-badge__label">Voter ID</span>
+                    </div>
+                    <!-- Mid-right badge -->
+                    <div class="eco-badge eco-badge--mr animate-float-slow" style="animation-delay:.75s">
+                        <span class="eco-badge__icon"><i class="fas fa-passport"></i></span>
+                        <span class="eco-badge__label">Passport</span>
+                    </div>
+
+                    <!-- Bottom-left badge -->
+                    <div class="eco-badge eco-badge--bl animate-float-slow" style="animation-delay:1s">
+                        <span class="eco-badge__icon"><i class="fas fa-baby"></i></span>
+                        <span class="eco-badge__label">Birth Certificate</span>
+                    </div>
+                    <!-- Bottom badge -->
+                    <div class="eco-badge eco-badge--bc animate-float-slow" style="animation-delay:1.1s">
+                        <span class="eco-badge__icon"><i class="fas fa-car"></i></span>
+                        <span class="eco-badge__label">Driving Licence</span>
+                    </div>
+                    <!-- Bottom-right badge -->
+                    <div class="eco-badge eco-badge--br animate-float-slow" style="animation-delay:1.25s">
+                        <span class="eco-badge__icon"><i class="fas fa-home"></i></span>
+                        <span class="eco-badge__label">Property Reg.</span>
+                    </div>
                 </div>
-                <div style="border: 1px solid #ccc; padding: 20px; width: 300px; background-color: #fff;">
-                    <h3 style="color: #002147;">Query Assistance</h3>
-                    <p>Have questions? Our AI experts are here to answer all your queries regarding legal documents.</p>
-                </div>
-                <div style="border: 1px solid #ccc; padding: 20px; width: 300px; background-color: #fff;">
-                    <h3 style="color: #002147;">Nearby Centers</h3>
-                    <p>Find nearby centers for document creation and issue resolution with location-based assistance.
-                    </p>
+
+                <!-- Connector lines (decorative SVG) -->
+                <svg class="ecosystem-lines" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                    <!-- Lines from center to each badge position -->
+                    <line x1="400" y1="200" x2="160" y2="60" />
+                    <line x1="400" y1="200" x2="640" y2="60" />
+                    <line x1="400" y1="200" x2="80"  y2="200" />
+                    <line x1="400" y1="200" x2="720" y2="200" />
+                    <line x1="400" y1="200" x2="140" y2="340" />
+                    <line x1="400" y1="200" x2="400" y2="360" />
+                    <line x1="400" y1="200" x2="660" y2="340" />
+                </svg>
+            </div>
+        </div>
+
+        <!-- Feature Cards Section (inspired by reference bottom cards) -->
+        <div class="service-features py-5 bg-white">
+            <div class="container">
+                <div class="row">
+                    <!-- Card 1: Step-by-Step Guides -->
+                    <div class="col-lg-4 mb-4">
+                        <div class="svc-card h-100">
+                            <div class="svc-card__header">
+                                <span class="svc-card__icon svc-card__icon--guides">
+                                    <i class="fas fa-book-open"></i>
+                                </span>
+                                <h4 class="svc-card__title">Step-by-Step Guides</h4>
+                            </div>
+                            <p class="svc-card__desc">
+                                Detailed, state-specific procedures for creating and
+                                troubleshooting every essential Indian document.
+                            </p>
+                            <!-- Mini preview block -->
+                            <div class="svc-card__preview">
+                                <div class="svc-mini-list">
+                                    <div class="svc-mini-list__item">
+                                        <span class="svc-mini-list__dot svc-mini-list__dot--done"></span>
+                                        <span>Gather required documents</span>
+                                    </div>
+                                    <div class="svc-mini-list__item">
+                                        <span class="svc-mini-list__dot svc-mini-list__dot--active"></span>
+                                        <span>Fill the application form</span>
+                                    </div>
+                                    <div class="svc-mini-list__item">
+                                        <span class="svc-mini-list__dot"></span>
+                                        <span>Submit &amp; track status</span>
+                                    </div>
+                                </div>
+                                <div class="svc-card__stat-row">
+                                    <div class="svc-card__stat">
+                                        <span class="svc-card__stat-value">9+</span>
+                                        <span class="svc-card__stat-label">Documents</span>
+                                    </div>
+                                    <div class="svc-card__stat">
+                                        <span class="svc-card__stat-value">10</span>
+                                        <span class="svc-card__stat-label">States</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: AI Legal Assistant -->
+                    <div class="col-lg-4 mb-4">
+                        <div class="svc-card h-100">
+                            <div class="svc-card__header">
+                                <span class="svc-card__icon svc-card__icon--ai">
+                                    <i class="fas fa-robot"></i>
+                                </span>
+                                <h4 class="svc-card__title">AI Legal Assistant</h4>
+                            </div>
+                            <p class="svc-card__desc">
+                                Powered by Google Gemini, our AI answers your document
+                                queries instantly — with contextual video tutorials from YouTube.
+                            </p>
+                            <!-- Mini preview block -->
+                            <div class="svc-card__preview">
+                                <div class="svc-chat-preview">
+                                    <div class="svc-chat-preview__bubble svc-chat-preview__bubble--user">
+                                        How do I apply for a new PAN card?
+                                    </div>
+                                    <div class="svc-chat-preview__bubble svc-chat-preview__bubble--ai">
+                                        You can apply online via NSDL or UTIITSL portals. Here are the steps…
+                                    </div>
+                                </div>
+                                <div class="svc-card__tags">
+                                    <span class="svc-tag"><i class="fas fa-microchip"></i> Gemini AI</span>
+                                    <span class="svc-tag"><i class="fab fa-youtube"></i> Video Help</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Center Locator -->
+                    <div class="col-lg-4 mb-4">
+                        <div class="svc-card h-100">
+                            <div class="svc-card__header">
+                                <span class="svc-card__icon svc-card__icon--locator">
+                                    <i class="fas fa-map-marked-alt"></i>
+                                </span>
+                                <h4 class="svc-card__title">Center Locator</h4>
+                            </div>
+                            <p class="svc-card__desc">
+                                Google Maps–powered search to find the nearest Aadhaar Seva Kendra,
+                                Passport Office, RTO, or any document center.
+                            </p>
+                            <!-- Mini preview block -->
+                            <div class="svc-card__preview">
+                                <div class="svc-map-preview">
+                                    <div class="svc-map-preview__pin"><i class="fas fa-map-pin"></i></div>
+                                    <div class="svc-map-preview__label">Nearest center: <strong>2.4 km</strong></div>
+                                </div>
+                                <div class="svc-card__stat-row">
+                                    <div class="svc-card__stat">
+                                        <span class="svc-card__stat-value">5+</span>
+                                        <span class="svc-card__stat-label">Center Types</span>
+                                    </div>
+                                    <div class="svc-card__stat">
+                                        <span class="svc-card__stat-value">All India</span>
+                                        <span class="svc-card__stat-label">Coverage</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
 
+        <!-- States Coverage Ribbon -->
+        <div class="service-states py-5">
+            <div class="container text-center">
+                <h2 class="font-weight-bold mb-2">State-Specific Procedures</h2>
+                <p class="text-muted mb-5">Localized guides covering procedures unique to each state.</p>
+                <div class="state-badges">
+                    <span class="state-badge">Andhra Pradesh</span>
+                    <span class="state-badge">Delhi</span>
+                    <span class="state-badge">Karnataka</span>
+                    <span class="state-badge">Madhya Pradesh</span>
+                    <span class="state-badge">Maharashtra</span>
+                    <span class="state-badge">Rajasthan</span>
+                    <span class="state-badge">Tamil Nadu</span>
+                    <span class="state-badge">Telangana</span>
+                    <span class="state-badge">Uttar Pradesh</span>
+                    <span class="state-badge">West Bengal</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- How It Works Section -->
+        <div class="service-how py-5 bg-white">
+            <div class="container text-center">
+                <h2 class="font-weight-bold mb-2">How InDoc Works</h2>
+                <p class="text-muted mb-5">Three simple steps to resolve any document need.</p>
+                <div class="row justify-content-center">
+                    <div class="col-md-4 mb-4">
+                        <div class="how-step">
+                            <div class="how-step__number">1</div>
+                            <h5 class="font-weight-bold mt-3">Choose Your Document</h5>
+                            <p class="text-muted">Select from Aadhaar, PAN, Passport, Voter ID and more.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="how-step">
+                            <div class="how-step__number">2</div>
+                            <h5 class="font-weight-bold mt-3">Follow the Guide</h5>
+                            <p class="text-muted">Get step-by-step instructions tailored to your state.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="how-step">
+                            <div class="how-step__number">3</div>
+                            <h5 class="font-weight-bold mt-3">Get Help Anytime</h5>
+                            <p class="text-muted">Ask our AI assistant or locate the nearest service center.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="py-5 text-white text-center" style="background-color: #0F172A;">
+            <div class="container py-4">
+                <h2 class="font-weight-bold mb-3">Ready to simplify your document journey?</h2>
+                <p class="lead mb-4 opacity-75">Join thousands of Indians who trust InDoc for hassle-free document processing.</p>
+                <a th:href="@{/signin}"
+                    class="btn btn-primary btn-lg rounded-pill px-5 py-3 shadow hover-scale font-weight-bold">
+                    Get Started Free <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
 </body>
 
 </html>
