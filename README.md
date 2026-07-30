@@ -25,7 +25,7 @@
 
 * **Backend:** Java 17, Spring Boot 3.3.2
 * **Database:** MySQL (Spring Data JPA / Hibernate)
-* **Frontend:** Thymeleaf, HTML5, CSS3, JavaScript
+* **Frontend:** Thymeleaf, HTML5, CSS3, JavaScript,Bootstrap
 * **AI Integration:** Spring AI (`1.0.0-M2` or later) mapping to Google Gemini APIs
 * **External APIs:** Google Gemini API, YouTube Data API v3, Google Maps API
 * **Containerization:** Docker (Multi-stage build)
