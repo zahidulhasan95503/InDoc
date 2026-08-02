@@ -25,13 +25,16 @@
   <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top" style="background-color:#C5A059;">
     <div class="container-fluid">
 
-      <a class="navbar-brand font-weight-bold" th:href="@{/user/central}">InDoc</a>
+      <a class="navbar-brand font-weight-bold mr-auto" th:href="@{/user/central}">InDoc</a>
       <button class="navbar-toggler" type=" " data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <button id="feedback-btn" class="nav-btn my-2 my-lg-0 mx-lg-auto"
+          style="cursor: pointer; background-color: #0056b3; color: white; padding: 8px 15px; border-radius: 5px; border: none;">What
+          YOU want</button>
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a class="nav-link" th:text="${users.Name}" th:href="@{/user/update_user}">
@@ -174,6 +177,25 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
 
+  <!-- script for tally FEEDBACK form -->
+  <script async src="https://tally.so/widgets/embed.js"></script>
+
+  <script>
+    document.getElementById('feedback-btn').addEventListener('click', function () {
+
+      // Get the exact URL the user is currently on
+      const currentPageUrl = window.location.href;
+
+      // Open the Tally popup 
+      Tally.openPopup('1AzqvL', {
+        layout: 'modal',
+        width: 600,
+        hiddenFields: {
+          current_page: currentPageUrl // Passes the URL to your hidden field
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
