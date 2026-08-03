@@ -17,24 +17,34 @@
   <link rel="stylesheet" th:href="@{/css/style.css}">
 
   <title th:text="${title}">Dashboard - InDoc</title>
+
+  <script type="text/javascript">
+    (function (c, l, a, r, i, t, y) {
+      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+      t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+      y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+    })(window, document, "clarity", "script", "xwop2af21g");
+  </script>
 </head>
 
 <body>
 
   <!-- Navbar -->
   <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top" style="background-color:#C5A059;">
-    <div class="container-fluid">
+    <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-lg-nowrap">
 
       <a class="navbar-brand font-weight-bold" th:href="@{/user/central}">InDoc</a>
-      <button class="navbar-toggler" type=" " data-toggle="collapse" data-target="#navbarSupportedContent"
+
+      <button id="feedback-btn" class="nav-btn mx-auto mx-lg-3 order-0 order-lg-2"
+        style="cursor: pointer; background-color: #0056b3; color: white; padding: 6px 12px; border-radius: 5px; border: none; font-size: 0.85rem;">What
+        YOU want</button>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <button id="feedback-btn" class="nav-btn my-2 my-lg-0 mx-lg-auto"
-          style="cursor: pointer; background-color: #0056b3; color: white; padding: 8px 15px; border-radius: 5px; border: none;">What
-          YOU want</button>
+      <div class="collapse navbar-collapse w-100 w-lg-auto order-3 order-lg-1" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
             <a class="nav-link" th:text="${users.Name}" th:href="@{/user/update_user}">

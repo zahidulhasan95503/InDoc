@@ -1302,7 +1302,12 @@ h6 {
 
 /* ============================================
    SHARED RESPONSIVE OVERRIDES
-   ============================================ */
+@media (max-width: 991.98px) {
+  .navbar .collapse.navbar-collapse {
+    flex-basis: 100%;
+    margin-top: 10px;
+  }
+}
 
 @media (max-width: 768px) {
 
